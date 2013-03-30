@@ -113,3 +113,6 @@ body {
   padding: 10px 0;
 }
 
+.page-header h1 small {
+  display: inline !important;
+}
