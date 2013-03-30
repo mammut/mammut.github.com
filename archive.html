@@ -1,0 +1,12 @@
+---
+layout: default
+title: Archivos
+---
+
+<h2>Archivo</h2>
+
+<ul class="posts unstyled">
+	{% for post in site.posts %}
+		<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
