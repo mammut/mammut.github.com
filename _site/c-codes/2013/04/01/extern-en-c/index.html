@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JPEG :|: Rediseño</title>
+    <title>JPEG :|: Extern en C</title>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -53,35 +53,104 @@
             </div>
             <div class="row-fluid" id="content">
                 <div class="span9">
-                    <h3 class="content">Rediseño</h3>
-<p><em> 30 Mar 2013</em></p>
+                    <h3 class="content">Extern en C</h3>
+<p><em> 01 Apr 2013</em></p>
 <p>
-	Estoy probando un rediseño de mi página web usando <a href="jekyllrb.com" target="_blank">Jekyll</a> y hostaeda en github. Por ahora no tengo mucho que decir. Dejo una letra de una cancion de un libro muy bueno, la serie de libros se llama <em>A song of ice and fire</em> de <em>George R. R. Martin</em>. Esta canción es interpretada en la Boda Roja (3er libro).
+	La palabra reservada de C <strong>extern</strong> se utiliza cuando usamos librerías y multiples archivos que la utilizan, en general proyectos grandes.
+</p>
+<p>
+	Es importante diferenciar dos palabras claves:
+	<dl class="dl-horizontal">
+		<dt>Definición</dt>
+		<dd>El compilador reserva memoria para almacenar la variable</dd>
+		<dt>Declaración</dt>
+		<dd>El compilador es informado de que la variable existe, y que tipo de dato es (Pero no reserva memoria para almacenarla)</dd>
+	</dl>
+
+	Ahora supongamos que tenemos una librería con cabecera llamada: <strong>mi_libreria.h</strong> y dentro tiene una variable declarada como extern:
 </p>
 
-<blockquote>
-	<em>
-		And who are you, the proud lord said,<br>
-		that I must bow so low?<br>
-		Only a cat of a different coat,<br>
-		that's all the truth I know.<br>
-		In a coat of gold or a coat of red,<br>
-		a lion still has claws,<br>
-		And mine are long and sharp, my lord,<br>
-		as long and sharp as yours.<br>
-		<br>
-		And so he spoke, and so he spoke,<br>
-		that lord of Castamere,<br>
-		But now the rains weep o'er his hall,<br>
-		with no one there to hear.<br>
-		Yes now the rains weep o'er his hall,<br>
-		and not a soul to hear.<br>
-	</em>
-</blockquote>
 
-<p>La canción la pueden escuchar aquí: <a href="http://youtu.be/oRO0jQFnLjE" target="_blank">http://youtu.be/oRO0jQFnLjE</a></p>
+<h5>mi_libreria.h</h5>
+<div>
+  <pre><code class='c'>...
+extern int is_cool;
+...</code></pre>
+</div>
 
 
+<p>y tenemos un archivo principal main.c</p>
+
+
+<h5>main.c</h5>
+<div>
+  <pre><code class='c'>#include &quot;mi_libreria.h&quot;
+
+int is_cool;
+
+int main() {
+	is_cool = 1;
+}
+...</code></pre>
+</div>
+
+
+
+<p>Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería</p>
+
+
+<h5>funciones.c</h5>
+<div>
+  <pre><code class='c'>#include &quot;mi_libreria.h&quot;
+
+void una_funcion() {
+	...
+	if (is_cool) puts(&quot;He is cool&quot;);
+	...
+}</code></pre>
+</div>
+
+
+<p>
+	Tenemos 3 archivos. <strong>main.c, funciones.c</strong> y <strong>mi_libreria.h</strong>. tanto main.c como funciones.c usan dicha librería.<br>
+	En la librería <strong><big>declaramos</big></strong> la variable is_cool. <br>
+	En main.c <strong><big>definimos</big></strong> la variable is_cool.<br>
+	Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo sea el mismo que el declarado en la librería.
+</p>
+<p>
+	Ahora la variable is_cool es una variable global (pero muy global, por que es <strong>la misma</strong> en diferentes archivos)
+</p>
+
+<p>
+	<h4>Reglas Generales</h4>
+	<ul>
+		<li>
+			Un extern solo se utiliza en archivos header (o de cabecera). Nunca en un archivo fuente (.c)
+		</li>
+		<li>
+			Definir una variable extern solo en un archivo fuente. Solo hace falta definirla una vez.
+		</li>
+	</ul>
+
+	Eso es todo lo que tengo que decir sobre extern en C.
+</p>
+
+
+
+
+
+<div id="fb-root"></div>
+<hr>
+<h3>Comentarios</h3>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=177325815624166";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+<div class="fb-comments" data-href="http://mammut.github.com/c-codes/2013/04/01/extern-en-c/" data-num-posts="4" data-width="706"></div>
 
                 </div>
                 <div class="span3">
