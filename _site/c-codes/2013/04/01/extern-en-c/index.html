@@ -72,44 +72,38 @@
 
 
 <h5>mi_libreria.h</h5>
-<div>
-  <pre><code class='c'>...
-extern int is_cool;
-...</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="c"><span class="p">...</span>
+<span class="k">extern</span> <span class="kt">int</span> <span class="n">is_cool</span><span class="p">;</span>
+<span class="p">...</span>
+</code></pre></div>
 
 <p>y tenemos un archivo principal main.c</p>
 
 
 <h5>main.c</h5>
-<div>
-  <pre><code class='c'>#include &quot;mi_libreria.h&quot;
+<div class="highlight"><pre><code class="c"><span class="cp">#include &quot;mi_libreria.h&quot;</span>
 
-int is_cool;
+<span class="kt">int</span> <span class="n">is_cool</span><span class="p">;</span>
 
-int main() {
-	is_cool = 1;
-}
-...</code></pre>
-</div>
-
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">is_cool</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</code></pre></div>
 
 
 <p>Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería</p>
 
 
 <h5>funciones.c</h5>
-<div>
-  <pre><code class='c'>#include &quot;mi_libreria.h&quot;
+<div class="highlight"><pre><code class="c"><span class="cp">#include &quot;mi_libreria.h&quot;</span>
 
-void una_funcion() {
-	...
-	if (is_cool) puts(&quot;He is cool&quot;);
-	...
-}</code></pre>
-</div>
-
+<span class="kt">void</span> <span class="nf">una_funcion</span><span class="p">()</span> <span class="p">{</span>
+	<span class="p">...</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">is_cool</span><span class="p">)</span> <span class="n">puts</span><span class="p">(</span><span class="s">&quot;He is cool&quot;</span><span class="p">);</span>
+	<span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>
 	Tenemos 3 archivos. <strong>main.c, funciones.c</strong> y <strong>mi_libreria.h</strong>. tanto main.c como funciones.c usan dicha librería.<br>
