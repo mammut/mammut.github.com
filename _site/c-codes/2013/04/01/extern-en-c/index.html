@@ -2,185 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>JPEG ~ Extern en C</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>JPEG :|: Extern en C</title>
-
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
     
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/components/normalize-css/normalize.css">
     <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]><script src="/components/html5shiv/src/html5shiv.js"></script><![endif]-->
+    
 </head>
 <body>
-    <div class="container">
-        <div class="container-fluid">
-            <div class="row-fluid" id="header">
-                <div class="page-header span5">
-                    <h1 id="logo"><a href="/">JPEG <small>{codes}</small></a></h1>
-                </div>
-                <div class="span7">
-                    <div class="navbar" id="nav">
-                        <div class="navbar-inner">
-                            <div class="container" style="width: auto;">
-                                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </a>
-                                <div class="nav-collapse">
-                                    <ul class="nav">
-                                        <li><a href="/">Home</a></li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Programación <b class="caret"></b></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="/c-codes.html">C-Codes</a></li>
-                                                <li><a href="#">Python</a></li>
-                                                <li><a href="#">MIPS Assembly</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Web Design</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="/archive.html">Archivos</a></li>
-                                        <li><a href="/acerca.html">Acerca</a></li>
-                                        <li><a href="/contacto.html">Contacto</a></li>
-                                    </ul>
-                                </div><!-- /.nav-collapse -->
-                            </div>
-                        </div><!-- /navbar-inner -->
-                    </div>
-                </div>
-            </div>
-            <div class="row-fluid" id="content">
-                <div class="span9">
-                    <h3 class="content">Extern en C</h3>
-<p><em> 01 Apr 2013</em></p>
-<p>
-	La palabra reservada de C <strong>extern</strong> se utiliza cuando usamos librerías y multiples archivos que la utilizan, en general proyectos grandes.
-</p>
-<p>
-	Es importante diferenciar dos palabras claves:
-	<dl class="dl-horizontal">
-		<dt>Definición</dt>
-		<dd>El compilador reserva memoria para almacenar la variable</dd>
-		<dt>Declaración</dt>
-		<dd>El compilador es informado de que la variable existe, y que tipo de dato es (Pero no reserva memoria para almacenarla)</dd>
-	</dl>
+    <div id="wrapper">
+        <header id="header">
+            <nav id="nav">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/acerca.html">Acerca De</a></li>
+                    <li><img src="/img/profile-64.png" alt="JPEG"></li>
+                    <li><a href="/archivo.html">Archivo</a></li>
+                    <li><a href="/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="container">
+            <article class="post">
+    <header>
+        <h2 class="post-title">Extern en C</h2>
+        <p class="post-data"><em> 01 Apr 2013</em></p>
+    </header>
+    <section class="post-body">
+        
+<p>La palabra reservada de C <strong>extern</strong> se utiliza cuando usamos librerías y multiples archivos que la utilizan, en general proyectos grandes.</p>
 
-	Ahora supongamos que tenemos una librería con cabecera llamada: <strong>mi_libreria.h</strong> y dentro tiene una variable declarada como extern:
-</p>
+<p>Es importante diferenciar dos palabras claves:</p>
 
+<ul>
+<li><em>Definición:</em> El compilador reserva memoria para almacenar la variable</li>
 
-<h5>mi_libreria.h</h5>
-<div>
-  <pre><code class='c'>...
-extern int is_cool;
-...</code></pre>
-</div>
+<li><em>Declaración:</em> El compilador es informado de que la variable existe, y que tipo de dato es (Pero no reserva memoria para almacenarla)</li>
+</ul>
 
-
+<p>Ahora supongamos que tenemos una librería con cabecera llamada: <em>mi_libreria.h</em> y dentro tiene una variable declarada como extern:</p>
+<!-- excerpt -->
+<h5 id="mi_libreriah">mi_libreria.h</h5>
+<div class='highlight'><pre><code class='c'><span class='p'>...</span>
+<span class='k'>extern</span> <span class='kt'>int</span> <span class='n'>is_cool</span><span class='p'>;</span>
+<span class='p'>...</span>
+</code></pre></div>
 <p>y tenemos un archivo principal main.c</p>
 
+<h5 id="mainc">main.c</h5>
+<div class='highlight'><pre><code class='c'><span class='cp'>#include &quot;mi_libreria.h&quot;</span>
 
-<h5>main.c</h5>
-<div>
-  <pre><code class='c'>#include &quot;mi_libreria.h&quot;
+<span class='kt'>int</span> <span class='n'>is_cool</span><span class='p'>;</span>
 
-int is_cool;
-
-int main() {
-	is_cool = 1;
-}
-...</code></pre>
-</div>
-
-
-
+<span class='kt'>int</span> <span class='nf'>main</span><span class='p'>()</span> <span class='p'>{</span>
+	<span class='n'>is_cool</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span>
+<span class='p'>}</span>
+<span class='p'>...</span>
+</code></pre></div>
 <p>Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería</p>
 
+<h5 id="funcionesc">funciones.c</h5>
+<div class='highlight'><pre><code class='c'><span class='cp'>#include &quot;mi_libreria.h&quot;</span>
 
-<h5>funciones.c</h5>
-<div>
-  <pre><code class='c'>#include &quot;mi_libreria.h&quot;
+<span class='kt'>void</span> <span class='nf'>una_funcion</span><span class='p'>()</span> <span class='p'>{</span>
+	<span class='p'>...</span>
+	<span class='k'>if</span> <span class='p'>(</span><span class='n'>is_cool</span><span class='p'>)</span> <span class='n'>puts</span><span class='p'>(</span><span class='s'>&quot;He is cool&quot;</span><span class='p'>);</span>
+	<span class='p'>...</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>Tenemos 3 archivos. <em>main.c, funciones.c</em> y <em>mi_libreria.h</em>. tanto main.c como funciones.c usan dicha librería.<br />En la librería <strong>declaramos</strong> la variable is_cool.<br />En main.c <strong>definimos</strong> la variable is_cool.<br />Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo sea el mismo que el declarado en la librería.</p>
 
-void una_funcion() {
-	...
-	if (is_cool) puts(&quot;He is cool&quot;);
-	...
-}</code></pre>
-</div>
+<p>Ahora la variable is_cool es una variable global (pero muy global, por que es <strong>la misma</strong> en diferentes archivos)</p>
 
+<h4 id="reglas_generales">Reglas Generales</h4>
 
-<p>
-	Tenemos 3 archivos. <strong>main.c, funciones.c</strong> y <strong>mi_libreria.h</strong>. tanto main.c como funciones.c usan dicha librería.<br>
-	En la librería <strong><big>declaramos</big></strong> la variable is_cool. <br>
-	En main.c <strong><big>definimos</big></strong> la variable is_cool.<br>
-	Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo sea el mismo que el declarado en la librería.
-</p>
-<p>
-	Ahora la variable is_cool es una variable global (pero muy global, por que es <strong>la misma</strong> en diferentes archivos)
-</p>
+<ul>
+<li>Un extern solo se utiliza en archivos header (o de cabecera). Nunca en un archivo fuente (.c)</li>
 
-<p>
-	<h4>Reglas Generales</h4>
-	<ul>
-		<li>
-			Un extern solo se utiliza en archivos header (o de cabecera). Nunca en un archivo fuente (.c)
-		</li>
-		<li>
-			Definir una variable extern solo en un archivo fuente. Solo hace falta definirla una vez.
-		</li>
-	</ul>
+<li>Definir una variable extern solo en un archivo fuente. Solo hace falta definirla una vez.</li>
+</ul>
 
-	Eso es todo lo que tengo que decir sobre extern en C.
-</p>
+<p>Eso es todo lo que tengo que decir sobre extern en C.</p>
 
+    </section>
+    
+        <section class="post-comments">
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                var disqus_shortname = 'jpeg-codes'; // required: replace example with your forum shortname
 
-
-
-
-<div id="fb-root"></div>
-<hr>
-<h3>Comentarios</h3>
-
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=177325815624166";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, "script", "facebook-jssdk"));</script>
-<div class="fb-comments" data-href="http://mammut.github.com/c-codes/2013/04/01/extern-en-c/" data-num-posts="4" data-width="706"></div>
-
-                </div>
-                <div class="span3">
-                    <div id="avatar">
-                        <img src="/img/v9.jpg" alt="JPEG">
-                        <br><br>
-                        <ul class="unstyled">
-                            <li><i class="icon-user" title="nombre"></i> <strong>J</strong>uan <strong>P</strong>ablo <strong>E</strong>scalona <strong>G</strong>arcía</li>
-                            <li><i class="icon-map-marker" title="Ubicación"></i> Planeta Tierra</li>
-                            <li><i class="icon-envelope" title="Email"></i> irken.cs [at] gmail [dot] com</li>
-                            <li><i class="icon-headphones" title="¿Grupo favorito?"></i> Alter Bridge</li>
-                            <li><i class="icon-leaf" title="¿Árbol favorito?"></i> Sauce</li>
-                            <li><i class="icon-calendar" title="Fecha de nacimiento de Nikola Tesla"></i> 10 de julio de 1856</li>
-                            <li><i class="icon-star-empty" title="Nombre de una estrella"></i> Sirius</li>
-                            <li><i class="icon-random" title="Estoy en Github, obviamente"></i> <a href="//github.com/mammut" target="_blank">mammut@github.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row-fluid" id="footer">
-                <div class="span12">
-                    <p class="text-center"> (! ©) Please copy me</p>
-                </div>
-            </div>
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </section>
+    
+</article>
         </div>
+
+        <footer id="footer">
+            <div class="separator"></div>
+            <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.es"><img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+        </footer>
     </div>
-
-<script src="/js/jquery-1.9.1.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-
-
+    <script src="/components/jquery/jquery.min.js"></script>
 </body>
 </html>
