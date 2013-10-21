@@ -1,12 +1,17 @@
 ---
 layout: default
-title: Home
+title: Inicio
 ---
 
 {% for post in site.posts %}
-	{% if post.category == 'home' %}
-		<h3><a href="{{post.url}}">{{ post.title }}</a></h3>
-		<p><em> {{ post.date | date_to_string }}</em></p>
-		{{ post.content }}
-	{% endif %}
+    <article class="post">
+        <header>
+    	   <h2 class="post-title"><a href="{{post.url}}">{{ post.title }}</a></h2>
+    	   <p class="post-data"><em> {{ post.date | date_to_string }}</em></p>
+        </header>
+        <section class="post-body excerpt">
+    	   {{ post.excerpt }}
+           <a href="{{ post.url }}">Seguir Leyendo&hellip;</a>
+        </section>
+    </article>
 {% endfor %}
