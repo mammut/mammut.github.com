@@ -1,15 +1,16 @@
 ---
 layout: default
 title: Inicio
+meta-description: "Juan Pablo Escalona G. aprendizaje de programación en C, Ruby, Python, PHP y cualquier cosa interesante."
 ---
 
 {% for post in site.posts %}
-    <article class="post">
+    <article class="post excerpt">
         <header>
     	   <h2 class="post-title"><a href="{{post.url}}">{{ post.title }}</a></h2>
-    	   <p class="post-data"><em> {{ post.date | date_to_string }}</em></p>
+    	   <p class="post-data">{{ post.date | date_to_string }}</p>
         </header>
-        <section class="post-body excerpt">
+        <section class="post-body">
     	   {{ post.excerpt }}
            <a href="{{ post.url }}">Seguir Leyendo&hellip;</a>
         </section>

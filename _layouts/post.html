@@ -5,7 +5,7 @@ layout: default
 <article class="post">
     <header>
         <h2 class="post-title">{{page.title}}</h2>
-        <p class="post-data"><em> {{ page.date | date_to_string }}</em></p>
+        <p class="post-data">{{ page.date | date_to_string }}</p>
     </header>
     <section class="post-body">
         {{ content }}
@@ -14,9 +14,8 @@ layout: default
         <section class="post-comments">
             <div id="disqus_thread"></div>
             <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                var disqus_shortname = 'jpeg-codes'; // required: replace example with your forum shortname
-
+                var disqus_shortname = 'jpeg-codes';
+                
                 /* * * DON'T EDIT BELOW THIS LINE * * */
                 (function() {
                     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

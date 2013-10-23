@@ -15,7 +15,7 @@ I'm currently a computer science(ish) student at [Universidad Técnica Federico 
 
 ####Skills
 
-AngularJS, Laravel, RoR, C, MIPS Assembly, Photoshop, jQuery, CSS3, SCSS, HTML5, Git, Python, and whatever I want to learn in the future (Go lang seems interesting, Django too)
+AngularJS, Laravel, RoR, C, MIPS Assembly, Photoshop, jQuery, CSS3, SCSS, HTML5, Git, Python, V10 boulder at StonAge Climbing Gym! and whatever I want to learn in the future (Go lang seems interesting, Django too)
 
 
 ####Employment

@@ -52,11 +52,11 @@ void una_funcion() {
 {% endhighlight %}
 
 Tenemos 3 archivos. *main.c, funciones.c* y *mi_libreria.h*. tanto main.c como funciones.c usan dicha librería.  
-En la librería  **declaramos** la variable is_cool.  
-En main.c **definimos** la variable is_cool.  
+En la librería  **declaramos** la variable <code>is_cool</code>.  
+En main.c **definimos** la variable <code>is_cool</code>.  
 Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo sea el mismo que el declarado en la librería.
 
-Ahora la variable is_cool es una variable global (pero muy global, por que es **la misma** en diferentes archivos)
+Ahora la variable <code>is_cool</code> es una variable global (pero muy global, por que es **la misma** en diferentes archivos)
 
 ####Reglas Generales####
 

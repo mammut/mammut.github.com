@@ -1,12 +1,9 @@
-* { outline: 0; }
-
 html, body { padding: 0; margin: 0; height: 100%; }
 body { font-family: "Open Sans"; font-size: 16px; }
 
-a { color: #121212;}
+a { color: #121212; }
 
 blockquote { margin: 15px 42px; border-left: 2px solid #ddd; padding-left: 9px; font-size: 14px; font-style: italic;}
-
 
 #wrapper { width: 700px; margin: auto; min-height: 100%; position: relative; }
 #container { padding-bottom: 100px; }
@@ -14,28 +11,30 @@ blockquote { margin: 15px 42px; border-left: 2px solid #ddd; padding-left: 9px; 
 
 /* Main Menu */
 #nav { width: 100%;  text-align: center;  margin-bottom: 30px; }
-#nav ul { list-style: none; display: inline-block; margin: 0; padding: 0; }
-    #nav ul li { display: inline-block; vertical-align: middle; padding: 0 10px; }
-    #nav a { text-decoration: none; text-transform: lowercase; }
+    #nav ul { list-style: none; display: inline-block; margin: 0; padding: 0; }
+        #nav ul li { display: inline-block; vertical-align: middle; padding: 0 10px; }
+        #nav a { text-decoration: none; text-transform: lowercase; }
 
 /* Posts */
-article.post { margin: 0; border-bottom: 1px solid #eee; padding: 0 0 9px 0; }
-    article.post h5 { margin: 0; }
-h2.post-title { font-size: 36px; margin: 0; }
-h2.post-title a { text-decoration: none; color: #555; }
-.post-data { margin: 0; font-size: 13px; }
-.post-body { margin-bottom: 51px;}
+.post { margin: 0; border-bottom: 1px solid #eee; padding: 0 0 9px 0; }
+    post h5 { margin: 0; }
+    h2.post-title { font-size: 36px; margin: 0; }
+        h2.post-title a { text-decoration: none; color: #555; }
+    .post-data { margin: 15px; font-size: 13px; }
+    .post header {  margin: 72px 0; text-align: center; }
+    .post-body { margin-bottom: 51px;}
+    .post:last-child { border: 0; }
+    .excerpt header { margin: 20px 0; }
+
 /* Syntax Highlight */
 .highlight { margin: 2px 0 12px 0; padding: 9px; background: #f4f4f4; box-shadow: 0 0 2px #555; border: 1px solid white;}
     .highlight pre { margin: 0; font-size: 14px; }
 
-article.post:last-child { border: 0; }
-
 .separator { padding: 0; border: none; border-top: medium double #666; color: #666; text-align: center; }
     .separator:after { content: "§"; font: 18px Georgia, serif; display: inline-block; position: relative; top: -0.7em; padding: 0 0.25em; background: white; }
 
-    /* Footer */
-#footer { margin: 0; text-align: center; position: absolute; width: 100%; bottom: 0; height: 75px; }
+/* Footer */
+#footer { bottom: 0; height: 75px; margin: 0; position: absolute; text-align: center; width: 100%; }
 
 @media (max-width: 700px) {
     body { font-size: 13px; }
@@ -46,4 +45,6 @@ article.post:last-child { border: 0; }
 
     #nav ul li { padding: 0 5px; }
     #nav img { width: 32px; }
+
+    .post header { margin: 30px 0;}
 }
