@@ -5,22 +5,18 @@ title: Acerca
 
 ###Juan Pablo Escalona G.
 
-I'm a simple man, I'm sure about the things I love:  
-I **in** love with my girlfriend  
-I love my family  
-I love climbing (bouldering specially)  
-I love coding/programming/designing the world. From Assembly to **C** to Ruby to Photoshop. Anything that inspires me.
+Estudiante de Ingeniería Civil Informática [Universidad Técnica Federico Santa María][1].  
+Vivo en Santiago, Chile en medio de las montañas. 
+Me encanta el código, programar me apasiona, diseñar soluciones impensables, aprender lo que tenga que aprender en el lenguaje que sea para satisfacer mi curiosidad.
 
-I'm currently a computer science(ish) student at [Universidad Técnica Federico Santa María][1]
+####Habilidades
 
-####Skills
-
-AngularJS, Laravel, RoR, C, MIPS Assembly, Photoshop, jQuery, CSS3, SCSS, HTML5, Git, Python, V10 boulder at StonAge Climbing Gym! and whatever I want to learn in the future (Go lang seems interesting, Django too)
+AngularJS, Laravel, RoR, C, MIPS Assembly, Photoshop, jQuery, CSS3, SCSS, HTML5, Git, Python, un boulder V10 en StonAge Climbing Gym! **Actualmente: Node.js**
 
 
-####Employment
+####Empleo
 
-I currently work as a freelance on small projects. It's hard to study and work for me. My only stable job it's maintaining [ChileClimbers.cl][2] one of the biggest climbing websites in Chile. 
+Hoy trabajo como freelance en pequeños proyectos. Mantengo la parte de servidor y programación del sitio [ChileClimbers.cl][2] uno de los portales mas grandes de noticias de Escalada Deportiva en Chile.
 
 [1]: //www.usm.cl
 [2]: //chileclimbers.cl
