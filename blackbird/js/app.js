@@ -1,0 +1,1 @@
+(function(e){var t=e(window),n=e(".homeSlide"),r=e(".homeSlideTall"),i=e(".homeSlideTall2"),s=skrollr.init(),o=t.height();o<=550&&(o=550);n.height(o);r.height(o*2);i.height(o*3);s.refresh(e(".homeSlide"))})(jQuery);
