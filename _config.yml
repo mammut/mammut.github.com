@@ -1,3 +1,4 @@
 permalink: /:categories/:year/:month/:day/:title/
 pygments: true
 excerpt_separator: '<!-- excerpt -->'
+markdown: kramdown
