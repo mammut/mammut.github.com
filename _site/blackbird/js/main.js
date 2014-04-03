@@ -1,0 +1,1 @@
+(function(e){$window=e(window);$slide=e(".homeSlide");$slideTall=e(".homeSlideTall");$slideTall2=e(".homeSlideTall2");$body=e("body");var t=skrollr.init({render:function(e){}});winH=$window.height();winH<=550&&(winH=550);$slide.height(winH);$slideTall.height(winH*2);$slideTall2.height(winH*3);t.refresh(e(".homeSlide"))})(jQuery);

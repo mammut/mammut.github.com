@@ -1,0 +1,188 @@
+/* line 17, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 3, ../sass/screen.scss */
+body, html {
+  height: 100%;
+  min-height: 100%;
+  background-color: #000000;
+}
+
+/* line 9, ../sass/screen.scss */
+h2 {
+  margin-top: 0;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+/* line 18, ../sass/screen.scss */
+.homeSlide {
+  min-width: 960px;
+}
+
+/* line 22, ../sass/screen.scss */
+#main {
+  overflow-x: hidden;
+}
+
+/* line 26, ../sass/screen.scss */
+.bcg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+/* Slide 1 */
+/* line 35, ../sass/screen.scss */
+#slide-1 .bcg {
+  background-image: url("../img/bg.jpg");
+}
+
+/* line 38, ../sass/screen.scss */
+#slide-1 h2 {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px 0;
+}
+/* line 42, ../sass/screen.scss */
+#slide-1 h2 span {
+  font-weight: 500;
+}
+
+/* line 47, ../sass/screen.scss */
+#slide-5 {
+  position: relative;
+}
+
+/* line 48, ../sass/screen.scss */
+#slide-5 .bcg2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+
+/* line 52, ../sass/screen.scss */
+#slide-5 .bcg3 {
+  background: none;
+  background-color: #010101;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+
+/* line 59, ../sass/screen.scss */
+.hsContainer {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 68, ../sass/screen.scss */
+.hsContent {
+  max-width: 450px;
+  margin: -150px auto 0 auto;
+  display: table-cell;
+  vertical-align: middle;
+  color: #ebebeb;
+  text-align: center;
+}
+
+/* line 77, ../sass/screen.scss */
+.hsContent h2,
+.copy h2 {
+  color: #ffffff;
+  font-size: 45px;
+  line-height: 48px;
+  margin-bottom: 12px;
+}
+
+/* line 83, ../sass/screen.scss */
+.hsContent p {
+  width: 400px;
+  margin: 0 auto;
+  color: #b2b2b2;
+}
+
+/* line 88, ../sass/screen.scss */
+.hsContent a {
+  color: #b2b2b2;
+  text-decoration: underline;
+}
+
+/* line 92, ../sass/screen.scss */
+.bgBlack {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 3px 10px;
+}
