@@ -11,7 +11,7 @@ Me encanta el código, programar me apasiona, diseñar soluciones impensables, a
 
 ####Habilidades
 
-AngularJS, Laravel, RoR, C, MIPS Assembly, Photoshop, jQuery, CSS3, SCSS, HTML5, Git, Python, un boulder V10 en StonAge Climbing Gym! **Actualmente: Node.js**
+AngularJS, Laravel, RoR, C, MIPS Assembly, Photoshop, JavaScript, jQuery, CSS3, SCSS, HTML5, Git, Python, un boulder V10 en StonAge Climbing Gym! **Actualmente: Node.js**
 
 
 ####Empleo

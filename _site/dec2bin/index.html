@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>dec2bin</title>
+
+    <meta name="description" content="online decimal to binary converter.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="panel">
+    <div class="inner">
+        <p>Usage: <span class="eg">128.123106</span></p>
+
+        <p>*optional: <span class="eg">|limit</span> to specify the number of decimal numbers to show</p>
+        <p>eg. 128.123106|7 <span class="comment">only shows 7 decimal numbers</span></p>
+        <div id="panel-toggle"><i class="fa fa-fw fa-bars"></i></div>
+    </div>
+</div>
+
+    <div id="container">
+        <div id="inner">
+            <input type="text" id="decimal"> <br>
+            <br>
+            <div><h1 id="output">0.0</h1></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
