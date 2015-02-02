@@ -16,17 +16,15 @@ Es importante diferenciar dos palabras claves:
 Ahora supongamos que tenemos una librería con cabecera llamada: *mi_libreria.h* y dentro tiene una variable declarada como extern:
 
 #####mi_libreria.h
-{% prism c %}
-...
+<pre><code>...
 extern int is_cool;
 ...
-{% endprism %}
+</code></pre>
 
 y tenemos un archivo principal main.c
 
 #####main.c#####
-{% prism c %}
-#include "mi_libreria.h"
+<pre><code>#include "mi_libreria.h"
 
 int is_cool;
 
@@ -34,20 +32,19 @@ int main() {
 	is_cool = 1;
 }
 ...
-{% endprism %}
+</code></pre>
 
 Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería
 
 #####funciones.c#####
-{% prism c %}
-#include "mi_libreria.h"
+<pre><code>#include "mi_libreria.h"
 
 void una_funcion() {
 	...
 	if (is_cool) puts("He is cool");
 	...
 }
-{% endprism %}
+</code></pre>
 
 Tenemos 3 archivos. *main.c, funciones.c* y *mi_libreria.h*. tanto main.c como funciones.c usan dicha librería.  
 En la librería  **declaramos** la variable <code>is_cool</code>.  
