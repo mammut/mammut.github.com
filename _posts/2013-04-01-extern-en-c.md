@@ -1,9 +1,9 @@
 ---
 layout: post
-category: c-codes
-tags: [c,extern,librerias]
-title: Extern en C
+title: "Extern en C"
 comments: true
+date:   2013-04-01 14:34:25
+categories: "c-codes"
 ---
 
 La palabra reservada de C **extern** se utiliza cuando usamos librerías y multiples archivos que la utilizan, en general proyectos grandes.
@@ -15,19 +15,17 @@ Es importante diferenciar dos palabras claves:
 
 Ahora supongamos que tenemos una librería con cabecera llamada: *mi_libreria.h* y dentro tiene una variable declarada como extern:
 
-<!-- excerpt -->
-
 #####mi_libreria.h
-{% highlight c %}
+{% prism c %}
 ...
 extern int is_cool;
 ...
-{% endhighlight %}
+{% endprism %}
 
 y tenemos un archivo principal main.c
 
 #####main.c#####
-{% highlight c %}
+{% prism c %}
 #include "mi_libreria.h"
 
 int is_cool;
@@ -36,12 +34,12 @@ int main() {
 	is_cool = 1;
 }
 ...
-{% endhighlight %}
+{% endprism %}
 
 Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería
 
 #####funciones.c#####
-{% highlight c %}
+{% prism c %}
 #include "mi_libreria.h"
 
 void una_funcion() {
@@ -49,7 +47,7 @@ void una_funcion() {
 	if (is_cool) puts("He is cool");
 	...
 }
-{% endhighlight %}
+{% endprism %}
 
 Tenemos 3 archivos. *main.c, funciones.c* y *mi_libreria.h*. tanto main.c como funciones.c usan dicha librería.  
 En la librería  **declaramos** la variable <code>is_cool</code>.  

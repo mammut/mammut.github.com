@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Extern en C</title>
+
+  <meta name="description" content="Códigos azarosos es múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:title" content="Extern en C">
+  <meta property="og:site_name " content="JPEG {codes}">
+  <meta property="og:url" content="">
+  <meta property="og:description" content="Códigos azarosos es múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
+">
+  <meta property="og:image" content=" /assets/images/df_logo.jpg ">
+
+  <link rel="canonical" href="//c-codes/2013/04/01/extern-en-c.html">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/prism.css" />
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- header start -->
+
+<a href="/" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/df_logo.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Extern en C</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2013-04-01T11:34:25-03:00">01 Apr 2013</time>
+              <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            lectura de <span class="post-reading-time"></span>
+          </div>
+          <a name="topofpage"></a>
+          <p>La palabra reservada de C <strong>extern</strong> se utiliza cuando usamos librerías y multiples archivos que la utilizan, en general proyectos grandes.</p>
+
+<p>Es importante diferenciar dos palabras claves:
+- <em>Definición:</em> El compilador reserva memoria para almacenar la variable
+- <em>Declaración:</em> El compilador es informado de que la variable existe, y que tipo de dato es (Pero no reserva memoria para almacenarla)</p>
+
+<p>Ahora supongamos que tenemos una librería con cabecera llamada: <em>mi_libreria.h</em> y dentro tiene una variable declarada como extern:</p>
+
+<h5>mi_libreria.h</h5>
+
+<div>
+  <pre data-line=''><code class='language-c'>...
+extern int is_cool;
+...</code></pre>
+</div>
+
+<p>y tenemos un archivo principal main.c</p>
+
+<h5>main.c</h5>
+
+<div>
+  <pre data-line=''><code class='language-c'>#include &quot;mi_libreria.h&quot;
+
+int is_cool;
+
+int main() {
+    is_cool = 1;
+}
+...</code></pre>
+</div>
+
+<p>Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería</p>
+
+<h5>funciones.c</h5>
+
+<div>
+  <pre data-line=''><code class='language-c'>#include &quot;mi_libreria.h&quot;
+
+void una_funcion() {
+    ...
+    if (is_cool) puts(&quot;He is cool&quot;);
+    ...
+}</code></pre>
+</div>
+
+<p>Tenemos 3 archivos. <em>main.c, funciones.c</em> y <em>mi_libreria.h</em>. tanto main.c como funciones.c usan dicha librería.<br>
+En la librería  <strong>declaramos</strong> la variable <code>is<em>cool</code>.<br>
+En main.c <strong>definimos</strong> la variable <code>is</em>cool</code>.<br>
+Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo sea el mismo que el declarado en la librería.</p>
+
+<p>Ahora la variable <code>is_cool</code> es una variable global (pero muy global, por que es <strong>la misma</strong> en diferentes archivos)</p>
+
+<h4>Reglas Generales</h4>
+
+<ul>
+<li>Un extern solo se utiliza en archivos header (o de cabecera). Nunca en un archivo fuente (.c)</li>
+<li>Definir una variable extern solo en un archivo fuente. Solo hace falta definirla una vez.</li>
+</ul>
+
+<p>Eso es todo lo que tengo que decir sobre extern en C.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            
+              
+                <a class="icon-twitter" href="http://twitter.com/share?text=Extern+en+C&amp;url=//c-codes/2013/04/01/extern-en-c"
+                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+                </a>
+              
+            
+              
+            
+          </section>
+        </footer>
+        <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Escrito por</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Juan Pablo Escalona G.</h4>
+              <p class="bio"></p>
+              <hr>
+              <p class="published">Publicado el <time datetime="2013-04-01 11:34">01 Apr 2013</time></p>
+            </section>
+          </div>
+          
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Gracias a</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Publicado con <a href="http://jekyllrb.com">Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Suscríbete al feed.</span></a>
+              <div class="inner">
+                <section class="copyright">Copyright <a href="/">Juan Pablo Escalona G.</a> &copy; 2015<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="bottom-teaser cf">
+          
+    <section class="post-comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'jpeg-codes';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+
+
+        </div>
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">JPEG {codes}</h1>
+        <h2 class="blog-description">Códigos azarosos es múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
+</h2>
+        <a href="/" class="btn">Volver al inicio</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/prism.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>
