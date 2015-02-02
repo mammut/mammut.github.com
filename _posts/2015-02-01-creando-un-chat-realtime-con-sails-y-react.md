@@ -1,11 +1,3 @@
----
-layout: post
-title: "Creando un chat realtime con Sails.js y React"
-comments: true
-categories: frontend react
-fbimage: "/assets/article_images/2015-02-01-creando-un-chat-realtime-con-sails-y-react/diagram-1.png"
----
-
 Sails.js es un framework MVC realtime escrito en Node.js que corre sobre express.js y que junto a una implementan de socket.io permite realizar operaciones en tiempo real, pues cada cliente abre un socket con el servidor.
 
 React es una librería JavaScript desarrollada por Facebook para construir interfaces de usuarios. Se le considera la V de MVC, por lo que es fácil acoplarlo a otras tecnologías (en nuestro caso socket.io y Sails.js para la capa de persistencia).
@@ -41,18 +33,18 @@ Ya teniendo definido esto sabemos que necesitamos una API en Sails que nos permi
 ## Parte 2: Sails.js
 
 ### 1. Instalación
-{% prism bash %}npm install -g Sails
-{% endprism %}
+<pre><code class="language-bash">npm install -g Sails
+</code></pre>
 Esto instalará en la línea de comandos la herramienta para gestión de proyectos Sails de manera global `-g`
 
 ### 2. Crear el proyecto
 Ahora podemos crear nuestro nuevo proyecto Sails.
 
-{% prism bash %}sails new chatBackend
-{% endprism %}
+<pre><code class="language-bash">sails new chatBackend
+</code></pre>
 Esto creará el nuevo proyecto en la carpeta *chatBackend* ahora podemos entrar y “Levantar” nuestro nuevo proyecto.
-{% prism bash %}sails lift
-{% endprism %}
+<pre><code class="language-bash">sails lift
+</code></pre>
 Esto lanza el servidor en la dirección: [http://localhost:1337/](http://localhost:1337/)  
 Ahora estamos listos para comenzar con la API de mensajes.
 
@@ -62,11 +54,11 @@ Sails permite generar APIs con una simple línea de comandos, esto generara un M
 
 TL;DR
 
-{% prism bash %}sails generate api message
-{% endprism %}
+<pre><code class="language-bash">sails generate api message
+</code></pre>
 Ahora se puede jugar con el endpoint de `message` para ver como funciona.
-{% prism bash %}sails lift
-{% endprism %}
+<pre><code class="language-bash">sails lift
+</code></pre>
 
 **Nota**:
 Antes de iniciar el servidor, Sails avisa que no existe una configuración para las migraciones y pregunta que se desea hacer.
@@ -81,12 +73,11 @@ En esta ocasión se usará `alter`
 
 Para modificar la migración se abre el archivo: **config/models.js** y se descomenta la línea 30
 
-{% prism javascript %}
-29  ...
+<pre><code class="language-javascript">29  ...
 30  migrate: 'alter'
 31
 32};
-{% endprism %}
+</code></pre>
 Ahora si se puede hacer `Sails lift` tranquilamente.
 
 Sails genero un Blueprint del api recién creado, por lo que existen las siguientes rutas RESTFul:
@@ -136,17 +127,16 @@ Sails genero un Blueprint del api recién creado, por lo que existen las siguien
 
 Se recomienda el uso de la extensión [Postman](http://www.getpostman.com/) para probar estas rutas. Además pueden usar la consola de desarrollador en sus navegadores para probar socket.io. Por ejemplo para un CRUD simple de `menssage` pueden intentar:
 
-{% prism javascript %}io.socket.get('/message', function(messages) { console.log(messages); });
+<pre><code class="language-javascript">io.socket.get('/message', function(messages) { console.log(messages); });
 io.socket.post('/message', {author: "Alan Turing", text: "HUllo World!"});
 io.socket.get('/message/1', function(messages) { console.log(messages); });
 io.socket.put('/message/1', {text: "Hullo World!"});
 io.socket.delete('/message/1');
-{% endprism %}
+</code></pre>
 
 Un aspecto que se puede cambiar es que estos modelos permiten guardar cualquier tipo de información. No existe un esquema de los modelos, pero se puede forzar. Se abre el archivo **/api/models/Message.js** y se agrega `schema: true` para forzar los atributos especificados.
 
-{% prism javascript %}
-module.exports = {
+<pre><code class="language-javascript">module.exports = {
 
   schema: true,        // Fuerza el uso de atributos específicos
 
@@ -161,7 +151,7 @@ module.exports = {
     }
   }
 };
-{% endprism %}
+</code></pre>
 
 Ahora la API arrojará error si se intenta agregar atributos que no estén definidos en el schema. Además arroja error si falta uno de los dos campos. Para profundizar se recomienda la documentación oficial: [documentacion de Modelos y ORM](http://Sailsjs.org/#/documentation/concepts/ORM/Models.html).
 
@@ -172,7 +162,7 @@ Por ahora Sails esta listo, se volverá más adelante para agregar el protocolo 
 Este paso es opcional, si quieren que su aplicación no se vea tan fome pueden colocar el siguiente estilo css en el archivo **assets/styles/main.css**:
 
 
-{% prism css %}html {
+<pre><code class="language-css">html {
   box-sizing: border-box;
 }
 
@@ -252,7 +242,7 @@ body {
   padding: 3px 15px;
   cursor: pointer;
 }
-{% endprism %}
+</code></pre>
 
 ## Parte 3: React
 
@@ -261,17 +251,17 @@ Ya teniendo más o menos listo el backend podemos comenzar a escribir react.
 ### 0. Incorporando a Sails
 Para poder utilizar `bower` en nuestro proyecto Sails es preciso cambiar el directorio por defecto de `bower`, para eso se crea el archivo **.bowerrc** donde agregamos lo siguiente:
 
-{% prism javascript %}{
+<pre><code class="language-javascript">{
   "directory": "assets/vendor"
 }
-{% endprism %}
+</code></pre>
 
 Ahora cualquier librería que se instale usando `bower` quedará en el directorio **assets/vendor**.
 
 Iniciamos el proyecto bower con `bower init` rellenando los datos que pregunten. Luego se instala React de la siguiente manera:
 
-{% prism bash %}bower install react --save
-{% endprism %}
+<pre><code class="language-bash">bower install react --save
+</code></pre>
 
 de este modo React es agregado a la lista de dependencias de nuestro proyecto en bower.json
 
@@ -279,7 +269,7 @@ Ahora que tenemos la librería para incluirla en el proyecto Sails se utiliza el
 
 Abrimos el archivo **tasks/pipeline** y modificamos lo siguiente:
 
-{% prism javascript linenos=11,12,16 %}...
+<pre data-line="11,12,16"><code class="language-javascript">...
 // Client-side JavaScript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
@@ -297,24 +287,24 @@ var jsFilesToInject = [
   //'js/**/*.js'
 ];
 ...
-{% endprism %}
+</code></pre>
 
 Esto incorporará automáticamente la librería React (junto a JSXTransformer, líneas 11,12) en **views/layout.js** y además impedimos que incluya recursivamente los archivos .js (necesitamos incluirlos a mano) en la línea 16.
 
 Ahora se modifica el archivo **views/homepage.ejs** para que contenga simplemente:
 
-{% prism markup %}<div id="main"></div>
-{% endprism %}
+<pre><code class="language-markup">&lt;div id="main">&lt;/div>
+</code></pre>
 
 y por último se cambia el **views/layout.ejs** e incluimos la línea:
 
-{% prism markup %}...
-<!--SCRIPTS-->
-<!-- esto se agrega automaticamente... -->
-<!--SCRIPTS END-->
-<script src="/js/main.js" type="text/jsx"></script>
+<pre><code class="language-markup">...
+&lt;!--SCRIPTS-->
+&lt;!-- esto se agrega automaticamente... -->
+&lt;!--SCRIPTS END-->
+&lt;script src="/js/main.js" type="text/jsx">&lt;/script>
 ...
-{% endprism %}
+</code></pre>
 
 Es importante agregar el atributo **type="text/jsx"** para que *JSXTransformer* pueda transformar el código JSX que escribiremos.
 
@@ -355,14 +345,14 @@ Lo primero que haremos es escribir un componente `Hola mundo` para introducir a 
 
 en **assets/js/main.js** se escribe:
 
-{% prism jsx linenos=2-4,7 %}var HolaMundo = React.createClass({
+<pre data-line="2-4,7"><code class="language-jsx">var HolaMundo = React.createClass({
   render: function () {
-    return (<h1 className="HolaMundo">Hola mundo!</h1>);
+    return (&lt;h1 className="HolaMundo">Hola mundo!&lt;/h1>);
   }
 });
 
-React.render(<HolaMundo />, document.getElementById('main'));
-{% endprism %}
+React.render(&lt;HolaMundo />, document.getElementById('main'));
+</code></pre>
 
 Un componente se crea utilizando el método **React.createClass** el cual recibe un objeto sobre el cual se definen funciones específicas que utilizan los componentes. La función más importante de todas es la función **render** (2-4), esta se encarga del layout del componente. Define los elementos y componentes que necesita, estos pueden ser etiquetas HTML, por ejemplo `<p>`, `<h1>`, `<div>`, etc. así como también otros componentes React.
 
@@ -370,20 +360,20 @@ La línea 7 **React.render** le dice a React que componente raíz inyectar y en 
 
 Es así como se anidan los componentes de React. Siguiendo el método Top-Bottom procedemos a crear el componente **ChatBox**:
 
-{% prism jsx linenos=8,9 %}/** @jsx React.DOM */
+<pre data-line="8,9"><code class="language-jsx">/** @jsx React.DOM */
 var ChatBox = React.createClass({
 
   render: function() {
     return (
-      <div className="ChatBox">
-        <h2>Lista de mensajes</h2>
-        <ChatList />
-        <ChatForm />
-      </div>
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList />
+        &lt;ChatForm />
+      &lt;/div>
     )
   }
 });
-{% endprism %}
+</code></pre>
 
 **Nota** es importante notar que para definir el atributo *class* utilizando JSX se debe usar *className* ya que *class* es una palabra reservada de JavaScript. for tambien esta reservado, usen htmlFor en jsx. Más lectura [Aquí](http://facebook.github.io/react/docs/jsx-in-depth.html)
 
@@ -391,54 +381,54 @@ El retorno de la función render es la sintáxis de JSX. Hay gente que no le gus
 
 Como se observa en el código anterior, definimos un `div` contenedor con class="ChatBox". Dentro se renderizan dos componentes: *ChatMessage*s y ChatForm los cuales creamos a continuación:
 
-{% prism jsx %}...
+<pre><code class="language-jsx">...
 var ChatForm = React.createClass({
   render: function() {
     return (
-      <form className="ChatForm">
-        <input type="text" placeholder="author" className="author" ref="author"/>
-        <input type="text" placeholder="message..." className="text" ref="text" />
-        <input type="submit" value="Send" />
-      </form>
+      &lt;form className="ChatForm">
+        &lt;input type="text" placeholder="author" className="author" ref="author"/>
+        &lt;input type="text" placeholder="message..." className="text" ref="text" />
+        &lt;input type="submit" value="Send" />
+      &lt;/form>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 Este es el componente **ChatForm** que sirve como formulario para enviar mensajes.
 
 Luego la Lista de mensajes:
 
-{% prism jsx %}...
+<pre><code class="language-jsx">...
 var ChatList = React.createClass({
   render: function() {
     return (
-      <ul className="ChatList">
-        // Mostrar lista de mensajes <ChatMessage />...
-      </ul>
+      &lt;ul className="ChatList">
+        // Mostrar lista de mensajes &lt;ChatMessage />...
+      &lt;/ul>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
-{% prism jsx %}...
+<pre><code class="language-jsx">...
 var ChatMessage = React.createClass({
   render: function() {
     return (
-      <li className="ChatMessage">
-        <span className="author">Mostrar el autor</span>
-        <span className="message">Mostrar el mensaje</span>
-      </li>
+      &lt;li className="ChatMessage">
+        &lt;span className="author">Mostrar el autor&lt;/span>
+        &lt;span className="message">Mostrar el mensaje&lt;/span>
+      &lt;/li>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 Por último se define que raíz inyectar y donde:
 
-{% prism jsx %}...
-React.render(<ChatBox />, document.getElementById('main'));
-{% endprism %}
+<pre><code class="language-jsx">...
+React.render(&lt;ChatBox />, document.getElementById('main'));
+</code></pre>
 
 Si levantamos el servidor podemos ver que en la pantalla aparece algo así:
 
@@ -448,7 +438,7 @@ Si levantamos el servidor podemos ver que en la pantalla aparece algo así:
 
 El siguiente paso es simular una capa de persistencia para ver el correcto renderizado de la lista de mensajes. Para esto arriba de nuestro archivo **assets/js/main.js** se crea un arreglo el cual se pasa como propiedad a nuestro componente **ChatBox**. Para eso modificamos las siguientes líneas:
 
-{% prism jsx linenos=18,27 %}var _msgList = [
+<pre data-line="18,27"><code class="language-jsx">var _msgList = [
   { "author": "context", "text": "A man flying in a hot air balloon suddenly realizes he’s lost. He reduces height and spots a man down below. He lowers the balloon further and shouts to get directions"},
   { "author": "Person A", "text": "Excuse me, can you tell me where I am?"},
   { "author": "Person B", "text": "Yes. You're in a hot air balloon, hovering 30 feet above this field."},
@@ -463,52 +453,52 @@ El siguiente paso es simular una capa de persistencia para ver el correcto rende
 var ChatBox = React.createClass({
   render: function() {
     return (
-      <div className="ChatBox">
-        <h2>Lista de mensajes</h2>
-        <ChatList messages={this.props.messages}/>
-        <ChatForm />
-      </div>
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.props.messages}/>
+        &lt;ChatForm />
+      &lt;/div>
     );
   }
 });
 
 ... //Todos los otros componentes
 
-React.render(<ChatBox messages={_msgList} />, document.getElementById('main'));
-{% endprism %}
+React.render(&lt;ChatBox messages={_msgList} />, document.getElementById('main'));
+</code></pre>
 
 Lo que hacemos en la línea 27 es pasarle al componente **ChatBox** la propiedad **messages** para que sea igual al arreglo *_msgList*. El uso de {} se hace cuando se pasa una variable JavaScript como propiedad. También se puede enviar texto plano con `nombre="Alan Turing"`.
 
 Para poder utilizar esta propiedad dentro del componente basta con hacer:
 
-{% prism javascript %}this.props.messages
-{% endprism %}
+<pre><code class="language-javascript">this.props.messages
+</code></pre>
 
 Nuestro componente en este caso no utiliza el arreglo directamente, solo debe entregárselo a su componente hijo ChatList, así que se lo pasamos como propiedad también (línea 18).
 
 Lo que hacemos a continuación es una vez teniendo la respectiva lista de mensajes dentro de **ChatList** es crear la lista de **ChatMessage**, para esto debemos iterar sobre la lista de objetos entregados por el padre y crear los respectivos *ChatMessage* entregándole las propiedades respectivas:
 
-{% prism jsx linenos=3-9,12 %}var ChatList = React.createClass({
+<pre data-line="3-9,12"><code class="language-jsx">var ChatList = React.createClass({
   render: function() {
     var messages = this.props.messages.map(function (message, index) {
-      return (<ChatMessage
+      return (&lt;ChatMessage
                 author={message.author}
                 text={message.text}
                 key={index}/>
              );
     });
     return (
-      <ul className="ChatList">
+      &lt;ul className="ChatList">
         {messages}
-      </ul>
+      &lt;/ul>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 Se crea la variable `messages` que será una lista de componentes *ChatMessage*. iteramos usando la función map sobre el arreglo que se recibe como propiedad `this.props.messages` y por cada mensaje se retorna un nuevo *ChatMessage* al que le asignamos la propiedads propiedades `author={message.author}` y `text={message.text}`. Un ejemplo aislado para iterar usando map sobre un arreglo puede ser:
 
-{% prism jsx %}var messages = [
+<pre><code class="language-jsx">var messages = [
   {name: "mensaje 1"}
   {name: "mensaje 2"}
   ...
@@ -518,23 +508,23 @@ Se crea la variable `messages` que será una lista de componentes *ChatMessage*.
 messages.map(function(message,index) {
   console.log(message.name);
 });
-{% endprism %}
+</code></pre>
 
 Luego dentro de la lista ordenada `<ul className="ChatList">` se muestra la lista de *ChatMessage* generada dinamicamente usando `{message}`
 
 Ahora solo falta hacer que el componente *ChatMessage* muestre el autor y texto del mensaje, los cuales recibe como parámetro desde su padre.
 
-{% prism jsx %}var ChatMessage = React.createClass({
+<pre><code class="language-jsx">var ChatMessage = React.createClass({
   render: function() {
     return (
-    <li className="ChatMessage">
-      <span className="author">{this.props.author}</span>
-      <span className="message">{this.props.text}</span>
-    </li>
+    &lt;li className="ChatMessage">
+      &lt;span className="author">{this.props.author}&lt;/span>
+      &lt;span className="message">{this.props.text}&lt;/span>
+    &lt;/li>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 Simplemente mostramos las variables usando `{this.props.message.author}` y `{this.props.message.text}` para imprimirlos donde deben ir.
 
@@ -559,21 +549,21 @@ Por un lado ChatList necesita la lista de mensajes para mostrarla. ChatForm nece
 
 Ahora vamos a introducir un nuevo método para `createClass()` llamado `getInitialState`. Este método permite definir un estado inicial de nuestros componentes. Para usarlo vamos a definir el estado de nuestro ChatBox como la lista de mensajes recibida como parámetros desde `React.render(...)`
 
-{% prism jsx linenos=2-4,9 %}var ChatBox = React.createClass({
+<pre data-line="2-4,9"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
     return {messages: this.props.messages};
   },
   render: function() {
     return (
-      <div className="ChatBox">
-        <h2>Lista de mensajes</h2>
-        <ChatList messages={this.state.messages} />
-        <ChatForm />
-      </div>
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm />
+      &lt;/div>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 Agregamos el método `getInitialState` que retorna un objeto que define la propiedad `messages=this.props.messages`. Se ejecuta una sola vez cuando se inicia el componente.
 
@@ -591,7 +581,7 @@ Para agregar un mensaje nuevo, este debe venir desde el componente **ChatForm** 
 Vamos a crear una nueva función en **ChatBox** que se encargue de agregar un nuevo mensaje al arreglo de mensajes y cambie el estado de mensajes.  
 Una vez teniendo esta función se la podemos pasar al componente hijo **ChatForm**.
 
-{% prism jsx linenos=5-9,15 %}var ChatBox = React.createClass({
+<pre data-line="5-9,15"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
     return {messages: this.props.messages};
   },
@@ -602,21 +592,21 @@ Una vez teniendo esta función se la podemos pasar al componente hijo **ChatForm
   },
   render: function() {
     return (
-      <div className="ChatBox">
-        <h2>Lista de mensajes</h2>
-        <ChatList messages={this.state.messages} />
-        <ChatForm onNewMessage={this.handleNewMessage} />
-      </div>
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm onNewMessage={this.handleNewMessage} />
+      &lt;/div>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 La nueva función `handleNewMessage` recibe un objeto mensaje y lo agrega al arreglo de mensajes, luego se actualiza el estado de ChatBox entregándole el arreglo de mensajes actualizados con el nuevo mensaje. El método `this.setState(newState)` permite actualizar el estado del componente. En este caso estamos actualizando la lista de mensajes.
 
 Además agregamos la propiedad `onNewMessage={this.handleNewMessage}` al componente ChatForm en la línea 15. Así este componente podrá llamar al handler cuando el formulario sea enviado.
 
-{% prism jsx linenos=2-10,13 %}var ChatForm = React.createClass({
+<pre data-line="2-10,13"><code class="language-jsx">var ChatForm = React.createClass({
   handleNewMessage: function(e) {
     e.preventDefault();
     var author = this.refs.author.getDOMNode().value;
@@ -628,15 +618,15 @@ Además agregamos la propiedad `onNewMessage={this.handleNewMessage}` al compone
   },
   render: function() {
     return (
-      <form className="ChatForm" onSubmit={this.handleNewMessage}>
-        <input type="text" placeholder="author" className="author" ref="author"/>
-        <input type="text" placeholder="message..." className="text" ref="text" />
-        <input type="submit" value="Send" />
-      </form>
+      &lt;form className="ChatForm" onSubmit={this.handleNewMessage}>
+        &lt;input type="text" placeholder="author" className="author" ref="author"/>
+        &lt;input type="text" placeholder="message..." className="text" ref="text" />
+        &lt;input type="submit" value="Send" />
+      &lt;/form>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 En el componente **ChatForm** se agrego la función handleNewMessage que se encarga de preparar el mensaje y llamar a la función onNewMessage que viene por parámetro desde su padre al momento de enviar el formulario, línea 13 `onSubmit`.
 
@@ -650,7 +640,7 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. `this.refs
 
 Ahora se puede probar el formulario, al enviar nuevos mensajes se agregan al arreglo de mensajes en el estado de ChatBox.
 
-### 6. ComponentDidMount. Agregando comunicación realtime con socket.io
+### 5. ComponentDidMount. Agregando comunicacion realtime con socket.io
 
 Ahora que el funcionamiento básico del chat esta listo falta agregar la capa de persistencia. Usando la versión modificada de socket.io en el código React es bastante sencillo agregar comunicación realtime.
 
@@ -667,8 +657,7 @@ El primer paso es transmitir nuevos mensajes a medida que se vayan creando en Sa
 
 Abrimos el archivo **api/models/Message.js** y agregamos: 
 
-{% prism javascript linenos=16-19 %}
-module.exports = {
+<pre data-line="16-19"><code class="language-javascript">module.exports = {
 
   schema: true,
 
@@ -688,7 +677,7 @@ module.exports = {
       next();
   }
 };
-{% endprism %}
+</code></pre>
 
 Agregamos el hook `afterCreate` que dentro emite el evento *"new message"* a todos los clientes conectados y les envía el nuevo mensaje recién creado.
 
@@ -696,8 +685,7 @@ Ahora simplemente debemos hacer que React se conecte a socket.io y reciba nuevos
 
 `componentDidMount` es un método de `React.createClass` que se ejecuta una vez que el componente fue montado en el DOM correctamente. Vamos a usarlo para iniciar la conexión de socket.io e inicialmente para obtener la lista de mensajes así como también definir el evento a escuchar *"new message"*
 
-{% prism jsx linenos=3,5-17,18-20 %}
-var ChatBox = React.createClass({
+<pre data-line="3,5-17,18-20"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
     return {messages: []};
   },
@@ -719,15 +707,15 @@ var ChatBox = React.createClass({
   },
   render: function() {
     return (
-      <div className="ChatBox">
-        <h2>Lista de mensajes</h2>
-        <ChatList messages={this.state.messages} />
-        <ChatForm onNewMessage={this.handleNewMessage} />
-      </div>
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm onNewMessage={this.handleNewMessage} />
+      &lt;/div>
     );
   }
 });
-{% endprism %}
+</code></pre>
 
 Lo primero es cambiar el método `getInitialState` para que retorne inicialmente el estado de mensajes como una lista vacía.
 
@@ -747,17 +735,16 @@ También debemos cambiar la forma en que se agregan mensajes, ya no estamos trab
 
 Tanto para `io.socket.post` como para `io.socket.get` usamos una nueva propiedad llamada apiURL, es el URL donde se deben hacer los queries para crear y obtener mensajes. Se la pasamos al crear el componente en la última línea de **assets/js/main.js**
 
-{% prism jsx %}...
-React.render(<ChatBox apiUrl="/message" />, document.getElementById('main'));
-{% endprism %}
+<pre><code class="language-jsx">...
+React.render(&lt;ChatBox apiUrl="/message" />, document.getElementById('main'));
+</code></pre>
 
 
 Nuestra aplicación está lista para usar. Tenemos la comunicación persistente y realtime gracias a la incorporación de socket.io
 
 El código final de **assets/js/main.js** es:
 
-{% prism jsx %}
-/** @jsx React.DOM */
+<pre><code class="language-jsx">/** @jsx React.DOM */
 
 var ChatBox = React.createClass({
   getInitialState: function() {
@@ -781,11 +768,11 @@ var ChatBox = React.createClass({
   },
   render: function() {
     return (
-      <div className="ChatBox">
-        <h2>Lista de mensajes</h2>
-        <ChatList messages={this.state.messages} />
-        <ChatForm onNewMessage={this.handleNewMessage} />
-      </div>
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm onNewMessage={this.handleNewMessage} />
+      &lt;/div>
     );
   }
 });
@@ -802,11 +789,11 @@ var ChatForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="ChatForm" onSubmit={this.handleNewMessage}>
-        <input type="text" placeholder="author" className="author" ref="author"/>
-        <input type="text" placeholder="message..." className="text" ref="text" />
-        <input type="submit" value="Send" />
-      </form>
+      &lt;form className="ChatForm" onSubmit={this.handleNewMessage}>
+        &lt;input type="text" placeholder="author" className="author" ref="author"/>
+        &lt;input type="text" placeholder="message..." className="text" ref="text" />
+        &lt;input type="submit" value="Send" />
+      &lt;/form>
     );
   }
 });
@@ -814,16 +801,16 @@ var ChatForm = React.createClass({
 var ChatList = React.createClass({
   render: function() {
     var messages = this.props.messages.map(function (message, index) {
-      return (<ChatMessage
+      return (&lt;ChatMessage
                 author={message.author}
                 text={message.text}
                 key={index}/>
              );
     });
     return (
-      <ul className="ChatList">
+      &lt;ul className="ChatList">
         {messages}
-      </ul>
+      &lt;/ul>
     );
   }
 });
@@ -831,16 +818,16 @@ var ChatList = React.createClass({
 var ChatMessage = React.createClass({
   render: function() {
     return (
-      <div className="ChatMessage">
-        <span className="author">{this.props.author}</span>
-        <span className="message">{this.props.text}</span>
-      </div>
+      &lt;div className="ChatMessage">
+        &lt;span className="author">{this.props.author}&lt;/span>
+        &lt;span className="message">{this.props.text}&lt;/span>
+      &lt;/div>
     );
   }
 });
 
-React.render(<ChatBox apiUrl="/message" />, document.getElementById('main'));
-{% endprism %}
+React.render(&lt;ChatBox apiUrl="/message" />, document.getElementById('main'));
+</code></pre>
 
 Pueden clonar la aplicación completa desde [github](https://github.com/mammut/tutorial-Creando-un-chat-realtime-en-Sails.js-y-React)
 
