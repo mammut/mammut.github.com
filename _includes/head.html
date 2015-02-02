@@ -1,8 +1,7 @@
 <head>
   <meta charset="utf-8">
-  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
@@ -15,10 +14,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-  <meta property="og:site_name " content="{{ site.title }}">
-  <meta property="og:url" content="{{ site.baseurl | prepend: site.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
   <meta property="og:description" content="{% if page.meta %}{{ page.meta }}{% else %}{{ site.description }}{% endif %}">
-  <meta property="og:image" content="{% if page.fbimage %} {{ page.fbimage |prepend: site.baseurl | prepend: site.url }} {% else %} {{ site.fbimage }} {% endif %}">
+  <meta property="og:image" content="{% if page.fbimage %}{{ page.fbimage |prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.fbimage }}{% endif %}">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:app_id" content="177325815624166">
+  <meta property="article:author" content="https://www.facebook.com/juam3.14">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
