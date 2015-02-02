@@ -3,7 +3,7 @@ layout: post
 title: "Creando un chat realtime con Sails.js y React"
 comments: true
 categories: frontend react
-fbimage: "/assets/article_images/2015-02-01-creando-un-chat-realtime-con-sails-y-react/diagram-1.png"
+fbimage: "/assets/article_images/2015-02-01-creando-un-chat-realtime-con-sails-y-react/react-sails-chat.jpg"
 ---
 
 Sails.js es un framework MVC realtime escrito en Node.js que corre sobre express.js y que junto a una implementan de socket.io permite realizar operaciones en tiempo real, pues cada cliente abre un socket con el servidor.

@@ -4,10 +4,10 @@
     <title>JPEG {codes}</title>
     <description>Códigos azarosos es múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
 </description>
-    <link>//</link>
-    <atom:link href="//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Feb 2015 13:23:03 -0300</pubDate>
-    <lastBuildDate>Mon, 02 Feb 2015 13:23:03 -0300</lastBuildDate>
+    <link>http://mammut.github.com/</link>
+    <atom:link href="http://mammut.github.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 02 Feb 2015 13:39:50 -0300</pubDate>
+    <lastBuildDate>Mon, 02 Feb 2015 13:39:50 -0300</lastBuildDate>
     <generator>Jekyll v2.5.2</generator>
     
       <item>
@@ -892,8 +892,8 @@ Para solucionar este problema Facebook entrega Flux, una arquitectura de diseño
 &lt;p&gt;Espero les haya servido como una introducción a React y aplicaciones realtime usando Sails.js con socket.io.&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Feb 2015 00:00:00 -0300</pubDate>
-        <link>//frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</link>
-        <guid isPermaLink="true">//frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</guid>
+        <link>http://mammut.github.com/frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</link>
+        <guid isPermaLink="true">http://mammut.github.com/frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</guid>
         
         
         <category>frontend</category>
@@ -910,8 +910,8 @@ Asi por ejemplo el 12.125 = 1100.001&lt;/p&gt;
 &lt;p&gt;pueden ver el proyecto aqui: &lt;a href=&quot;/dec2bin&quot; target=&quot;_blank&quot;&gt;dec2bin&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 02 May 2014 00:00:00 -0400</pubDate>
-        <link>//web/2014/05/02/decimal-a-binario.html</link>
-        <guid isPermaLink="true">//web/2014/05/02/decimal-a-binario.html</guid>
+        <link>http://mammut.github.com/web/2014/05/02/decimal-a-binario.html</link>
+        <guid isPermaLink="true">http://mammut.github.com/web/2014/05/02/decimal-a-binario.html</guid>
         
         <category>javascript</category>
         
@@ -929,8 +929,8 @@ Asi por ejemplo el 12.125 = 1100.001&lt;/p&gt;
         <description>&lt;p&gt;&lt;a href=&quot;/blackbird&quot;&gt;BLACKBIRD&lt;strong&gt;SOFTWARE&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 02 May 2014 00:00:00 -0400</pubDate>
-        <link>//web/2014/05/02/blackbird-software.html</link>
-        <guid isPermaLink="true">//web/2014/05/02/blackbird-software.html</guid>
+        <link>http://mammut.github.com/web/2014/05/02/blackbird-software.html</link>
+        <guid isPermaLink="true">http://mammut.github.com/web/2014/05/02/blackbird-software.html</guid>
         
         <category>usm</category>
         
@@ -1008,8 +1008,8 @@ Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo
 &lt;p&gt;Eso es todo lo que tengo que decir sobre extern en C.&lt;/p&gt;
 </description>
         <pubDate>Mon, 01 Apr 2013 11:34:25 -0300</pubDate>
-        <link>//c-codes/2013/04/01/extern-en-c.html</link>
-        <guid isPermaLink="true">//c-codes/2013/04/01/extern-en-c.html</guid>
+        <link>http://mammut.github.com/c-codes/2013/04/01/extern-en-c.html</link>
+        <guid isPermaLink="true">http://mammut.github.com/c-codes/2013/04/01/extern-en-c.html</guid>
         
         
         <category>c-codes</category>
@@ -1041,8 +1041,8 @@ and not a soul to hear.  &lt;/p&gt;
 &lt;p&gt;La canción la pueden escuchar aquí: &lt;a href=&quot;//youtu.be/oRO0jQFnLjE&quot;&gt;http://youtu.be/oRO0jQFnLjE&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 30 Mar 2013 00:00:00 -0300</pubDate>
-        <link>//life/2013/03/30/rediseno.html</link>
-        <guid isPermaLink="true">//life/2013/03/30/rediseno.html</guid>
+        <link>http://mammut.github.com/life/2013/03/30/rediseno.html</link>
+        <guid isPermaLink="true">http://mammut.github.com/life/2013/03/30/rediseno.html</guid>
         
         <category>jekyll</category>
         
