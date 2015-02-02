@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Creando un chat realtime con Sails.js y React"
+comments: true
+categories: frontend react
+fbimage: "/assets/article_images/2015-02-01-creando-un-chat-realtime-con-sails-y-react/diagram-1.png"
+---
+
 Sails.js es un framework MVC realtime escrito en Node.js que corre sobre express.js y que junto a una implementan de socket.io permite realizar operaciones en tiempo real, pues cada cliente abre un socket con el servidor.
 
 React es una librería JavaScript desarrollada por Facebook para construir interfaces de usuarios. Se le considera la V de MVC, por lo que es fácil acoplarlo a otras tecnologías (en nuestro caso socket.io y Sails.js para la capa de persistencia).

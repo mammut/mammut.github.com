@@ -76,40 +76,37 @@
 
 <h5>mi_libreria.h</h5>
 
-<div>
-  <pre data-line=''><code class='language-c'>...
+<pre><code>...
 extern int is_cool;
-...</code></pre>
-</div>
+...
+</code></pre>
 
 <p>y tenemos un archivo principal main.c</p>
 
 <h5>main.c</h5>
 
-<div>
-  <pre data-line=''><code class='language-c'>#include &quot;mi_libreria.h&quot;
+<pre><code>#include "mi_libreria.h"
 
 int is_cool;
 
 int main() {
     is_cool = 1;
 }
-...</code></pre>
-</div>
+...
+</code></pre>
 
 <p>Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería</p>
 
 <h5>funciones.c</h5>
 
-<div>
-  <pre data-line=''><code class='language-c'>#include &quot;mi_libreria.h&quot;
+<pre><code>#include "mi_libreria.h"
 
 void una_funcion() {
     ...
-    if (is_cool) puts(&quot;He is cool&quot;);
+    if (is_cool) puts("He is cool");
     ...
-}</code></pre>
-</div>
+}
+</code></pre>
 
 <p>Tenemos 3 archivos. <em>main.c, funciones.c</em> y <em>mi_libreria.h</em>. tanto main.c como funciones.c usan dicha librería.<br>
 En la librería  <strong>declaramos</strong> la variable <code>is<em>cool</code>.<br>

@@ -115,9 +115,8 @@
 
 <h3>1. Instalación</h3>
 
-<div>
-  <pre data-line=''><code class='language-bash'>npm install -g Sails</code></pre>
-</div>
+<pre><code class="language-bash">npm install -g Sails
+</code></pre>
 
 <p>Esto instalará en la línea de comandos la herramienta para gestión de proyectos Sails de manera global <code>-g</code></p>
 
@@ -125,16 +124,13 @@
 
 <p>Ahora podemos crear nuestro nuevo proyecto Sails.</p>
 
-<div>
-  <pre data-line=''><code class='language-bash'>sails new chatBackend</code></pre>
-</div>
+<pre><code class="language-bash">sails new chatBackend
+</code></pre>
 
 <p>Esto creará el nuevo proyecto en la carpeta <em>chatBackend</em> ahora podemos entrar y “Levantar” nuestro nuevo proyecto.
-<div>
-  <pre data-line=''><code class='language-bash'>sails lift</code></pre>
-</div></p>
-
-<p>Esto lanza el servidor en la dirección: <a href="http://localhost:1337/">http://localhost:1337/</a><br>
+<pre><code class="language-bash">sails lift
+</code></pre>
+Esto lanza el servidor en la dirección: <a href="http://localhost:1337/">http://localhost:1337/</a><br>
 Ahora estamos listos para comenzar con la API de mensajes.</p>
 
 <h3>3. Crear el API <code>message</code></h3>
@@ -143,14 +139,12 @@ Ahora estamos listos para comenzar con la API de mensajes.</p>
 
 <p>TL;DR</p>
 
-<div>
-  <pre data-line=''><code class='language-bash'>sails generate api message</code></pre>
-</div>
+<pre><code class="language-bash">sails generate api message
+</code></pre>
 
 <p>Ahora se puede jugar con el endpoint de <code>message</code> para ver como funciona.
-<div>
-  <pre data-line=''><code class='language-bash'>sails lift</code></pre>
-</div></p>
+<pre><code class="language-bash">sails lift
+</code></pre></p>
 
 <p><strong>Nota</strong>:
 Antes de iniciar el servidor, Sails avisa que no existe una configuración para las migraciones y pregunta que se desea hacer.</p>
@@ -167,12 +161,11 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 
 <p>Para modificar la migración se abre el archivo: <strong>config/models.js</strong> y se descomenta la línea 30</p>
 
-<div>
-  <pre data-line=''><code class='language-javascript'>29  ...
-30  migrate: &#39;alter&#39;
+<pre><code class="language-javascript">29  ...
+30  migrate: 'alter'
 31
-32};</code></pre>
-</div>
+32};
+</code></pre>
 
 <p>Ahora si se puede hacer <code>Sails lift</code> tranquilamente.</p>
 
@@ -223,33 +216,31 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 
 <p>Se recomienda el uso de la extensión <a href="http://www.getpostman.com/">Postman</a> para probar estas rutas. Además pueden usar la consola de desarrollador en sus navegadores para probar socket.io. Por ejemplo para un CRUD simple de <code>menssage</code> pueden intentar:</p>
 
-<div>
-  <pre data-line=''><code class='language-javascript'>io.socket.get(&#39;/message&#39;, function(messages) { console.log(messages); });
-io.socket.post(&#39;/message&#39;, {author: &quot;Alan Turing&quot;, text: &quot;HUllo World!&quot;});
-io.socket.get(&#39;/message/1&#39;, function(messages) { console.log(messages); });
-io.socket.put(&#39;/message/1&#39;, {text: &quot;Hullo World!&quot;});
-io.socket.delete(&#39;/message/1&#39;);</code></pre>
-</div>
+<pre><code class="language-javascript">io.socket.get('/message', function(messages) { console.log(messages); });
+io.socket.post('/message', {author: "Alan Turing", text: "HUllo World!"});
+io.socket.get('/message/1', function(messages) { console.log(messages); });
+io.socket.put('/message/1', {text: "Hullo World!"});
+io.socket.delete('/message/1');
+</code></pre>
 
 <p>Un aspecto que se puede cambiar es que estos modelos permiten guardar cualquier tipo de información. No existe un esquema de los modelos, pero se puede forzar. Se abre el archivo <strong>/api/models/Message.js</strong> y se agrega <code>schema: true</code> para forzar los atributos especificados.</p>
 
-<div>
-  <pre data-line=''><code class='language-javascript'>module.exports = {
+<pre><code class="language-javascript">module.exports = {
 
   schema: true,        // Fuerza el uso de atributos específicos
 
   attributes: {
     author: {          // Campo author
-      type: &#39;string&#39;,  // String
+      type: 'string',  // String
       required: true   // Obligatorio
     },
     text: {            // Campo text
-      type: &#39;string&#39;,  // String
+      type: 'string',  // String
       required: true   // Obligatorio
     }
   }
-};</code></pre>
-</div>
+};
+</code></pre>
 
 <p>Ahora la API arrojará error si se intenta agregar atributos que no estén definidos en el schema. Además arroja error si falta uno de los dos campos. Para profundizar se recomienda la documentación oficial: <a href="http://Sailsjs.org/#/documentation/concepts/ORM/Models.html">documentacion de Modelos y ORM</a>.</p>
 
@@ -259,8 +250,7 @@ io.socket.delete(&#39;/message/1&#39;);</code></pre>
 
 <p>Este paso es opcional, si quieren que su aplicación no se vea tan fome pueden colocar el siguiente estilo css en el archivo <strong>assets/styles/main.css</strong>:</p>
 
-<div>
-  <pre data-line=''><code class='language-css'>html {
+<pre><code class="language-css">html {
   box-sizing: border-box;
 }
 
@@ -339,8 +329,8 @@ body {
   color: white;
   padding: 3px 15px;
   cursor: pointer;
-}</code></pre>
-</div>
+}
+</code></pre>
 
 <h2>Parte 3: React</h2>
 
@@ -350,19 +340,17 @@ body {
 
 <p>Para poder utilizar <code>bower</code> en nuestro proyecto Sails es preciso cambiar el directorio por defecto de <code>bower</code>, para eso se crea el archivo <strong>.bowerrc</strong> donde agregamos lo siguiente:</p>
 
-<div>
-  <pre data-line=''><code class='language-javascript'>{
-  &quot;directory&quot;: &quot;assets/vendor&quot;
-}</code></pre>
-</div>
+<pre><code class="language-javascript">{
+  "directory": "assets/vendor"
+}
+</code></pre>
 
 <p>Ahora cualquier librería que se instale usando <code>bower</code> quedará en el directorio <strong>assets/vendor</strong>.</p>
 
 <p>Iniciamos el proyecto bower con <code>bower init</code> rellenando los datos que pregunten. Luego se instala React de la siguiente manera:</p>
 
-<div>
-  <pre data-line=''><code class='language-bash'>bower install react --save</code></pre>
-</div>
+<pre><code class="language-bash">bower install react --save
+</code></pre>
 
 <p>de este modo React es agregado a la lista de dependencias de nuestro proyecto en bower.json</p>
 
@@ -370,45 +358,42 @@ body {
 
 <p>Abrimos el archivo <strong>tasks/pipeline</strong> y modificamos lo siguiente:</p>
 
-<div>
-  <pre data-line='11,12,16'><code class='language-javascript'>...
+<pre data-line="11,12,16"><code class="language-javascript">...
 // Client-side JavaScript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
 
   // Load Sails.io before everything else
-  &#39;js/dependencies/Sails.io.js&#39;,
+  'js/dependencies/Sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  &#39;js/dependencies/**/*.js&#39;,
-  &#39;vendor/React/JSXTransformer.js&#39;,
-  &#39;vendor/React/React.js&#39;,
+  'js/dependencies/**/*.js',
+  'vendor/React/JSXTransformer.js',
+  'vendor/React/React.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  //&#39;js/**/*.js&#39;
+  //'js/**/*.js'
 ];
-...</code></pre>
-</div>
+...
+</code></pre>
 
 <p>Esto incorporará automáticamente la librería React (junto a JSXTransformer, líneas 11,12) en <strong>views/layout.js</strong> y además impedimos que incluya recursivamente los archivos .js (necesitamos incluirlos a mano) en la línea 16.</p>
 
 <p>Ahora se modifica el archivo <strong>views/homepage.ejs</strong> para que contenga simplemente:</p>
 
-<div>
-  <pre data-line=''><code class='language-markup'>&lt;div id=&quot;main&quot;&gt;&lt;/div&gt;</code></pre>
-</div>
+<pre><code class="language-markup">&lt;div id="main">&lt;/div>
+</code></pre>
 
 <p>y por último se cambia el <strong>views/layout.ejs</strong> e incluimos la línea:</p>
 
-<div>
-  <pre data-line=''><code class='language-markup'>...
-&lt;!--SCRIPTS--&gt;
-&lt;!-- esto se agrega automaticamente... --&gt;
-&lt;!--SCRIPTS END--&gt;
-&lt;script src=&quot;/js/main.js&quot; type=&quot;text/jsx&quot;&gt;&lt;/script&gt;
-...</code></pre>
-</div>
+<pre><code class="language-markup">...
+&lt;!--SCRIPTS-->
+&lt;!-- esto se agrega automaticamente... -->
+&lt;!--SCRIPTS END-->
+&lt;script src="/js/main.js" type="text/jsx">&lt;/script>
+...
+</code></pre>
 
 <p>Es importante agregar el atributo <strong>type=&quot;text/jsx&quot;</strong> para que <em>JSXTransformer</em> pueda transformar el código JSX que escribiremos.</p>
 
@@ -455,15 +440,14 @@ var jsFilesToInject = [
 
 <p>en <strong>assets/js/main.js</strong> se escribe:</p>
 
-<div>
-  <pre data-line='2-4,7'><code class='language-jsx'>var HolaMundo = React.createClass({
+<pre data-line="2-4,7"><code class="language-jsx">var HolaMundo = React.createClass({
   render: function () {
-    return (&lt;h1 className=&quot;HolaMundo&quot;&gt;Hola mundo!&lt;/h1&gt;);
+    return (&lt;h1 className="HolaMundo">Hola mundo!&lt;/h1>);
   }
 });
 
-React.render(&lt;HolaMundo /&gt;, document.getElementById(&#39;main&#39;));</code></pre>
-</div>
+React.render(&lt;HolaMundo />, document.getElementById('main'));
+</code></pre>
 
 <p>Un componente se crea utilizando el método <strong>React.createClass</strong> el cual recibe un objeto sobre el cual se definen funciones específicas que utilizan los componentes. La función más importante de todas es la función <strong>render</strong> (2-4), esta se encarga del layout del componente. Define los elementos y componentes que necesita, estos pueden ser etiquetas HTML, por ejemplo <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;div&gt;</code>, etc. así como también otros componentes React.</p>
 
@@ -471,21 +455,20 @@ React.render(&lt;HolaMundo /&gt;, document.getElementById(&#39;main&#39;));</cod
 
 <p>Es así como se anidan los componentes de React. Siguiendo el método Top-Bottom procedemos a crear el componente <strong>ChatBox</strong>:</p>
 
-<div>
-  <pre data-line='8,9'><code class='language-jsx'>/** @jsx React.DOM */
+<pre data-line="8,9"><code class="language-jsx">/** @jsx React.DOM */
 var ChatBox = React.createClass({
 
   render: function() {
     return (
-      &lt;div className=&quot;ChatBox&quot;&gt;
-        &lt;h2&gt;Lista de mensajes&lt;/h2&gt;
-        &lt;ChatList /&gt;
-        &lt;ChatForm /&gt;
-      &lt;/div&gt;
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList />
+        &lt;ChatForm />
+      &lt;/div>
     )
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p><strong>Nota</strong> es importante notar que para definir el atributo <em>class</em> utilizando JSX se debe usar <em>className</em> ya que <em>class</em> es una palabra reservada de JavaScript. for tambien esta reservado, usen htmlFor en jsx. Más lectura <a href="http://facebook.github.io/react/docs/jsx-in-depth.html">Aquí</a></p>
 
@@ -493,58 +476,54 @@ var ChatBox = React.createClass({
 
 <p>Como se observa en el código anterior, definimos un <code>div</code> contenedor con class=&quot;ChatBox&quot;. Dentro se renderizan dos componentes: <em>ChatMessage</em>s y ChatForm los cuales creamos a continuación:</p>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>...
+<pre><code class="language-jsx">...
 var ChatForm = React.createClass({
   render: function() {
     return (
-      &lt;form className=&quot;ChatForm&quot;&gt;
-        &lt;input type=&quot;text&quot; placeholder=&quot;author&quot; className=&quot;author&quot; ref=&quot;author&quot;/&gt;
-        &lt;input type=&quot;text&quot; placeholder=&quot;message...&quot; className=&quot;text&quot; ref=&quot;text&quot; /&gt;
-        &lt;input type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
-      &lt;/form&gt;
+      &lt;form className="ChatForm">
+        &lt;input type="text" placeholder="author" className="author" ref="author"/>
+        &lt;input type="text" placeholder="message..." className="text" ref="text" />
+        &lt;input type="submit" value="Send" />
+      &lt;/form>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>Este es el componente <strong>ChatForm</strong> que sirve como formulario para enviar mensajes.</p>
 
 <p>Luego la Lista de mensajes:</p>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>...
+<pre><code class="language-jsx">...
 var ChatList = React.createClass({
   render: function() {
     return (
-      &lt;ul className=&quot;ChatList&quot;&gt;
-        // Mostrar lista de mensajes &lt;ChatMessage /&gt;...
-      &lt;/ul&gt;
+      &lt;ul className="ChatList">
+        // Mostrar lista de mensajes &lt;ChatMessage />...
+      &lt;/ul>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>...
+<pre><code class="language-jsx">...
 var ChatMessage = React.createClass({
   render: function() {
     return (
-      &lt;li className=&quot;ChatMessage&quot;&gt;
-        &lt;span className=&quot;author&quot;&gt;Mostrar el autor&lt;/span&gt;
-        &lt;span className=&quot;message&quot;&gt;Mostrar el mensaje&lt;/span&gt;
-      &lt;/li&gt;
+      &lt;li className="ChatMessage">
+        &lt;span className="author">Mostrar el autor&lt;/span>
+        &lt;span className="message">Mostrar el mensaje&lt;/span>
+      &lt;/li>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>Por último se define que raíz inyectar y donde:</p>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>...
-React.render(&lt;ChatBox /&gt;, document.getElementById(&#39;main&#39;));</code></pre>
-</div>
+<pre><code class="language-jsx">...
+React.render(&lt;ChatBox />, document.getElementById('main'));
+</code></pre>
 
 <p>Si levantamos el servidor podemos ver que en la pantalla aparece algo así:</p>
 
@@ -554,98 +533,93 @@ React.render(&lt;ChatBox /&gt;, document.getElementById(&#39;main&#39;));</code>
 
 <p>El siguiente paso es simular una capa de persistencia para ver el correcto renderizado de la lista de mensajes. Para esto arriba de nuestro archivo <strong>assets/js/main.js</strong> se crea un arreglo el cual se pasa como propiedad a nuestro componente <strong>ChatBox</strong>. Para eso modificamos las siguientes líneas:</p>
 
-<div>
-  <pre data-line='18,27'><code class='language-jsx'>var _msgList = [
-  { &quot;author&quot;: &quot;context&quot;, &quot;text&quot;: &quot;A man flying in a hot air balloon suddenly realizes he’s lost. He reduces height and spots a man down below. He lowers the balloon further and shouts to get directions&quot;},
-  { &quot;author&quot;: &quot;Person A&quot;, &quot;text&quot;: &quot;Excuse me, can you tell me where I am?&quot;},
-  { &quot;author&quot;: &quot;Person B&quot;, &quot;text&quot;: &quot;Yes. You&#39;re in a hot air balloon, hovering 30 feet above this field.&quot;},
-  { &quot;author&quot;: &quot;Person A&quot;, &quot;text&quot;: &quot;You must work in Information Technology,&quot;},
-  { &quot;author&quot;: &quot;Person B&quot;, &quot;text&quot;: &quot;I do, How did you know?&quot;},
-  { &quot;author&quot;: &quot;Person A&quot;, &quot;text&quot;: &quot;well, everything you have told me is technically correct, but It&#39;s of no use to anyone.&quot;},
-  { &quot;author&quot;: &quot;Person B&quot;, &quot;text&quot;: &quot;You must work in management.&quot;},
-  { &quot;author&quot;: &quot;Person A&quot;, &quot;text&quot;: &quot;I do, but how&#39;d you know?&quot;},
-  { &quot;author&quot;: &quot;Person B&quot;, &quot;text&quot;: &quot;Well, you don’t know where you are or where you’re going, but you expect me to be able to help. You’re in the same position you were before we met, but now it’s my fault.&quot;}
+<pre data-line="18,27"><code class="language-jsx">var _msgList = [
+  { "author": "context", "text": "A man flying in a hot air balloon suddenly realizes he’s lost. He reduces height and spots a man down below. He lowers the balloon further and shouts to get directions"},
+  { "author": "Person A", "text": "Excuse me, can you tell me where I am?"},
+  { "author": "Person B", "text": "Yes. You're in a hot air balloon, hovering 30 feet above this field."},
+  { "author": "Person A", "text": "You must work in Information Technology,"},
+  { "author": "Person B", "text": "I do, How did you know?"},
+  { "author": "Person A", "text": "well, everything you have told me is technically correct, but It's of no use to anyone."},
+  { "author": "Person B", "text": "You must work in management."},
+  { "author": "Person A", "text": "I do, but how'd you know?"},
+  { "author": "Person B", "text": "Well, you don’t know where you are or where you’re going, but you expect me to be able to help. You’re in the same position you were before we met, but now it’s my fault."}
 ];
 
 var ChatBox = React.createClass({
   render: function() {
     return (
-      &lt;div className=&quot;ChatBox&quot;&gt;
-        &lt;h2&gt;Lista de mensajes&lt;/h2&gt;
-        &lt;ChatList messages={this.props.messages}/&gt;
-        &lt;ChatForm /&gt;
-      &lt;/div&gt;
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.props.messages}/>
+        &lt;ChatForm />
+      &lt;/div>
     );
   }
 });
 
 ... //Todos los otros componentes
 
-React.render(&lt;ChatBox messages={_msgList} /&gt;, document.getElementById(&#39;main&#39;));</code></pre>
-</div>
+React.render(&lt;ChatBox messages={_msgList} />, document.getElementById('main'));
+</code></pre>
 
 <p>Lo que hacemos en la línea 27 es pasarle al componente <strong>ChatBox</strong> la propiedad <strong>messages</strong> para que sea igual al arreglo <em>_msgList</em>. El uso de {} se hace cuando se pasa una variable JavaScript como propiedad. También se puede enviar texto plano con <code>nombre=&quot;Alan Turing&quot;</code>.</p>
 
 <p>Para poder utilizar esta propiedad dentro del componente basta con hacer:</p>
 
-<div>
-  <pre data-line=''><code class='language-javascript'>this.props.messages</code></pre>
-</div>
+<pre><code class="language-javascript">this.props.messages
+</code></pre>
 
 <p>Nuestro componente en este caso no utiliza el arreglo directamente, solo debe entregárselo a su componente hijo ChatList, así que se lo pasamos como propiedad también (línea 18).</p>
 
 <p>Lo que hacemos a continuación es una vez teniendo la respectiva lista de mensajes dentro de <strong>ChatList</strong> es crear la lista de <strong>ChatMessage</strong>, para esto debemos iterar sobre la lista de objetos entregados por el padre y crear los respectivos <em>ChatMessage</em> entregándole las propiedades respectivas:</p>
 
-<div>
-  <pre data-line='3-9,12'><code class='language-jsx'>var ChatList = React.createClass({
+<pre data-line="3-9,12"><code class="language-jsx">var ChatList = React.createClass({
   render: function() {
     var messages = this.props.messages.map(function (message, index) {
       return (&lt;ChatMessage
                 author={message.author}
                 text={message.text}
-                key={index}/&gt;
+                key={index}/>
              );
     });
     return (
-      &lt;ul className=&quot;ChatList&quot;&gt;
+      &lt;ul className="ChatList">
         {messages}
-      &lt;/ul&gt;
+      &lt;/ul>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>Se crea la variable <code>messages</code> que será una lista de componentes <em>ChatMessage</em>. iteramos usando la función map sobre el arreglo que se recibe como propiedad <code>this.props.messages</code> y por cada mensaje se retorna un nuevo <em>ChatMessage</em> al que le asignamos la propiedads propiedades <code>author={message.author}</code> y <code>text={message.text}</code>. Un ejemplo aislado para iterar usando map sobre un arreglo puede ser:</p>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>var messages = [
-  {name: &quot;mensaje 1&quot;}
-  {name: &quot;mensaje 2&quot;}
+<pre><code class="language-jsx">var messages = [
+  {name: "mensaje 1"}
+  {name: "mensaje 2"}
   ...
-  {name: &quot;mensaje n&quot;}
+  {name: "mensaje n"}
 ]
 
 messages.map(function(message,index) {
   console.log(message.name);
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>Luego dentro de la lista ordenada <code>&lt;ul className=&quot;ChatList&quot;&gt;</code> se muestra la lista de <em>ChatMessage</em> generada dinamicamente usando <code>{message}</code></p>
 
 <p>Ahora solo falta hacer que el componente <em>ChatMessage</em> muestre el autor y texto del mensaje, los cuales recibe como parámetro desde su padre.</p>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>var ChatMessage = React.createClass({
+<pre><code class="language-jsx">var ChatMessage = React.createClass({
   render: function() {
     return (
-    &lt;li className=&quot;ChatMessage&quot;&gt;
-      &lt;span className=&quot;author&quot;&gt;{this.props.author}&lt;/span&gt;
-      &lt;span className=&quot;message&quot;&gt;{this.props.text}&lt;/span&gt;
-    &lt;/li&gt;
+    &lt;li className="ChatMessage">
+      &lt;span className="author">{this.props.author}&lt;/span>
+      &lt;span className="message">{this.props.text}&lt;/span>
+    &lt;/li>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>Simplemente mostramos las variables usando <code>{this.props.message.author}</code> y <code>{this.props.message.text}</code> para imprimirlos donde deben ir.</p>
 
@@ -669,22 +643,21 @@ Por un lado ChatList necesita la lista de mensajes para mostrarla. ChatForm nece
 
 <p>Ahora vamos a introducir un nuevo método para <code>createClass()</code> llamado <code>getInitialState</code>. Este método permite definir un estado inicial de nuestros componentes. Para usarlo vamos a definir el estado de nuestro ChatBox como la lista de mensajes recibida como parámetros desde <code>React.render(...)</code></p>
 
-<div>
-  <pre data-line='2-4,9'><code class='language-jsx'>var ChatBox = React.createClass({
+<pre data-line="2-4,9"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
     return {messages: this.props.messages};
   },
   render: function() {
     return (
-      &lt;div className=&quot;ChatBox&quot;&gt;
-        &lt;h2&gt;Lista de mensajes&lt;/h2&gt;
-        &lt;ChatList messages={this.state.messages} /&gt;
-        &lt;ChatForm /&gt;
-      &lt;/div&gt;
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm />
+      &lt;/div>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>Agregamos el método <code>getInitialState</code> que retorna un objeto que define la propiedad <code>messages=this.props.messages</code>. Se ejecuta una sola vez cuando se inicia el componente.</p>
 
@@ -703,8 +676,7 @@ Por un lado ChatList necesita la lista de mensajes para mostrarla. ChatForm nece
 <p>Vamos a crear una nueva función en <strong>ChatBox</strong> que se encargue de agregar un nuevo mensaje al arreglo de mensajes y cambie el estado de mensajes.<br>
 Una vez teniendo esta función se la podemos pasar al componente hijo <strong>ChatForm</strong>.</p>
 
-<div>
-  <pre data-line='5-9,15'><code class='language-jsx'>var ChatBox = React.createClass({
+<pre data-line="5-9,15"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
     return {messages: this.props.messages};
   },
@@ -715,22 +687,21 @@ Una vez teniendo esta función se la podemos pasar al componente hijo <strong>Ch
   },
   render: function() {
     return (
-      &lt;div className=&quot;ChatBox&quot;&gt;
-        &lt;h2&gt;Lista de mensajes&lt;/h2&gt;
-        &lt;ChatList messages={this.state.messages} /&gt;
-        &lt;ChatForm onNewMessage={this.handleNewMessage} /&gt;
-      &lt;/div&gt;
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm onNewMessage={this.handleNewMessage} />
+      &lt;/div>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>La nueva función <code>handleNewMessage</code> recibe un objeto mensaje y lo agrega al arreglo de mensajes, luego se actualiza el estado de ChatBox entregándole el arreglo de mensajes actualizados con el nuevo mensaje. El método <code>this.setState(newState)</code> permite actualizar el estado del componente. En este caso estamos actualizando la lista de mensajes.</p>
 
 <p>Además agregamos la propiedad <code>onNewMessage={this.handleNewMessage}</code> al componente ChatForm en la línea 15. Así este componente podrá llamar al handler cuando el formulario sea enviado.</p>
 
-<div>
-  <pre data-line='2-10,13'><code class='language-jsx'>var ChatForm = React.createClass({
+<pre data-line="2-10,13"><code class="language-jsx">var ChatForm = React.createClass({
   handleNewMessage: function(e) {
     e.preventDefault();
     var author = this.refs.author.getDOMNode().value;
@@ -738,19 +709,19 @@ Una vez teniendo esta función se la podemos pasar al componente hijo <strong>Ch
 
     this.props.onNewMessage({author: author, text: text});
 
-    this.refs.text.getDOMNode().value = &#39;&#39;;
+    this.refs.text.getDOMNode().value = '';
   },
   render: function() {
     return (
-      &lt;form className=&quot;ChatForm&quot; onSubmit={this.handleNewMessage}&gt;
-        &lt;input type=&quot;text&quot; placeholder=&quot;author&quot; className=&quot;author&quot; ref=&quot;author&quot;/&gt;
-        &lt;input type=&quot;text&quot; placeholder=&quot;message...&quot; className=&quot;text&quot; ref=&quot;text&quot; /&gt;
-        &lt;input type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
-      &lt;/form&gt;
+      &lt;form className="ChatForm" onSubmit={this.handleNewMessage}>
+        &lt;input type="text" placeholder="author" className="author" ref="author"/>
+        &lt;input type="text" placeholder="message..." className="text" ref="text" />
+        &lt;input type="submit" value="Send" />
+      &lt;/form>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>En el componente <strong>ChatForm</strong> se agrego la función handleNewMessage que se encarga de preparar el mensaje y llamar a la función onNewMessage que viene por parámetro desde su padre al momento de enviar el formulario, línea 13 <code>onSubmit</code>.</p>
 
@@ -764,7 +735,7 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
 
 <p>Ahora se puede probar el formulario, al enviar nuevos mensajes se agregan al arreglo de mensajes en el estado de ChatBox.</p>
 
-<h3>6. ComponentDidMount. Agregando comunicación realtime con socket.io</h3>
+<h3>5. ComponentDidMount. Agregando comunicacion realtime con socket.io</h3>
 
 <p>Ahora que el funcionamiento básico del chat esta listo falta agregar la capa de persistencia. Usando la versión modificada de socket.io en el código React es bastante sencillo agregar comunicación realtime.</p>
 
@@ -783,28 +754,27 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
 
 <p>Abrimos el archivo <strong>api/models/Message.js</strong> y agregamos: </p>
 
-<div>
-  <pre data-line='16-19'><code class='language-javascript'>module.exports = {
+<pre data-line="16-19"><code class="language-javascript">module.exports = {
 
   schema: true,
 
   attributes: {
     author: {
-      type: &#39;string&#39;,
+      type: 'string',
       required: true
     },
     text: {
-      type: &#39;string&#39;,
+      type: 'string',
       required: true
     }
   },
 
   afterCreate: function(message, next) {
-      Sails.io.sockets.emit(&#39;new message&#39;, message);
+      Sails.io.sockets.emit('new message', message);
       next();
   }
-};</code></pre>
-</div>
+};
+</code></pre>
 
 <p>Agregamos el hook <code>afterCreate</code> que dentro emite el evento <em>&quot;new message&quot;</em> a todos los clientes conectados y les envía el nuevo mensaje recién creado.</p>
 
@@ -812,19 +782,18 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
 
 <p><code>componentDidMount</code> es un método de <code>React.createClass</code> que se ejecuta una vez que el componente fue montado en el DOM correctamente. Vamos a usarlo para iniciar la conexión de socket.io e inicialmente para obtener la lista de mensajes así como también definir el evento a escuchar <em>&quot;new message&quot;</em></p>
 
-<div>
-  <pre data-line='3,5-17,18-20'><code class='language-jsx'>var ChatBox = React.createClass({
+<pre data-line="3,5-17,18-20"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
     return {messages: []};
   },
   componentDidMount: function() {
-    io.socket.on(&#39;connect&#39;, function() {
+    io.socket.on('connect', function() {
     
       io.socket.get(this.props.apiUrl, function(messages) {
         this.setState({messages: messages});
       }.bind(this));
 
-      io.socket.on(&#39;new message&#39;, function(newMessage) {
+      io.socket.on('new message', function(newMessage) {
         this.setState({messages: this.state.messages.concat([newMessage])});
       }.bind(this));
       
@@ -835,15 +804,15 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
   },
   render: function() {
     return (
-      &lt;div className=&quot;ChatBox&quot;&gt;
-        &lt;h2&gt;Lista de mensajes&lt;/h2&gt;
-        &lt;ChatList messages={this.state.messages} /&gt;
-        &lt;ChatForm onNewMessage={this.handleNewMessage} /&gt;
-      &lt;/div&gt;
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm onNewMessage={this.handleNewMessage} />
+      &lt;/div>
     );
   }
-});</code></pre>
-</div>
+});
+</code></pre>
 
 <p>Lo primero es cambiar el método <code>getInitialState</code> para que retorne inicialmente el estado de mensajes como una lista vacía.</p>
 
@@ -863,30 +832,28 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
 
 <p>Tanto para <code>io.socket.post</code> como para <code>io.socket.get</code> usamos una nueva propiedad llamada apiURL, es el URL donde se deben hacer los queries para crear y obtener mensajes. Se la pasamos al crear el componente en la última línea de <strong>assets/js/main.js</strong></p>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>...
-React.render(&lt;ChatBox apiUrl=&quot;/message&quot; /&gt;, document.getElementById(&#39;main&#39;));</code></pre>
-</div>
+<pre><code class="language-jsx">...
+React.render(&lt;ChatBox apiUrl="/message" />, document.getElementById('main'));
+</code></pre>
 
 <p>Nuestra aplicación está lista para usar. Tenemos la comunicación persistente y realtime gracias a la incorporación de socket.io</p>
 
 <p>El código final de <strong>assets/js/main.js</strong> es:</p>
 
-<div>
-  <pre data-line=''><code class='language-jsx'>/** @jsx React.DOM */
+<pre><code class="language-jsx">/** @jsx React.DOM */
 
 var ChatBox = React.createClass({
   getInitialState: function() {
     return {messages: []};
   },
   componentDidMount: function() {
-    io.socket.on(&#39;connect&#39;, function() {
+    io.socket.on('connect', function() {
 
       io.socket.get(this.props.apiUrl, function(messages) {
         this.setState({messages: messages});
       }.bind(this));
 
-      io.socket.on(&#39;new message&#39;, function(newMessage) {
+      io.socket.on('new message', function(newMessage) {
         this.setState({messages: this.state.messages.concat([newMessage])});
       }.bind(this));
 
@@ -897,11 +864,11 @@ var ChatBox = React.createClass({
   },
   render: function() {
     return (
-      &lt;div className=&quot;ChatBox&quot;&gt;
-        &lt;h2&gt;Lista de mensajes&lt;/h2&gt;
-        &lt;ChatList messages={this.state.messages} /&gt;
-        &lt;ChatForm onNewMessage={this.handleNewMessage} /&gt;
-      &lt;/div&gt;
+      &lt;div className="ChatBox">
+        &lt;h2>Lista de mensajes&lt;/h2>
+        &lt;ChatList messages={this.state.messages} />
+        &lt;ChatForm onNewMessage={this.handleNewMessage} />
+      &lt;/div>
     );
   }
 });
@@ -914,15 +881,15 @@ var ChatForm = React.createClass({
 
     this.props.onNewMessage({author: author, text: text});
 
-    this.refs.text.getDOMNode().value = &#39;&#39;;
+    this.refs.text.getDOMNode().value = '';
   },
   render: function() {
     return (
-      &lt;form className=&quot;ChatForm&quot; onSubmit={this.handleNewMessage}&gt;
-        &lt;input type=&quot;text&quot; placeholder=&quot;author&quot; className=&quot;author&quot; ref=&quot;author&quot;/&gt;
-        &lt;input type=&quot;text&quot; placeholder=&quot;message...&quot; className=&quot;text&quot; ref=&quot;text&quot; /&gt;
-        &lt;input type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
-      &lt;/form&gt;
+      &lt;form className="ChatForm" onSubmit={this.handleNewMessage}>
+        &lt;input type="text" placeholder="author" className="author" ref="author"/>
+        &lt;input type="text" placeholder="message..." className="text" ref="text" />
+        &lt;input type="submit" value="Send" />
+      &lt;/form>
     );
   }
 });
@@ -933,13 +900,13 @@ var ChatList = React.createClass({
       return (&lt;ChatMessage
                 author={message.author}
                 text={message.text}
-                key={index}/&gt;
+                key={index}/>
              );
     });
     return (
-      &lt;ul className=&quot;ChatList&quot;&gt;
+      &lt;ul className="ChatList">
         {messages}
-      &lt;/ul&gt;
+      &lt;/ul>
     );
   }
 });
@@ -947,16 +914,16 @@ var ChatList = React.createClass({
 var ChatMessage = React.createClass({
   render: function() {
     return (
-      &lt;div className=&quot;ChatMessage&quot;&gt;
-        &lt;span className=&quot;author&quot;&gt;{this.props.author}&lt;/span&gt;
-        &lt;span className=&quot;message&quot;&gt;{this.props.text}&lt;/span&gt;
-      &lt;/div&gt;
+      &lt;div className="ChatMessage">
+        &lt;span className="author">{this.props.author}&lt;/span>
+        &lt;span className="message">{this.props.text}&lt;/span>
+      &lt;/div>
     );
   }
 });
 
-React.render(&lt;ChatBox apiUrl=&quot;/message&quot; /&gt;, document.getElementById(&#39;main&#39;));</code></pre>
-</div>
+React.render(&lt;ChatBox apiUrl="/message" />, document.getElementById('main'));
+</code></pre>
 
 <p>Pueden clonar la aplicación completa desde <a href="https://github.com/mammut/tutorial-Creando-un-chat-realtime-en-Sails.js-y-React">github</a></p>
 
