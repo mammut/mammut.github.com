@@ -16,7 +16,7 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
   <meta property="og:site_name" content="{{ site.title }}">
-  <meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
+  <meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}/">
   <meta property="og:description" content="{% if page.meta %}{{ page.meta }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:image" content="{% if page.fbimage %}{{ page.fbimage |prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.fbimage }}{% endif %}">
   <meta property="fb:app_id" content="177325815624166">
