@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Día dada una fecha</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Algoritmo para determinar el día dada una fecha" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Día dada una fecha" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/10/01/algoritmo-dia-dada-una-fecha.html" />
+  <meta property="og:description" content="Algoritmo para determinar el día dada una fecha" />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Día dada una fecha</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-10-01T00:00:00-04:00">01 Oct 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,59 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <p>Con este programa uno ingresa el año, mes y día, y te entrega el día que fue (lunes, martes, etc...)</p>
+
+<p>Link: <a href="http://es.wikipedia.org/wiki/Algoritmo_para_calcular_el_d%C3%ADa_de_la_semana">http://es.wikipedia.org/wiki/Algoritmo<em>para</em>calcular<em>el</em>d%C3%ADa<em>de</em>la_semana</a></p>
+
+<pre><code class="language-c">#include &lt;stdio.h>
+
+/* Definimos el tipo de datos booleano */
+#define TRUE 1
+#define FALSE 0
+typedef int bool;
+
+int get_month(int, int);
+bool bisiesto(int);
+
+int main(int argc, char *argv[]) {
+    int year,day,month,dia;
+    char *semana[7] = {"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"};
+
+    do {
+        printf("Year: ");  scanf("%d", &year);
+        printf("Month: "); scanf("%d", &month);
+        printf("Day: ");   scanf("%d", &day);
+    } while(year &lt; 1);
+
+    /* ecuacion principal del algoritmo */
+    dia = ((year-1)%7+((year-1)/4-3*((year-1)/100+1)/4)%7+get_month(month, year)+day%7)%7;
+
+    printf("%s\n", semana[dia]);
+
+    return 0;
+}
+
+int get_month(int month, int year) {
+    int bis[12] = {0, 3, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6};
+    int no_bis[12] = {0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
+
+    return bisiesto(year) ? bis[month - 1] : no_bis[month - 1];
+}
+
+bool bisiesto(int year) {
+    /* recibe un año, y retorna true si dicho año es bisiesto.
+    * false en caso contrario
+    */
+    return year%4==0 && (year%400==0 || year%100!=0);
+}
+</code></pre>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=D%C3%ADa+dada+una+fecha&amp;url=http://mammut.github.io/c-codes/2010/10/01/algoritmo-dia-dada-una-fecha"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +134,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-10-01 00:00">01 Oct 2010</time></p>
             </section>
           </div>
           

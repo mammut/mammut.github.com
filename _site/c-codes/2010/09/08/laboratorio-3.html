@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Laboratorio 3, control 1</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Pequeño resumen del tercer laboratorio (control) del curso Programación IWI101 2010.2 @ UTFSM CSJ" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Laboratorio 3, control 1" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/09/08/laboratorio-3.html" />
+  <meta property="og:description" content="Pequeño resumen del tercer laboratorio (control) del curso Programación IWI101 2010.2 @ UTFSM CSJ" />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Laboratorio 3, control 1</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-09-08T00:00:00-04:00">08 Sep 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,81 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <p>Control 1-C</p>
+
+<pre><code class="language-c">#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+int main(void)
+{
+    int seguir=1;
+    /* Repetir el proceso mientras el usuario desee */
+    while(seguir){
+        long cactual,canterior=1,km, destino, cdisponible, cgasto=0, end=0;
+        /*
+        cactual = Combustible actual en el proceso
+        canterior = combustible en el km anterior
+        km = contador
+        destino = donde parar
+        cdisponible = cuanto combustible poseo
+        cgasto = gasto acumunado
+        end = kilometro en que quedo en pana
+        */
+        do{ /* Comprobar que los datos ingresados sean positivos */
+            printf("Ingrese el destino: ");
+            scanf("%ld", &destino);
+            printf("Ingrese el combustible disponible: ");
+            scanf("%ld", &cdisponible);
+        }while(destino<=0||cdisponible<=0);
+        
+        /* funcion para calcular el gasto total desde el km 1 hasta el destino */
+        for(km=1;km<=destino;km++){
+            cactual=canterior*0.8+(km+1);
+            cgasto+=cactual; //El gasto acumulado
+            canterior=cactual; //El gasto actual pasa a ser el anterior
+            if(cgasto>cdisponible){ /* Ver si ya me pase en el gasto, si es asi salgo del proceso*/
+                end=km-1;
+                break;
+            }
+        }
+        /* Compruebo si el gasto es menor que el disponible */
+        if(cgasto<=cdisponible){
+            printf("\nCombustible suficiente, el auto llega a su destino\n");
+        }
+        /* Compruebo si el gasto es mayor que el desponible */
+        if(cgasto>cdisponible){
+            printf("\nCombustible insuficiente, el auto cae en Pana en el kilometro %ld\n", end);
+        }
+        /* Le doy al usuario la opcion de evaluar nuevamente */
+        printf("\nEvaluar otro auto:\n1-Si\n2-No\nOpcion: ");
+        scanf("%d", &seguir);
+        
+        switch(seguir){
+            case(1):{/* Repetir el proceso */                
+                seguir=1;
+                system("cls");//Borrar la pantalla
+            }
+            break;
+            case(2):{/* Salir */ 
+                seguir=0;
+            }
+            break;
+            default:{
+                seguir=1;
+                system("cls");//Borrar la pantalla
+            }
+        }/* Fin Switch*/
+    }/* Fin while */
+    return 0;
+}
+</code></pre>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Laboratorio+3%2C+control+1&amp;url=http://mammut.github.io/c-codes/2010/09/08/laboratorio-3"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +156,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-09-08 00:00">08 Sep 2010</time></p>
             </section>
           </div>
           

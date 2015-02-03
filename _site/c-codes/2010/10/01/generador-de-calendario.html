@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Generador de calendario</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Muestra el calendario en C basado en el año ingresado por el usuario. Usando un algoritmo para saber que dia de la semana fue, dado su fecha." />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Generador de calendario" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/10/01/generador-de-calendario.html" />
+  <meta property="og:description" content="Muestra el calendario en C basado en el año ingresado por el usuario. Usando un algoritmo para saber que dia de la semana fue, dado su fecha." />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Generador de calendario</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-10-01T00:00:00-04:00">01 Oct 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,99 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <p>Muestra el calendario basado en el año ingresado por el usuario. Usando un algoritmo para saber que dia de la semana fue, dado su fecha.</p>
+
+<pre><code class="language-c">#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+/* Se define el tipo de datos bool */
+#define TRUE 1;
+#define FALSE 0;
+typedef int bool;
+
+/* Declaracion de funciones */
+int get_days(int, int);
+void show_months(int, int);
+bool bisiesto(int);
+
+int main(int argc, char *argv[]) {
+    int year = 0;
+    int i;
+    
+    if (argc > 1) { /* Ver si es posible cargar por parametro */
+        year = (int)strtoul(argv[1], 0, 10);
+    }
+    while (year &lt; 1900) {
+        printf("Ingrese un a%co posterior a 1900: ", 164);
+        scanf("%d", &year);
+    }
+    
+    for (i = 1; i &lt;= 12; i++){
+        show_months(i, year);
+    }
+
+    return 0;
+}
+
+void show_months(int month, int year) {
+    int day, i, dias;
+    char *meses[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+    int cuantos_dias[12] = {31, -1, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    /* Imprimir el titulo MES AÑO */
+    dias = cuantos_dias[month - 1];
+    if (dias == -1) {
+        dias = bisiesto(year) ? 29 : 28;
+    }
+    printf(" %s", meses[month - 1]);
+    printf(" %d\n", year);
+
+    day = ((year-1)%7+((year-1)/4 -3*((year-1)/100+1)/4)%7+get_days(month,year)+1%7)%7;
+
+    /* Imprimir los días */
+    printf(" Do Lu Ma Mi Ju Vi Sa\n");
+
+    for(i = 0; i &lt; day; i++) {
+        printf("   ");
+    }
+
+    for(i = 0; i &lt; dias; i++){
+        if( (i + day)%7 == 0 && i != 0) { 
+            printf("\n");
+        }
+        printf("%3d", i+1);
+    }
+    printf("\n\n");
+}
+
+/**
+ * esta funcion se utiliza en el algoritmo para determinar el
+ * dia de una fecha en específico
+ */
+int get_days(int month, int year) {
+
+    int bis[12] = {0, 3, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6};
+    int no_bis[12] = {0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
+
+    return bisiesto(year) ? bis[month - 1] : no_bis[month - 1];
+}
+
+/** 
+ * recibe un año, y retorna true si dicho año es bisiesto.
+ * false en caso contrario
+ */
+bool bisiesto(int year) {
+    
+    return year%4==0 && (year%400==0 || year%100!=0);
+}
+</code></pre>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Generador+de+calendario&amp;url=http://mammut.github.io/c-codes/2010/10/01/generador-de-calendario"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +174,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-10-01 00:00">01 Oct 2010</time></p>
             </section>
           </div>
           

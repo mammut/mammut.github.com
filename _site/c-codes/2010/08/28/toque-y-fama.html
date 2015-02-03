@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Fibonacci en C</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Algoritmo sucesión de fibonacci en C." />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Fibonacci en C" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/08/28/toque-y-fama.html" />
+  <meta property="og:description" content="Algoritmo sucesión de fibonacci en C." />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Fibonacci en C</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-08-28T00:00:00-04:00">28 Aug 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,52 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <p>La sucesión de Fibonacci es una sucesión matemática definida recursivamente como:</p>
+
+<p><img src="http://latex.codecogs.com/gif.latex?\bg_white%20\\f(n)=f(n-1)+f(n-2)\\%20\\%20f(0)=0%20\wedge%20f(1)=1" alt="fórmula fibonacci" /></p>
+
+<p>Así, el 13° término de la sucesión sería:</p>
+
+<p><img src="http://latex.codecogs.com/gif.latex?\bg_white%20f(13)=144" alt="término sucesión fibonacci" /></p>
+
+<p>La sucesión generada para calcular dicho termino sería la siguiente:</p>
+
+<p><img src="http://latex.codecogs.com/gif.latex?\bg_white%20f(13)=0,1,1,2,3,5,8,13,21,34,55,89,144" alt="sucesión fibonacci" /></p>
+
+<p>Este es el código en C para generar el n-ésimo termino de la sucesión de forma iterativa (la forma recursiva es extremadamente ineficiente)</p>
+
+<pre><code class="language-c">#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+  /* Declaramos las variables necesarias */
+  int a = 0;
+  int b = 1; 
+  int c = 0;
+  int i, n;
+
+  /* Pedimos al usuario en n-esimo termino de la sucesion para detenernos */
+  printf("Ingrese un numero: ");
+  scanf("%d", &n);
+
+  for (i = 0; i < n; i++) {
+    c = b;
+    b = a;
+    a = b + c;
+
+    printf("%-4d", a);
+  }
+  printf("\n");
+
+  return 0;
+}
+</code></pre>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Fibonacci+en+C&amp;url=http://mammut.github.io/c-codes/2010/08/28/toque-y-fama"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +127,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-08-28 00:00">28 Aug 2010</time></p>
             </section>
           </div>
           

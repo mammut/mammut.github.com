@@ -287,6 +287,9 @@ body {
       font-size: 20px;
       line-height: 1.3;
       color: #666665; }
+      .content article .post-excerpt a {
+        color: #b3b3b1;
+        text-decoration: none; }
     .content article .post-meta {
       font-size: 14px;
       color: #b3b3b1;
@@ -516,7 +519,8 @@ table {
     margin: 0 auto; }
   .post .post-content figure {
     margin: 0;
-    padding: 0 0 30px; }
+    padding: 0 0 30px;
+    text-align: center; }
   .post .post-content figcaption {
     font-weight: 400;
     font-style: italic;

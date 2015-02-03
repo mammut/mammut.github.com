@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Año bisiesto en C</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Determinar si un año es bisiesto o no, código en C. Es un algoritmo muy sencillo" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Año bisiesto en C" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/08/29/a%C3%B1o-bisiesto.html" />
+  <meta property="og:description" content="Determinar si un año es bisiesto o no, código en C. Es un algoritmo muy sencillo" />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Año bisiesto en C</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-08-29T00:00:00-04:00">29 Aug 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,30 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <pre><code class="language-c">#include &lt;stdio.h>
+
+  int main(void){
+    int year;
+    
+    printf("Ingrese un año para saber si es bisiesto: ");
+    scanf("%d", &year);
+
+    if (year%4 == 0 && (year%400 == 0 || year%100 != 0)){
+      printf("Es Bisiesto\n");
+    }else{
+      printf("No es Bisiesto\n");
+    }
+    
+    return 0;
+  }
+</code></pre>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=A%C3%B1o+bisiesto+en+C&amp;url=http://mammut.github.io/c-codes/2010/08/29/año-bisiesto"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +105,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-08-29 00:00">29 Aug 2010</time></p>
             </section>
           </div>
           

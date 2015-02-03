@@ -4,10 +4,10 @@
     <title>JPEG {codes}</title>
     <description>Códigos azarosos es múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
 </description>
-    <link>http://mammut.github.com/</link>
-    <atom:link href="http://mammut.github.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Feb 2015 13:57:21 -0300</pubDate>
-    <lastBuildDate>Mon, 02 Feb 2015 13:57:21 -0300</lastBuildDate>
+    <link>http://mammut.github.io/</link>
+    <atom:link href="http://mammut.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 03 Feb 2015 19:27:49 -0300</pubDate>
+    <lastBuildDate>Tue, 03 Feb 2015 19:27:49 -0300</lastBuildDate>
     <generator>Jekyll v2.5.2</generator>
     
       <item>
@@ -892,8 +892,8 @@ Para solucionar este problema Facebook entrega Flux, una arquitectura de diseño
 &lt;p&gt;Espero les haya servido como una introducción a React y aplicaciones realtime usando Sails.js con socket.io.&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Feb 2015 00:00:00 -0300</pubDate>
-        <link>http://mammut.github.com/frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</link>
-        <guid isPermaLink="true">http://mammut.github.com/frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</guid>
+        <link>http://mammut.github.io/frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/frontend/react/2015/02/01/creando-un-chat-realtime-con-sails-y-react.html</guid>
         
         
         <category>frontend</category>
@@ -910,8 +910,8 @@ Asi por ejemplo el 12.125 = 1100.001&lt;/p&gt;
 &lt;p&gt;pueden ver el proyecto aqui: &lt;a href=&quot;/dec2bin&quot; target=&quot;_blank&quot;&gt;dec2bin&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 02 May 2014 00:00:00 -0400</pubDate>
-        <link>http://mammut.github.com/web/2014/05/02/decimal-a-binario.html</link>
-        <guid isPermaLink="true">http://mammut.github.com/web/2014/05/02/decimal-a-binario.html</guid>
+        <link>http://mammut.github.io/web/2014/05/02/decimal-a-binario.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/web/2014/05/02/decimal-a-binario.html</guid>
         
         <category>javascript</category>
         
@@ -929,8 +929,8 @@ Asi por ejemplo el 12.125 = 1100.001&lt;/p&gt;
         <description>&lt;p&gt;&lt;a href=&quot;/blackbird&quot;&gt;BLACKBIRD&lt;strong&gt;SOFTWARE&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 02 May 2014 00:00:00 -0400</pubDate>
-        <link>http://mammut.github.com/web/2014/05/02/blackbird-software.html</link>
-        <guid isPermaLink="true">http://mammut.github.com/web/2014/05/02/blackbird-software.html</guid>
+        <link>http://mammut.github.io/web/2014/05/02/blackbird-software.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/web/2014/05/02/blackbird-software.html</guid>
         
         <category>usm</category>
         
@@ -1008,8 +1008,8 @@ Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo
 &lt;p&gt;Eso es todo lo que tengo que decir sobre extern en C.&lt;/p&gt;
 </description>
         <pubDate>Mon, 01 Apr 2013 11:34:25 -0300</pubDate>
-        <link>http://mammut.github.com/c-codes/2013/04/01/extern-en-c.html</link>
-        <guid isPermaLink="true">http://mammut.github.com/c-codes/2013/04/01/extern-en-c.html</guid>
+        <link>http://mammut.github.io/c-codes/2013/04/01/extern-en-c.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/c-codes/2013/04/01/extern-en-c.html</guid>
         
         
         <category>c-codes</category>
@@ -1041,8 +1041,8 @@ and not a soul to hear.  &lt;/p&gt;
 &lt;p&gt;La canción la pueden escuchar aquí: &lt;a href=&quot;//youtu.be/oRO0jQFnLjE&quot;&gt;http://youtu.be/oRO0jQFnLjE&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 30 Mar 2013 00:00:00 -0300</pubDate>
-        <link>http://mammut.github.com/life/2013/03/30/rediseno.html</link>
-        <guid isPermaLink="true">http://mammut.github.com/life/2013/03/30/rediseno.html</guid>
+        <link>http://mammut.github.io/life/2013/03/30/rediseno.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/life/2013/03/30/rediseno.html</guid>
         
         <category>jekyll</category>
         
@@ -1054,6 +1054,822 @@ and not a soul to hear.  &lt;/p&gt;
         
         
         <category>life</category>
+        
+      </item>
+    
+      <item>
+        <title>Estructuras y archivos</title>
+        <description>&lt;p&gt;Sin dudas uno de los aspectos mas abstractos de C, creo yo, ya que estamos utilizando archivos binarios, que no podemos ver, Necesitamos mucha imaginación.&lt;/p&gt;
+
+&lt;p&gt;Publico 2 codigos, cada uno explica el uso de fwrite y fread.&lt;/p&gt;
+
+&lt;h4&gt;fwrite&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+    /* Creamos una estructura */
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    /* Declaramos un archivo */
+    FILE *arch;
+    
+    /* Abrimos el archivo &quot;db.dat&quot; en modo de sobreescritura y Binario */
+    arch = fopen(&quot;db.dat&quot;, &quot;wb&quot;);
+    
+    if(arch == NULL){
+        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
+        return 1;
+    }
+    
+    /* Creamos una estructura de tipo myStruct nueva para poder gaurdarla */
+    myStruct prueba;
+    
+    /* Le damos valores a sus propiedades */
+    prueba.id = 1;
+    sprintf(prueba.name, &quot;Estructura de Prueba&quot;);
+    
+    /* Guardamos la estructura en la base de datos 
+       Los parametros de fwrite son;
+       fwrite(A, B, C, D);
+       A = Direccion de memoria(&amp;) de la estructura. Si fuese un arreglo, seria simplemente el nombre del arreglo.
+       B = Tamaño de la estructura
+       C = Cantidad de elementos. Si fuese un arreglo de tamaño 5, seria 5
+       D = Donde guardarlo, archivo
+    */
+    fwrite(&amp;prueba, sizeof(myStruct), 1, arch);
+    
+    /* En este caso:
+       A = &amp;prueba, es decir, la direccion de memoria de la estructura prueba
+       B = sizeof(myStruct), el tamaño de el tipo de estructura de prueba, es decir, myStruct
+       C = 1, ya que no es un arreglo, solo es un elemento que deseo guardar
+       D = arch, el puntero al archivo abierto
+    */
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    
+    printf(&quot;La estructura ha sido guardada exitosamente\n&quot;);
+    
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;fread&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+    /* Creamos una estructura 
+       NOTA: Cuando leemos estructuras, debemos saber como estan definidas estas
+       estructuras, es decir, debemos saber que propiedades tienen.
+    */
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    /* Declaramos un archivo */
+    FILE *arch;
+    
+    /* Abrimos el archivo &quot;db.dat&quot; en modo de sobreescritura y Binario */
+    arch = fopen(&quot;db.dat&quot;, &quot;rb&quot;);
+    
+    if(arch == NULL){
+        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
+        return 1;
+    }
+    
+    /* Creamos una estructura de tipo myStruct nueva para guardar temporalmente
+       las lecturas de cada estructura del archivo
+    */
+    myStruct tmp;
+        
+    /* Leemos la estructura de la base de datos 
+       Los parametros de fread son;
+       fread(A, B, C, D);
+       A = Direccion de memoria(&amp;) de la estructura temporal donde se guardaran las lecturas
+           Si fuese un arreglo, seria simplemente el nombre del arreglo
+       B = Tamaño de la estructura (el tipo de estructura)
+       C = Cantidad de elementos para leer. Si fuese un arreglo de tamaño 5, seria 5
+       D = Donde leerlo, archivo
+    */
+    while(fread(&amp;tmp, sizeof(myStruct), 1, arch)==1){
+        printf(&quot;ID: %d\n&quot;, tmp.id);
+        printf(&quot;Name: %s\n&quot;, tmp.name);
+        /* aqui dentro puedo manipular cada estructura individualmente
+            por ejemplo if(!strcmp(tmp.name, &quot;hola&quot;){algo;}
+            compara el string hola con el tmp.name
+        */
+        
+        
+    }
+    
+    /* En este caso, hacemos un while que lee a cada estructura en un ciclo:
+       A = &amp;prueba, es decir, la direccion de memoria de la estructura tmp
+       B = sizeof(myStruct), el tamaño de el tipo de estructura de tmp, es decir, myStruct
+       C = 1, ya que leeo de a 1 estructura a la vez, y en cada ciclo del while las manipulo
+           individualmente
+       D = arch, el puntero al archivo abierto  
+       
+       NOTA: es importante saber que el valor de retorno de fread y fwrite es la cantidad de elementos 
+       leidos o guardados (C), es por eso que es conveniente hacer un while, ya que cuando el archivo 
+       sea recorrido completamente, el ultimo fread no podra leer elementos, es decir que el valor de 
+       retorno seria 0.
+    */
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ahora ejemplos parecidos, pero utilizando arreglos de estructuras. Es decir, montamos las estructuras que estan dentro del archivo, en un arreglo de estructuras y luego manipulamos el arreglo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Escritura de un arreglo de estructuras:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    FILE *arch;
+    
+    arch = fopen(&quot;db.dat&quot;,&quot;wb&quot;);
+    
+    if(arch == NULL){
+        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
+        return 1;
+    }
+    
+    /* Creamos un arreglo de tipo estructura myStruct de tamaño 10 */
+    myStruct arreglo[10];
+    
+    int i;
+    
+    for(i=0; i&lt;10; i++){
+        sprintf(arreglo[i].name, &quot;Nombre%d&quot;, i);
+        arreglo[i].id = i+1;
+    }
+    
+    /* Escribimos desde la direccion de memoria del arreglo (dado por el nombre del arreglo sin &amp;)
+       en el archivo arch
+    */
+    fwrite(arreglo, sizeof(myStruct), 10, arch);
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Lectura de un arreglo de estructuras:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    FILE *arch; 
+    arch = fopen(&quot;db.dat&quot;,&quot;rb&quot;);
+    
+    if(arch == NULL){
+        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
+        return 1;
+    }
+    
+    /* creamos una estructura temporal para contar las estructuras dentro del archivo */
+    myStruct tmp;
+    int i,size=0;
+    
+    /* Contamos cuantas estructuras hay en el archivo */
+    while(fread(&amp;tmp, sizeof(myStruct), 1, arch))
+        size++;
+    
+    /* Creamos un arreglo de estructuras del tamaño leido en el paso anterior */
+    myStruct lectura[size];
+    
+    /* retrocedemos el archivo IMPORTANTE!! */
+    rewind(arch);
+    
+    /* Montamos &#39;size&#39; estructuras en el arreglo &#39;lectura&#39;, leido desde arch */
+    fread(lectura, sizeof(myStruct), size, arch);
+    
+    /* mostramos el arreglo */
+    for(i=0; i&lt;10; i++){
+        printf(&quot;Nombre: %s\t\t&quot;, lectura[i].name);
+        printf(&quot;id: %d\n&quot;, lectura[i].id);
+    }
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Es muy importante que entiendan por que cuando leo y escribo un arreglo, no uso el &amp;amp; (dirección de memoria).&lt;/p&gt;
+
+&lt;p&gt;Cuando creo un arreglo &lt;code&gt;int arreglo[20];&lt;/code&gt; e imprimo el puntero del arreglo (*arreglo):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;printf(&amp;quot;%d&amp;quot;, *arreglo);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;obtendría la dirección de memoria del primer elemento del arreglo&lt;/p&gt;
+
+&lt;p&gt;es exactamente a decir:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;printf(&amp;quot;%d&amp;quot;, &amp;amp;arreglo[0]);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Por eso no se escribe &amp;amp;arreglo y simplemente arreglo, (también se podría escribir &lt;code&gt;&amp;amp;arreglo[0]&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Ahora simplemente a probar diferentes códigos, practiquen, sufran... etc.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Nov 2010 00:00:00 -0300</pubDate>
+        <link>http://mammut.github.io/c-codes/2010/11/18/estructuras-y-archivos.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/c-codes/2010/11/18/estructuras-y-archivos.html</guid>
+        
+        
+        <category>c-codes</category>
+        
+      </item>
+    
+      <item>
+        <title>Laboratorio 8, control archivos y estructuras</title>
+        <description>&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&gt;
+#include &amp;lt;stdlib.h&gt;
+#include &amp;lt;string.h&gt;
+
+void jpgets(char string[]);
+
+int main()
+{
+    typedef struct{
+        int id;
+        char nombre[30+1];
+        int precio;
+        int stock;
+    }producto;
+    
+    int menu,menu2;
+    FILE *db = fopen(&quot;db.dat&quot;, &quot;ab+&quot;);
+    FILE *temp;
+    producto tmp;
+    int delid;
+    
+    if(db == NULL || temp == NULL){
+        printf(&quot;Ha ocurrido un error al abrir la base de datos\n&quot;);
+        return 1;
+    }
+    
+    printf(&quot;1 - Administrador\n&quot;);
+    printf(&quot;2 - Usuario\n&quot;);
+    printf(&quot;3 - Salir\n&quot;);
+    printf(&quot;Opcion: &quot;);
+    scanf(&quot;%d&quot;, &amp;menu);
+    
+    switch(menu){
+        case(1):{
+            system(&quot;cls&quot;);
+            while(1){
+                printf(&quot;1 - Insertar Productos\n&quot;);
+                printf(&quot;2 - Eliminar Producto\n&quot;);
+                printf(&quot;3 - Mostrar Producto\n&quot;);
+                printf(&quot;4 - Salir\nOpcion: &quot;);
+                scanf(&quot;%d&quot;, &amp;menu2);
+                switch(menu2){
+                    case(1):{
+                        rewind(db);               
+                        printf(&quot;\nID: &quot;);
+                        scanf(&quot;%d&quot;, &amp;tmp.id);
+                        printf(&quot;Nombre: &quot;);
+                        jpgets(tmp.nombre);
+                        printf(&quot;Precio: &quot;);
+                        scanf(&quot;%d&quot;, &amp;tmp.precio);
+                        printf(&quot;Stock: &quot;);
+                        scanf(&quot;%d&quot;, &amp;tmp.stock);
+                        fwrite(&amp;tmp, sizeof(tmp), 1, db);
+                        system(&quot;cls&quot;);
+                    }break;
+                
+                    case(2):{
+                        system(&quot;cls&quot;);
+                        rewind(db);
+                        temp = fopen(&quot;temp.dat&quot;, &quot;wb+&quot;);
+                        printf(&quot;ID para eliminar: &quot;);
+                        scanf(&quot;%d&quot;, &amp;delid);
+                        while(fread(&amp;tmp, sizeof(tmp), 1, db)){  
+                            if(tmp.id != delid)                         
+                                fwrite(&amp;tmp, sizeof(tmp), 1, temp);                        
+                        }
+                        fclose(db);
+                        db = fopen(&quot;db.dat&quot;, &quot;wb&quot;);
+                        rewind(temp);
+                        while(fread(&amp;tmp, sizeof(tmp), 1, temp)){
+                            fwrite(&amp;tmp, sizeof(tmp), 1, db);
+                        }
+                        fclose(db);
+                        fclose(temp);
+                        remove(&quot;temp.dat&quot;);
+                        db = fopen(&quot;db.dat&quot;, &quot;ab+&quot;);
+                    }break;
+                    
+                    case(3):{
+                        system(&quot;cls&quot;);
+                        rewind(db);
+                        while(fread(&amp;tmp, sizeof(tmp), 1, db))
+                            printf(&quot;%d\t%s\t%d\t%d\n&quot;, tmp.id, tmp.nombre, tmp.precio, tmp.stock);
+                    }break;
+                    case(4):{
+                        fclose(db);
+                        return 0;
+                    }break;
+                    default:{
+                        printf(&quot;Opcion invalida\n&quot;);
+                    }
+                }
+            }
+        }break;
+        
+        case(2):{
+            while(1){
+                printf(&quot;1 - Ver Stock\n&quot;);
+                printf(&quot;2 - Comprar Producto\n&quot;);
+                printf(&quot;3 - Salir\nOpcion: &quot;);
+                scanf(&quot;%d&quot;, &amp;menu2);
+                switch(menu2){
+                    case(1):{
+                        system(&quot;cls&quot;);
+                        rewind(db);
+                        printf(&quot;ID para ver stock: &quot;);
+                        scanf(&quot;%d&quot;, &amp;delid);
+                        while(fread(&amp;tmp, sizeof(tmp), 1, db)){
+                            if(tmp.id == delid){
+                                printf(&quot;\nstock: %d\n&quot;, tmp.stock);
+                            }
+                        }
+                    }break;                    
+                    case(2):{
+                        system(&quot;cls&quot;);
+                        rewind(db);
+                        temp = fopen(&quot;temp.dat&quot;, &quot;wb+&quot;);
+                        printf(&quot;ID para comprar: &quot;);
+                        scanf(&quot;%d&quot;, &amp;delid);
+                        while(fread(&amp;tmp, sizeof(tmp), 1, db)){  
+                            if(tmp.id == delid)                         
+                                tmp.stock--;
+                            fwrite(&amp;tmp, sizeof(tmp), 1, temp);                                
+                        }
+                        fclose(db);
+                        db = fopen(&quot;db.dat&quot;, &quot;wb&quot;);
+                        rewind(temp);
+                        while(fread(&amp;tmp, sizeof(tmp), 1, temp)){
+                            fwrite(&amp;tmp, sizeof(tmp), 1, db);
+                        }
+                        fclose(db);
+                        fclose(temp);
+                        remove(&quot;temp.dat&quot;);
+                        db = fopen(&quot;db.dat&quot;, &quot;ab+&quot;);
+                    }break;
+                    case(3):{
+                        fclose(db);
+                        return 0;
+                    }break;
+                    default:{
+                        printf(&quot;Opcion invalida\n&quot;);
+                    }
+                }
+            }
+        }break;
+        case(3):{
+            return 0;
+        }break;
+        default:{
+            printf(&quot;Opcion Inválida\n&quot;);
+        }
+    }
+    system(&quot;pause&gt;nul&quot;);
+    return 0;
+}
+
+void jpgets(char string[])
+{
+    char ch;
+    int j;
+    
+    while ((ch = getchar()) != &#39;\n&#39; &amp;&amp; ch != EOF);
+    fgets(string, 30, stdin);
+    j = strlen(string)-1;
+    if(string[j] == &#39;\n&#39;)
+            string[j] = &#39;\0&#39;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 17 Nov 2010 00:00:00 -0300</pubDate>
+        <link>http://mammut.github.io/c-codes/2010/11/17/laboratorio-8.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/c-codes/2010/11/17/laboratorio-8.html</guid>
+        
+        
+        <category>c-codes</category>
+        
+      </item>
+    
+      <item>
+        <title>Estructuras con punteros</title>
+        <description>&lt;p&gt;Cuando tenemos códigos donde una estructura se define como parte de otra, aveces es mas cómodo y bonito hacer un puntero a la subestructura en vez de llamarla por todos los parametros que necesita.&lt;/p&gt;
+
+&lt;p&gt;¿de qué estoy hablando? de esto:&lt;/p&gt;
+
+&lt;p&gt;Tengo una estructura &lt;strong&gt;Mascota&lt;/strong&gt; que tiene un nombre y una edad.&lt;br&gt;
+Tengo una estructura &lt;strong&gt;Persona&lt;/strong&gt; que tiene un nombre una edad y una Mascota.&lt;/p&gt;
+
+&lt;p&gt;es decir tengo una estructura dentro de otra.&lt;/p&gt;
+
+&lt;p&gt;como sabemos, para utilizar las propiedades de una estructura lo hacemos con:
+Supongamos que tengo la estructura &lt;strong&gt;persona&lt;/strong&gt; (de arriba), y yo cree la persona juampi.&lt;/p&gt;
+
+&lt;p&gt;ahora decimos;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;juampi.edad = 20;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;y para el nombre, como es un string, usamos strcpy o sprintf.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sprintf(juampi.nombre, &amp;quot;Juampi&amp;quot;);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;hasta aqui todo bien, facil y bonito.&lt;/p&gt;
+
+&lt;p&gt;ahora vamos a darle un nombre y una edad a la mascota de juampi.
+Utilizando la misma logica anterior seria:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;juampi.pet.edad = 2;
+sprintf(juampi.pet.nombre, &quot;Boo&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vemos que mientras mas subestructuras, mas tenemos que escribir para llegar a cierta propiedad, lo que puede volverse muy feo...&lt;/p&gt;
+
+&lt;p&gt;menos mal que en C existen los punteros!!&lt;/p&gt;
+
+&lt;p&gt;vamos a hacer un puntero a la direccion de memoria de la mascota de juampi asi:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;mascota *puntero;
+puntero = &amp;juampi.pet;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Listo, ahora para utilizar las propiedades de la mascota de juampi, simplemente hacemos esto:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;puntero-&gt;edad = 20;
+sprintf(puntero-&gt;nombre, &quot;Boo&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;se ve bonito ahora con una flechita.&lt;/p&gt;
+
+&lt;p&gt;ahora todo escrito en C&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+#include &amp;lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+  }mascota;
+  
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+    mascota pet;
+  }persona;
+  
+  /* ahora creamos una persona... */
+  persona juampi;
+  
+  /* hacemos un puntero para la mascota de la persona juampi */
+  mascota *pet;
+  
+  /* Ahora le decimos al puntero pet, que apunte a la direccion
+     de memoria de la mascota de la persona juampi */ 
+  pet = &amp;juampi.pet;
+  
+  /* listo, ahora le damos un nombre y una edad a la persona */
+  juampi.edad = 20; 
+  sprintf(juampi.nombre, &quot;Juampi&quot;);
+  
+  /* Ahora la mascota */
+  pet-&gt;edad = 2;
+  sprintf(pet-&gt;nombre, &quot;Boo&quot;);
+  
+  /* mostremos los valores */
+  printf(&quot;Nombre persona: %s\n&quot;, juampi.nombre);
+  printf(&quot;Edad persona: %d\n&quot;, juampi.edad);
+  
+  printf(&quot;Nombre mascota: %s\n&quot;, pet-&gt;nombre);
+  printf(&quot;Edad mascota: %d\n&quot;, pet-&gt;edad);
+  
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ejemplo2. Arreglo de personas, con arreglo de punteros a las mascotas de cada persona.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+#include &amp;lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+  }mascota;
+  
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+    mascota pet;
+  }persona;
+
+  int i;
+  
+  /* Creamos un arreglo de tipo persona de tamaño 5 */
+  persona gente[5];
+  
+  /* Creamos un arreglo de punteros de tipo mascota y de tamaño 5 */
+  mascota *mascotas[5];
+  
+  /* hacemos un for que relacione a cada mascota con su dueño */
+  for(i=0; i&amp;lt;5; i++)
+    mascotas[i] = &amp;gente[i].pet;
+    
+  /* Ahora le damos una edad a las personas */
+  for(i=0; i&amp;lt;5; i++)
+    gente[i].edad = i+20;
+    
+  /* Un nombre... en verdad sera al azar */
+  for(i=0; i&amp;lt;5; i++)
+    sprintf(gente[i].nombre, &quot;al azar&quot;);
+    
+  
+  /* ahora las mascotas... */
+  /* edades */
+  for(i=0; i&amp;lt;5; i++)
+    mascotas[i]-&gt;edad = 2+i;
+    
+  /* Nombres */
+  for(i=0; i&amp;lt;5; i++)
+    sprintf(mascotas[i]-&gt;nombre, &quot;Boo&quot;);
+    
+  
+  /* Ahora mostramos toda la informacion */
+  for(i=0; i&amp;lt;5; i++){
+    printf(&quot;Nombre persona%d: %s\n&quot;, i+1, gente[i].nombre);
+    printf(&quot;Edad persona%d: %d\n&quot;, i+1, gente[i].edad);
+    printf(&quot;Nombre Mascota de la persona%d: %s\n&quot;, i+1, mascotas[i]-&gt;nombre);
+    printf(&quot;Edad Mascota de la persona%d: %d\n&quot;, i+1, mascotas[i]-&gt;edad);
+    printf(&quot;-------------------------------------\n&quot;);
+  }
+  
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ejercicio...&lt;br&gt;
+¿puedo utilizar la flechita para una estructura simple asi:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;juampi-&amp;gt;edad = 20;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;en vez de&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;juampi.edad = 20;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;? ¿Cómo?&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Nov 2010 00:00:00 -0300</pubDate>
+        <link>http://mammut.github.io/c-codes/2010/11/16/estructuras-con-punteros.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/c-codes/2010/11/16/estructuras-con-punteros.html</guid>
+        
+        
+        <category>c-codes</category>
+        
+      </item>
+    
+      <item>
+        <title>Strings. Arreglos de caracteres</title>
+        <description>&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+#include &amp;lt;stdio.h&gt;
+#include &amp;lt;string.h&gt;
+
+// esta función elimina los saltos de línea que guarda fgets() cuando no se alcanza el límite de carácteres
+void eliminarSaltosDeLinea(char array[]);
+
+int main () {
+    int edad;
+    char nombre[50], direccion[100];
+    // este array va a ser usado para almacenar temporalmente los datos que se le van a pasar a sscanf()
+    char temporal[50];
+    
+    // guardar el nombre con fgets()
+    // prototipo: fgets(variable donde se va a guardar la cadena de texto, límite de caracteres, lugar desde el que va a leer);
+    // 1. esta función guarda n-1 carácteres, en este caso 49 y permite guardar los espacios
+    // 2. &quot;stdin&quot; le indica que lea lo que se ingrese desde el teclado
+    printf(&quot;Nombre: &quot;);
+    fgets(nombre, 50, stdin);
+    eliminarSaltosDeLinea(nombre);
+    
+    // guardar la edad como un entero usando sscanf()
+    // prototipo: sscanf(array de caracteres, &quot;los tipos de datos&quot;, variables en las que se van a guardar los datos&quot;);
+    // 1. guardo lo ingresado por teclado como un string usando fgets()
+    // 2. se definió &quot;temporal&quot; con un tamaño de 50, pero en fgets() se puso 4 como límite para que guarde un numero de 2 dígitos y un &#39;\0&#39;
+    // 3. es importante que consideren el NULL cuando pongan el límite de carácteres, de lo contrario se va a saltar los próximos fgets()
+    // 4. la función fgets() guarda un salto de línea (&#39;\n&#39;) siempre que se ingresan menos carácteres que el límite que se indico
+    // 5. lo anterior debiera pasar siempre ya que tenemos que considerar el &#39;\0&#39; de los strings, por lo tanto tenemos que dejar como mínimo un espacio libre
+    // 6. se usa &quot;temporal&quot; (que es un string) para guardar lo ingresado por teclado como un numero entero usando sscanf()
+    printf(&quot;Edad: &quot;);
+    fgets(temporal, 4, stdin);
+    sscanf(temporal, &quot;%d&quot;, &amp;edad);
+    
+    // comprobando que no se produzcan errores al usar fgets() - sscanf() - fgets() seguidos
+    printf(&quot;Direccion: &quot;);
+    fgets(direccion, 100, stdin);
+    eliminarSaltosDeLinea(direccion);
+    
+    // muestro la información
+    printf(&quot;Su nombre es %s\n&quot;, nombre);
+    printf(&quot;Su edad es %d\n&quot;, edad);
+    printf(&quot;Su direccion es: %s\n&quot;, direccion);
+    return 0;
+}
+
+void eliminarSaltosDeLinea(char array[]) {
+    // strlen() obtiene el largo del array, incluyendo el &#39;\0&#39;
+    // si la penúltima posición (la última se sabe que es &#39;\0&#39; por tratarse de un string) es un salto de línea (&#39;\n&#39;) entonces lo reemplaza por &#39;\0&#39;
+    if (array[strlen(array)-1]==&#39;\n&#39;) {
+        array[strlen(array)-1]=&#39;\0&#39;;
+        printf(&quot;Elimine el salto de linea...\n&quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cuando le paso un arreglo unidimensional(vector) a una función, lo paso por referencia (la dirección de memoria), y se modifica el original. Cuando definimos la función, no es necesario colocar el tamaño, este adoptara solo el tamaño del arreglo que se le pase.&lt;/p&gt;
+
+&lt;p&gt;Si nuestro arreglo es de dos o mas dimensiones, debemos especificar los tamaños de las dimensiones.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 Nov 2010 00:00:00 -0300</pubDate>
+        <link>http://mammut.github.io/c-codes/2010/11/14/strings.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/c-codes/2010/11/14/strings.html</guid>
+        
+        
+        <category>c-codes</category>
+        
+      </item>
+    
+      <item>
+        <title>Ejercicio de sorting sobre estructuras en archivos</title>
+        <description>&lt;p&gt;Cree un programa que ordene los 100 registros dentro de un archivo mediante BubbleSort.&lt;br&gt;
+Asuma que el archivo ya existe y tiene estructuras del tipo.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;struct tAlumno{ char nombre[20]; int promedio; }&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ordene el archivo respecto al promedio, de menor a mayor. &lt;br/&gt;
+NO use arreglos y ordene todo dentro del MISMO archivo.&lt;/p&gt;
+
+&lt;p&gt;Código:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+    typedef struct{
+        char nombre[20+1]; /* +1 por el &#39;\0&#39; */
+        int promedio;
+    }tAlumno;
+
+    int i, j, k;
+    tAlumno s, tmp;
+    FILE *alumnos = fopen(&quot;db.dat&quot;, &quot;rb+&quot;);
+
+    if(alumnos == NULL){
+        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
+        return 1;
+    }
+    
+    /* Obtener el numero de estructuras hay en el archivo */
+    fseek(alumnos, 0, SEEK_END);
+    k = ftell(alumnos ) / sizeof(tAlumno);
+        
+    /* Ordenar las estructuras !! */
+    for(i=0; i&amp;lt;k; i++){
+        rewind(alumnos);
+        fread(&amp;tmp, sizeof(tAlumno), 1, alumnos);
+        for(j=0; j&amp;lt;k-i; j++){
+            fread(&amp;s, sizeof(tAlumno), 1, alumnos);
+            if(tmp.promedio&gt;s.promedio){
+                /* Retroceder el largo de 2 estructuras*/
+                fseek(alumnos, (-2)*sizeof(tAlumno), SEEK_CUR);
+                
+                /* escribir la estructura s */
+                fwrite(&amp;s, sizeof(tAlumno), 1, alumnos);
+                
+                /* escribir la estructura tmp */
+                fwrite(&amp;tmp, sizeof(tAlumno), 1, alumnos);
+                
+                /* Quedamos a donde mismo */
+            }
+            if(tmp.promedio&amp;lt;=s.promedio)
+                /* si tmp es menor o igual que s, pasarle la pelota a s para que siga avanzando */
+                tmp = s;
+        }
+    }
+    
+    /* Mostrar las estructuras ordenadas */
+    rewind(alumnos);    
+    while(fread(&amp;s, sizeof(tAlumno), 1, alumnos)){
+        printf(&quot;Nombre: %-20s\t\tPromedio: %3d\n&quot;, s.nombre, s.promedio);
+    }
+    fclose(alumnos);
+    return 0;
+}
+
+/* by JPEG @ http://mammut.github.io */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Generador al azar de nombres y promedios, guardados en el archivo &lt;strong&gt;db.dat&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &lt;time.h&gt;
+#include &amp;lt;stdio.h&gt;
+#include &amp;lt;stdlib.h&gt;
+
+#define MAX_STRUCTS 100 /* Candidad de alumnos para generar */
+#define MAX_NOM 20      /* Largo maximo de los nombres para generar */  
+#define MIN_NOM 5       /* Largo minimo de los nombres para generar */
+
+
+int main(int argc, char *argv[])
+{
+    srand(time(NULL));
+    typedef struct{
+        char nombre[20+1];  /* +1 por el &#39;\0&#39; */
+        int promedio;
+    }tAlumno;
+
+    int i,jp,j,tmp; 
+    tAlumno musik;
+    FILE *alumnos = fopen(&quot;db.dat&quot;, &quot;wb+&quot;); /* + para mostrar abajo el archivo generado :P */
+
+    if(alumnos == NULL){
+        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
+        fclose(alumnos);
+        return 1;
+    }
+    
+    for(i=1; i&amp;lt;=MAX_STRUCTS; i++){      
+        jp = rand()%(MAX_NOM-MIN_NOM+1)+MIN_NOM;        /* Largo del nombre al azar */
+            for(j=0;j&amp;lt;jp;j++){  /* cada caracter al azar */
+                tmp = rand()%27+97;
+                if(tmp == 123)
+                    musik.nombre[j] = &#39; &#39;;
+                else
+                    musik.nombre[j] = tmp;
+            }
+            musik.nombre[j] = &#39;\0&#39;;
+            musik.promedio = rand()%100+1;  /* promedio al azar */
+            fwrite(&amp;musik, sizeof(tAlumno), 1, alumnos);
+    }
+    
+    rewind(alumnos);
+    while(fread(&amp;musik, sizeof(tAlumno), 1, alumnos)){
+        printf(&quot;Nombre: %-20s\t\t\tPromedio: %3d\n&quot;, musik.nombre, musik.promedio);
+    }
+    fclose(alumnos);
+    return 0;
+}
+
+/* by JPEG @ http://mammut.github.io */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Eso seria... cualquier duda dejen un comentario.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 Nov 2010 00:00:00 -0300</pubDate>
+        <link>http://mammut.github.io/c-codes/2010/11/14/ejercicio-de-estructuras.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/c-codes/2010/11/14/ejercicio-de-estructuras.html</guid>
+        
+        
+        <category>c-codes</category>
         
       </item>
     

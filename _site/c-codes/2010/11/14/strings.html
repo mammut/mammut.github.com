@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Strings. Arreglos de caracteres</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Ejemplo de string en C, como usar arreglos de caracteres en funciones" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Strings. Arreglos de caracteres" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/11/14/strings.html" />
+  <meta property="og:description" content="Ejemplo de string en C, como usar arreglos de caracteres en funciones" />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Strings. Arreglos de caracteres</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-11-14T00:00:00-03:00">14 Nov 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,71 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <pre><code class="language-c">
+#include &lt;stdio.h>
+#include &lt;string.h>
+
+// esta función elimina los saltos de línea que guarda fgets() cuando no se alcanza el límite de carácteres
+void eliminarSaltosDeLinea(char array[]);
+
+int main () {
+    int edad;
+    char nombre[50], direccion[100];
+    // este array va a ser usado para almacenar temporalmente los datos que se le van a pasar a sscanf()
+    char temporal[50];
+    
+    // guardar el nombre con fgets()
+    // prototipo: fgets(variable donde se va a guardar la cadena de texto, límite de caracteres, lugar desde el que va a leer);
+    // 1. esta función guarda n-1 carácteres, en este caso 49 y permite guardar los espacios
+    // 2. "stdin" le indica que lea lo que se ingrese desde el teclado
+    printf("Nombre: ");
+    fgets(nombre, 50, stdin);
+    eliminarSaltosDeLinea(nombre);
+    
+    // guardar la edad como un entero usando sscanf()
+    // prototipo: sscanf(array de caracteres, "los tipos de datos", variables en las que se van a guardar los datos");
+    // 1. guardo lo ingresado por teclado como un string usando fgets()
+    // 2. se definió "temporal" con un tamaño de 50, pero en fgets() se puso 4 como límite para que guarde un numero de 2 dígitos y un '\0'
+    // 3. es importante que consideren el NULL cuando pongan el límite de carácteres, de lo contrario se va a saltar los próximos fgets()
+    // 4. la función fgets() guarda un salto de línea ('\n') siempre que se ingresan menos carácteres que el límite que se indico
+    // 5. lo anterior debiera pasar siempre ya que tenemos que considerar el '\0' de los strings, por lo tanto tenemos que dejar como mínimo un espacio libre
+    // 6. se usa "temporal" (que es un string) para guardar lo ingresado por teclado como un numero entero usando sscanf()
+    printf("Edad: ");
+    fgets(temporal, 4, stdin);
+    sscanf(temporal, "%d", &edad);
+    
+    // comprobando que no se produzcan errores al usar fgets() - sscanf() - fgets() seguidos
+    printf("Direccion: ");
+    fgets(direccion, 100, stdin);
+    eliminarSaltosDeLinea(direccion);
+    
+    // muestro la información
+    printf("Su nombre es %s\n", nombre);
+    printf("Su edad es %d\n", edad);
+    printf("Su direccion es: %s\n", direccion);
+    return 0;
+}
+
+void eliminarSaltosDeLinea(char array[]) {
+    // strlen() obtiene el largo del array, incluyendo el '\0'
+    // si la penúltima posición (la última se sabe que es '\0' por tratarse de un string) es un salto de línea ('\n') entonces lo reemplaza por '\0'
+    if (array[strlen(array)-1]=='\n') {
+        array[strlen(array)-1]='\0';
+        printf("Elimine el salto de linea...\n");
+    }
+}
+</code></pre>
+
+<p>Cuando le paso un arreglo unidimensional(vector) a una función, lo paso por referencia (la dirección de memoria), y se modifica el original. Cuando definimos la función, no es necesario colocar el tamaño, este adoptara solo el tamaño del arreglo que se le pase.</p>
+
+<p>Si nuestro arreglo es de dos o mas dimensiones, debemos especificar los tamaños de las dimensiones.</p>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Strings.+Arreglos+de+caracteres&amp;url=http://mammut.github.io/c-codes/2010/11/14/strings"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +146,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-11-14 00:00">14 Nov 2010</time></p>
             </section>
           </div>
           

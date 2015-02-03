@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Estructuras y archivos</title>
+
+  <meta name="description" content="Introducción a las estructuras y archivos binarios en C. Como leer y escribir estructuras." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Estructuras y archivos" />
+  <meta property="og:site_name" content="JPEG {codes}" />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/11/18/estructuras-y-archivos.html" />
+  <meta property="og:description" content="Introducción a las estructuras y archivos binarios en C. Como leer y escribir estructuras." />
+  <meta property="og:image" content="/assets/images/df_logo.jpg" />
+  <meta property="fb:app_id" content="177325815624166" />
+  <meta property="article:author" content="https://www.facebook.com/juam3.14" />
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/prism.css" />
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <!-- header start -->
+
+<a href="http://mammut.github.io" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/df_logo.jpg)"></span></a>
+
+<!-- header end -->
+
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Estructuras y archivos</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2010-11-18T00:00:00-03:00">18 Nov 2010</time>
+              <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
+            lectura de <span class="post-reading-time"></span>
+          </div>
+          <a name="topofpage"></a>
+          <p>Sin dudas uno de los aspectos mas abstractos de C, creo yo, ya que estamos utilizando archivos binarios, que no podemos ver, Necesitamos mucha imaginación.</p>
+
+<p>Publico 2 codigos, cada uno explica el uso de fwrite y fread.</p>
+
+<h4>fwrite</h4>
+
+<pre><code class="language-c">
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    /* Creamos una estructura */
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    /* Declaramos un archivo */
+    FILE *arch;
+    
+    /* Abrimos el archivo "db.dat" en modo de sobreescritura y Binario */
+    arch = fopen("db.dat", "wb");
+    
+    if(arch == NULL){
+        printf("Ha ocurrido un error al abrir el archivo\n");
+        return 1;
+    }
+    
+    /* Creamos una estructura de tipo myStruct nueva para poder gaurdarla */
+    myStruct prueba;
+    
+    /* Le damos valores a sus propiedades */
+    prueba.id = 1;
+    sprintf(prueba.name, "Estructura de Prueba");
+    
+    /* Guardamos la estructura en la base de datos 
+       Los parametros de fwrite son;
+       fwrite(A, B, C, D);
+       A = Direccion de memoria(&) de la estructura. Si fuese un arreglo, seria simplemente el nombre del arreglo.
+       B = Tamaño de la estructura
+       C = Cantidad de elementos. Si fuese un arreglo de tamaño 5, seria 5
+       D = Donde guardarlo, archivo
+    */
+    fwrite(&prueba, sizeof(myStruct), 1, arch);
+    
+    /* En este caso:
+       A = &prueba, es decir, la direccion de memoria de la estructura prueba
+       B = sizeof(myStruct), el tamaño de el tipo de estructura de prueba, es decir, myStruct
+       C = 1, ya que no es un arreglo, solo es un elemento que deseo guardar
+       D = arch, el puntero al archivo abierto
+    */
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    
+    printf("La estructura ha sido guardada exitosamente\n");
+    
+    return 0;
+}
+</code></pre>
+
+<h4>fread</h4>
+
+<pre><code class="language-c">
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    /* Creamos una estructura 
+       NOTA: Cuando leemos estructuras, debemos saber como estan definidas estas
+       estructuras, es decir, debemos saber que propiedades tienen.
+    */
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    /* Declaramos un archivo */
+    FILE *arch;
+    
+    /* Abrimos el archivo "db.dat" en modo de sobreescritura y Binario */
+    arch = fopen("db.dat", "rb");
+    
+    if(arch == NULL){
+        printf("Ha ocurrido un error al abrir el archivo\n");
+        return 1;
+    }
+    
+    /* Creamos una estructura de tipo myStruct nueva para guardar temporalmente
+       las lecturas de cada estructura del archivo
+    */
+    myStruct tmp;
+        
+    /* Leemos la estructura de la base de datos 
+       Los parametros de fread son;
+       fread(A, B, C, D);
+       A = Direccion de memoria(&) de la estructura temporal donde se guardaran las lecturas
+           Si fuese un arreglo, seria simplemente el nombre del arreglo
+       B = Tamaño de la estructura (el tipo de estructura)
+       C = Cantidad de elementos para leer. Si fuese un arreglo de tamaño 5, seria 5
+       D = Donde leerlo, archivo
+    */
+    while(fread(&tmp, sizeof(myStruct), 1, arch)==1){
+        printf("ID: %d\n", tmp.id);
+        printf("Name: %s\n", tmp.name);
+        /* aqui dentro puedo manipular cada estructura individualmente
+            por ejemplo if(!strcmp(tmp.name, "hola"){algo;}
+            compara el string hola con el tmp.name
+        */
+        
+        
+    }
+    
+    /* En este caso, hacemos un while que lee a cada estructura en un ciclo:
+       A = &prueba, es decir, la direccion de memoria de la estructura tmp
+       B = sizeof(myStruct), el tamaño de el tipo de estructura de tmp, es decir, myStruct
+       C = 1, ya que leeo de a 1 estructura a la vez, y en cada ciclo del while las manipulo
+           individualmente
+       D = arch, el puntero al archivo abierto  
+       
+       NOTA: es importante saber que el valor de retorno de fread y fwrite es la cantidad de elementos 
+       leidos o guardados (C), es por eso que es conveniente hacer un while, ya que cuando el archivo 
+       sea recorrido completamente, el ultimo fread no podra leer elementos, es decir que el valor de 
+       retorno seria 0.
+    */
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    
+    return 0;
+}
+</code></pre>
+
+<p>Ahora ejemplos parecidos, pero utilizando arreglos de estructuras. Es decir, montamos las estructuras que estan dentro del archivo, en un arreglo de estructuras y luego manipulamos el arreglo.</p>
+
+<p><strong>Escritura de un arreglo de estructuras:</strong></p>
+
+<pre><code class="language-c">
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    FILE *arch;
+    
+    arch = fopen("db.dat","wb");
+    
+    if(arch == NULL){
+        printf("Ha ocurrido un error al abrir el archivo\n");
+        return 1;
+    }
+    
+    /* Creamos un arreglo de tipo estructura myStruct de tamaño 10 */
+    myStruct arreglo[10];
+    
+    int i;
+    
+    for(i=0; i<10; i++){
+        sprintf(arreglo[i].name, "Nombre%d", i);
+        arreglo[i].id = i+1;
+    }
+    
+    /* Escribimos desde la direccion de memoria del arreglo (dado por el nombre del arreglo sin &)
+       en el archivo arch
+    */
+    fwrite(arreglo, sizeof(myStruct), 10, arch);
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    return 0;
+}
+</code></pre>
+
+<p><strong>Lectura de un arreglo de estructuras:</strong></p>
+
+<pre><code class="language-c">
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    typedef struct{
+        int id;
+        char name[30+1];
+    }myStruct;
+    
+    FILE *arch; 
+    arch = fopen("db.dat","rb");
+    
+    if(arch == NULL){
+        printf("Ha ocurrido un error al abrir el archivo\n");
+        return 1;
+    }
+    
+    /* creamos una estructura temporal para contar las estructuras dentro del archivo */
+    myStruct tmp;
+    int i,size=0;
+    
+    /* Contamos cuantas estructuras hay en el archivo */
+    while(fread(&tmp, sizeof(myStruct), 1, arch))
+        size++;
+    
+    /* Creamos un arreglo de estructuras del tamaño leido en el paso anterior */
+    myStruct lectura[size];
+    
+    /* retrocedemos el archivo IMPORTANTE!! */
+    rewind(arch);
+    
+    /* Montamos 'size' estructuras en el arreglo 'lectura', leido desde arch */
+    fread(lectura, sizeof(myStruct), size, arch);
+    
+    /* mostramos el arreglo */
+    for(i=0; i<10; i++){
+        printf("Nombre: %s\t\t", lectura[i].name);
+        printf("id: %d\n", lectura[i].id);
+    }
+    
+    /* Cerramos el archivo */
+    fclose(arch);
+    return 0;
+}
+</code></pre>
+
+<p>Es muy importante que entiendan por que cuando leo y escribo un arreglo, no uso el &amp; (dirección de memoria).</p>
+
+<p>Cuando creo un arreglo <code>int arreglo[20];</code> e imprimo el puntero del arreglo (*arreglo):</p>
+
+<p><code>printf(&quot;%d&quot;, *arreglo);</code></p>
+
+<p>obtendría la dirección de memoria del primer elemento del arreglo</p>
+
+<p>es exactamente a decir:</p>
+
+<p><code>printf(&quot;%d&quot;, &amp;arreglo[0]);</code></p>
+
+<p>Por eso no se escribe &amp;arreglo y simplemente arreglo, (también se podría escribir <code>&amp;arreglo[0]</code>).</p>
+
+<p>Ahora simplemente a probar diferentes códigos, practiquen, sufran... etc.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            
+              
+                <a class="icon-twitter" href="http://twitter.com/share?text=Estructuras+y+archivos&amp;url=http://mammut.github.io/c-codes/2010/11/18/estructuras-y-archivos"
+                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+                </a>
+              
+            
+              
+            
+          </section>
+        </footer>
+        <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Escrito por</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Juan Pablo Escalona G.</h4>
+              <p class="bio"></p>
+              <hr>
+              <p class="published">Publicado el <time datetime="2010-11-18 00:00">18 Nov 2010</time></p>
+            </section>
+          </div>
+          
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Gracias a</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Publicado con <a href="http://jekyllrb.com">Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Suscríbete al feed.</span></a>
+              <div class="inner">
+                <section class="copyright">Copyright <a href="/">Juan Pablo Escalona G.</a> &copy; 2015<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="bottom-teaser cf">
+          
+    <section class="post-comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'jpeg-codes';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+
+
+        </div>
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">JPEG {codes}</h1>
+        <h2 class="blog-description">Códigos azarosos es múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
+</h2>
+        <a href="/" class="btn">Volver al inicio</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/prism.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    $window.on('scroll', function() {
+      var top = $window.scrollTop();
+
+      if (top < 0 || top > 1500) { return; }
+      $image
+        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+        .css('opacity', 1-Math.max(top/700, 0));
+    });
+    $window.trigger('scroll');
+
+    var height = $('.article-image').height();
+    $('.post-content').css('padding-top', height + 'px');
+
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+       && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({ scrollTop: target.offset().top }, 500);
+          return false;
+        }
+      }
+    });
+  });
+}(jQuery));
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7614418-13', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </body>
+</html>

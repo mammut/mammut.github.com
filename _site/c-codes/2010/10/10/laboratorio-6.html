@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Laboratorio 6, ejercicios de funciones y arreglos</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Pequeño resumen del sexto laboratorio del curso Programación IWI101 2010.2 @ UTFSM CSJ" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Laboratorio 6, ejercicios de funciones y arreglos" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/10/10/laboratorio-6.html" />
+  <meta property="og:description" content="Pequeño resumen del sexto laboratorio del curso Programación IWI101 2010.2 @ UTFSM CSJ" />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Laboratorio 6, ejercicios de funciones y arreglos</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-10-10T01:00:00-03:00">10 Oct 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,175 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <p>Ejercicios de funciones y arreglos.</p>
+
+<p>Ejercicio 1: realizar un programa que pida al usuario un numero, y mostrar la tabla se sumar y multiplicar, hasta dicho numero. Dichas tablas deben ser creadas como funciones, y las tablas deben ser matrices. El numero ingresado debe ser mayor que 0 y menor o igual a 10</p>
+
+<pre><code class="language-c">
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+#define MAX 11
+
+void sumar(int matrix[][MAX], int n);
+void mult(int matrix[][MAX], int n);
+
+int main(void)
+{
+    int n;
+    int matrix[MAX][MAX];
+    printf("Ingrese un numero: ");
+    do {
+        scanf("%d", &n);
+    }while(n &lt; 1 || n > 10);
+    sumar(matrix,n);
+    printf("\n");
+    mult(matrix,n);
+    system("pause>nul");
+    return 0;
+}
+
+void sumar(int matrix[][MAX], int n)
+{
+    int i,j;
+    for(i = 0; i &lt; = n; i++){
+        for(j = 0; j &lt;= n; j++){
+            matrix[i][j]=i+j;
+        }
+    }
+    for( i = 0; i &lt;= n; i++){
+        for(j = 0; j &lt;= n; j++){
+            printf("%4d", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void mult(int matrix[][MAX], int n)
+{
+    int i,j;
+    for(i = 1; i &lt;= n; i++){
+        for(j = 1; j &lt;= n; j++){
+            matrix[i][j]=i*j;
+        }
+    }
+    for(i = 1; i &lt;= n; i++){
+        for(j = 1; j &lt;= n; j++){
+            printf("%4d", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+</code></pre>
+
+<p>Ejercicio 2: Hacer un programa que de al usuario 2 opciones:</p>
+
+<ol>
+<li>Mediana</li>
+<li>Moda</li>
+</ol>
+
+<p>luego pedir la cantidad de numeros, y luego que ingrese dichos numeros en un arreglo o vector. Luego como funciones calcular la operacion seleccionada.</p>
+
+<pre><code class="language-c">
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+float mediana(float matrix[],int x);
+void llenar(float matrix[],int x);
+void show(float matrix[],int x);
+float moda(float matrix[],int x);
+
+int main(void)
+{
+    int menu, dim;
+    printf("1 - Calcular Mediana\n2 - Calcular Moda\n");
+    printf("Opcion: ");
+    do{scanf("%d", &menu);}while(menu&lt;1||menu>2);
+    printf("Ingrese la cantidad de numeros: ");
+    scanf("%d", &dim);
+    float matrix[dim];
+    llenar(matrix,dim);
+    switch(menu){
+        case(1):{printf("%.2f ", mediana(matrix,dim));}break;
+        case(2):{printf("%.2f ", moda(matrix,dim));}break;
+    }
+    //show(matrix,dim);
+    return 0;
+}
+
+void llenar(float matrix[], int x)
+{
+    int i, val;
+    for(i=0;i&lt;x;i++){
+        printf("Ingrese el valor %d: ", i+1);
+        scanf("%d", &val);
+        matrix[i]=val;
+    }
+}
+
+float mediana(float matrix[], int x)
+{
+    int i,j,aux;
+    
+    for(i = 0; i &lt; x; i++){
+        for(j = 0; j+1 &lt; x-i; j++){
+            if(matrix[j+1]>matrix[j]){
+                aux=matrix[j];
+                matrix[j]=matrix[j+1];
+                matrix[j+1]=aux;
+            }
+            if(matrix[j+1]&lt;matrix[j]){
+                aux=matrix[j+1];
+                matrix[j+1]=matrix[j];
+                matrix[j]=aux;
+            }
+        }
+    }
+    if(x%2 != 0){
+        return matrix[(x-1)/2];
+    }else{
+        return (matrix[(x-1)/2]+matrix[(x-1)/2+1])/2.0;
+    }    
+}
+
+void show(float matrix[],int x)
+{
+    int i;
+    for (i = 0; i &lt; x; i++){
+        printf("%f ", matrix[i]);
+    }
+}
+
+float moda(float matrix[], int x)
+{
+    int i,j,count=0,max=0;
+    float jeje;
+    for(i = 0; i &lt; x; i++){
+        count=0;
+        for(j = 0; j &lt; (x-i); j++){
+            if(matrix[j]==matrix[i]){
+                count++;
+            }
+            if(count>max){
+                max=count;
+                jeje=matrix[i];
+            }
+        }
+    }
+    if(max!=1){
+        return jeje;
+    }else{
+        return 0;
+    }
+}
+</code></pre>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Laboratorio+6%2C+ejercicios+de+funciones+y+arreglos&amp;url=http://mammut.github.io/c-codes/2010/10/10/laboratorio-6"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +250,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-10-10 01:00">10 Oct 2010</time></p>
             </section>
           </div>
           

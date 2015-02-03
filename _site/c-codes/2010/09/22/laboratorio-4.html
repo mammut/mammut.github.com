@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Laboratorio 4, arreglos</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Pequeño resumen del cuarto laboratorio del curso Programación IWI101 2010.2 @ UTFSM CSJ" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Laboratorio 4, arreglos" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/09/22/laboratorio-4.html" />
+  <meta property="og:description" content="Pequeño resumen del cuarto laboratorio del curso Programación IWI101 2010.2 @ UTFSM CSJ" />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Laboratorio 4, arreglos</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-09-22T00:00:00-04:00">22 Sep 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,149 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <p>Un arreglo es un lugar donde se guardan &quot;cajitas&quot; con datos dentro de estas.</p>
+
+<p><code>int arr[tamaño];</code></p>
+
+<p>eso declara el arreglo &quot;arr&quot; con un tamaño de &quot;tamaño&quot; cajitas.</p>
+
+<p>ejemplo:</p>
+
+<p><code>int arr[5];</code></p>
+
+<p>esto crea el arreglo arr de tamaño 5, es decir 5 cajitas.</p>
+
+<p><code>int arr[5]={1,2,3,4,5};</code></p>
+
+<p>Eso llena el arreglo arr, (de 5 cajitas) con los numeros 1,2,3,4,5 en cada cajita.</p>
+
+<p>para obtener cada valor lo ago asi:</p>
+
+<p>arr[0] ---&gt;&gt; 1<br>
+arr[1] ---&gt;&gt; 2<br>
+arr[2] ---&gt;&gt; 3<br>
+arr[3] ---&gt;&gt; 4<br>
+arr[4] ---&gt;&gt; 5</p>
+
+<p>puedo cambiar su valor asi:</p>
+
+<p>arr[3]=100, y queda asi.</p>
+
+<p><code>arr = 1,2,100,4,5</code></p>
+
+<p>Ejemplo 1:
+Sacar el promedio de un numero de notas dado por el usuario.</p>
+
+<pre><code class="language-c">#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+int main(void)
+{
+    
+    float jeje;
+    int cuantas;
+    int i;
+    
+    /* Pedir cuantas notas */
+    do{
+        system("cls");
+        printf("Ingese la cantidad e notas: ");
+        scanf("%d", &cuantas);
+    }while(cuantas<1);
+    float notas[cuantas];
+    
+    /* Pedir las Notas*/
+    for(i=0;i&lt;cuantas;i++){
+        printf("Ingrese la nota %d: ", i+1);
+        scanf("%f", &jeje);
+        notas[i]=jeje;
+    }
+    
+    /* Sumar las notas */
+    jeje=0;
+    for(i=0;i&lt;cuantas;i++){
+        jeje=jeje+notas[i];
+    }
+    
+    /* Mostrar el promedio */
+    printf("\nEl promedio es %.2f\n", jeje/cuantas);
+    return 0;
+}  
+</code></pre>
+
+<p>Ejercicio 2. Llenar un arreglo (por el usurio) y reordenarlo de atras para adelante y mostrarlo.</p>
+
+<pre><code class="language-c">#include &lt;stdio.h>
+#include &lt;stdlib.h>
+#define MAX 5
+
+int main()
+{
+    int matrix[MAX];
+    int i,num,tmp;
+    
+    /* Pedir numeros y llenar el arreglo */
+    for(i=0;i&lt;MAX;i++){
+        printf("Ingrese el numero %d: ", i+1);
+        scanf("%d", &num);
+        matrix[i]=num;
+    }
+    
+    /* Dar vuelta el arrego */
+    for(i=1;i&lt;=MAX/2;i++){
+        tmp=matrix[i-1];
+        matrix[i-1]=matrix[MAX-i];
+        matrix[MAX-i]=tmp;
+    }
+    
+    /* Mostrar el arreglo nuevo */
+    printf("\n");
+    for(i=0;i&lt;MAX;i++){
+        printf(" %d", matrix[i]);
+    }
+    printf("\n");
+    return 0;
+}
+</code></pre>
+
+<p>Ejercicio 3. Sacar el determinante de una matriz de 2 por 2</p>
+
+<pre><code class="language-c">#include &lt;stdio.h>
+#include &lt;stdlib.h>
+
+int main()
+{
+    int matrix[2][2];
+    int i,j,num,det;
+    
+    /* Pedir numeros y llenar el arreglo */
+    for(i=0;i&lt;2;i++){
+        for(j=0;j&lt;2;j++){
+            printf("Ingrese el numero %d %d: ", i+1, j+1);
+            scanf("%d", &num);
+            matrix[i][j]=num;
+        }
+    }
+    det=(matrix[0][0]*matrix[1][1])-(matrix[0][1]*matrix[1][0]);
+    printf("el determinante es: %d", det);
+    /*
+    for(i=0;i&lt;2;i++){
+        for(j=0;j&lt;2;j++){
+            printf("%d", matrix[i][j]);
+        }
+    }*/
+    printf("\n");
+    system("pause>nul");
+    return 0;
+}
+</code></pre>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Laboratorio+4%2C+arreglos&amp;url=http://mammut.github.io/c-codes/2010/09/22/laboratorio-4"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +224,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-09-22 00:00">22 Sep 2010</time></p>
             </section>
           </div>
           

@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Blackbird Software</title>
+  <title>Estructuras con punteros</title>
 
-  <meta name="description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta name="description" content="Estructuras con punteros en C. Introducción y ejemplos" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -16,10 +16,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Blackbird Software" />
+  <meta property="og:title" content="Estructuras con punteros" />
   <meta property="og:site_name" content="JPEG {codes}" />
-  <meta property="og:url" content="http://mammut.github.io/web/2014/05/02/blackbird-software.html" />
-  <meta property="og:description" content="Página en parallax usando skrollr para la empresa Blackbird Software." />
+  <meta property="og:url" content="http://mammut.github.io/c-codes/2010/11/16/estructuras-con-punteros.html" />
+  <meta property="og:description" content="Estructuras con punteros en C. Introducción y ejemplos" />
   <meta property="og:image" content="/assets/images/df_logo.jpg" />
   <meta property="fb:app_id" content="177325815624166" />
   <meta property="article:author" content="https://www.facebook.com/juam3.14" />
@@ -45,12 +45,12 @@
         
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Blackbird Software</h1>
+            <h1 class="post-title">Estructuras con punteros</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2014-05-02T00:00:00-04:00">02 May 2014</time>
+              <time datetime="2010-11-16T00:00:00-03:00">16 Nov 2010</time>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
           </div>
@@ -64,14 +64,179 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p><a href="/blackbird">BLACKBIRD<strong>SOFTWARE</strong></a></p>
+          <p>Cuando tenemos códigos donde una estructura se define como parte de otra, aveces es mas cómodo y bonito hacer un puntero a la subestructura en vez de llamarla por todos los parametros que necesita.</p>
+
+<p>¿de qué estoy hablando? de esto:</p>
+
+<p>Tengo una estructura <strong>Mascota</strong> que tiene un nombre y una edad.<br>
+Tengo una estructura <strong>Persona</strong> que tiene un nombre una edad y una Mascota.</p>
+
+<p>es decir tengo una estructura dentro de otra.</p>
+
+<p>como sabemos, para utilizar las propiedades de una estructura lo hacemos con:
+Supongamos que tengo la estructura <strong>persona</strong> (de arriba), y yo cree la persona juampi.</p>
+
+<p>ahora decimos;</p>
+
+<p><code>juampi.edad = 20;</code></p>
+
+<p>y para el nombre, como es un string, usamos strcpy o sprintf.</p>
+
+<p><code>sprintf(juampi.nombre, &quot;Juampi&quot;);</code></p>
+
+<p>hasta aqui todo bien, facil y bonito.</p>
+
+<p>ahora vamos a darle un nombre y una edad a la mascota de juampi.
+Utilizando la misma logica anterior seria:</p>
+
+<pre><code class="language-c">juampi.pet.edad = 2;
+sprintf(juampi.pet.nombre, "Boo");
+</code></pre>
+
+<p>Vemos que mientras mas subestructuras, mas tenemos que escribir para llegar a cierta propiedad, lo que puede volverse muy feo...</p>
+
+<p>menos mal que en C existen los punteros!!</p>
+
+<p>vamos a hacer un puntero a la direccion de memoria de la mascota de juampi asi:</p>
+
+<pre><code class="language-c">mascota *puntero;
+puntero = &juampi.pet;
+</code></pre>
+
+<p>Listo, ahora para utilizar las propiedades de la mascota de juampi, simplemente hacemos esto:</p>
+
+<pre><code class="language-c">puntero->edad = 20;
+sprintf(puntero->nombre, "Boo");
+</code></pre>
+
+<p>se ve bonito ahora con una flechita.</p>
+
+<p>ahora todo escrito en C</p>
+
+<pre><code class="language-c">
+#include &lt;stdio.h>
+
+int main(int argc, char *argv[])
+{
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+  }mascota;
+  
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+    mascota pet;
+  }persona;
+  
+  /* ahora creamos una persona... */
+  persona juampi;
+  
+  /* hacemos un puntero para la mascota de la persona juampi */
+  mascota *pet;
+  
+  /* Ahora le decimos al puntero pet, que apunte a la direccion
+     de memoria de la mascota de la persona juampi */ 
+  pet = &juampi.pet;
+  
+  /* listo, ahora le damos un nombre y una edad a la persona */
+  juampi.edad = 20; 
+  sprintf(juampi.nombre, "Juampi");
+  
+  /* Ahora la mascota */
+  pet->edad = 2;
+  sprintf(pet->nombre, "Boo");
+  
+  /* mostremos los valores */
+  printf("Nombre persona: %s\n", juampi.nombre);
+  printf("Edad persona: %d\n", juampi.edad);
+  
+  printf("Nombre mascota: %s\n", pet->nombre);
+  printf("Edad mascota: %d\n", pet->edad);
+  
+  return 0;
+}
+</code></pre>
+
+<p>Ejemplo2. Arreglo de personas, con arreglo de punteros a las mascotas de cada persona.</p>
+
+<pre><code class="language-c">
+#include &lt;stdio.h>
+
+int main(int argc, char *argv[])
+{
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+  }mascota;
+  
+  typedef struct{
+    int edad;
+    char nombre[30+1];
+    mascota pet;
+  }persona;
+
+  int i;
+  
+  /* Creamos un arreglo de tipo persona de tamaño 5 */
+  persona gente[5];
+  
+  /* Creamos un arreglo de punteros de tipo mascota y de tamaño 5 */
+  mascota *mascotas[5];
+  
+  /* hacemos un for que relacione a cada mascota con su dueño */
+  for(i=0; i&lt;5; i++)
+    mascotas[i] = &gente[i].pet;
+    
+  /* Ahora le damos una edad a las personas */
+  for(i=0; i&lt;5; i++)
+    gente[i].edad = i+20;
+    
+  /* Un nombre... en verdad sera al azar */
+  for(i=0; i&lt;5; i++)
+    sprintf(gente[i].nombre, "al azar");
+    
+  
+  /* ahora las mascotas... */
+  /* edades */
+  for(i=0; i&lt;5; i++)
+    mascotas[i]->edad = 2+i;
+    
+  /* Nombres */
+  for(i=0; i&lt;5; i++)
+    sprintf(mascotas[i]->nombre, "Boo");
+    
+  
+  /* Ahora mostramos toda la informacion */
+  for(i=0; i&lt;5; i++){
+    printf("Nombre persona%d: %s\n", i+1, gente[i].nombre);
+    printf("Edad persona%d: %d\n", i+1, gente[i].edad);
+    printf("Nombre Mascota de la persona%d: %s\n", i+1, mascotas[i]->nombre);
+    printf("Edad Mascota de la persona%d: %d\n", i+1, mascotas[i]->edad);
+    printf("-------------------------------------\n");
+  }
+  
+  return 0;
+}
+</code></pre>
+
+<p>Ejercicio...<br>
+¿puedo utilizar la flechita para una estructura simple asi:</p>
+
+<p><code>juampi-&gt;edad = 20;</code></p>
+
+<p>en vez de</p>
+
+<p><code>juampi.edad = 20;</code></p>
+
+<p>? ¿Cómo?</p>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Blackbird+Software&amp;url=http://mammut.github.io/web/2014/05/02/blackbird-software"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Estructuras+con+punteros&amp;url=http://mammut.github.io/c-codes/2010/11/16/estructuras-con-punteros"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -89,7 +254,7 @@
               <h4>Juan Pablo Escalona G.</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Publicado el <time datetime="2014-05-02 00:00">02 May 2014</time></p>
+              <p class="published">Publicado el <time datetime="2010-11-16 00:00">16 Nov 2010</time></p>
             </section>
           </div>
           
