@@ -6,6 +6,7 @@ categories: "c-codes"
 meta: "Algoritmos y código en C para llenar una matriz en forma de espiral o caracol. De adentro a afuera o afuera hacia adentro."
 excerptReplace: "Esta fue una tarea de programación que consistía en llenar una matriz en forma de espiral o caracol."
 ---
+**Actualización: acabo de publicar [aquí](/c-codes/2015/04/01/matriz-en-espiral-v2.html) un nuevo algoritmo mas sencillo para llenar la matriz en forma de espiral**
 
 ### Tarea de programación
 

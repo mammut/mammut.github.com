@@ -1,4 +1,4 @@
-console.log("Welcome to the binary decimal conversion tool! enjoy it :D")
+console.log("Welcome to the binary decimal conversion tool! enjoy it :D");
 
 var btn     = document.getElementById('convert');
 var output  = document.getElementById('output');
@@ -25,7 +25,8 @@ decimal.addEventListener('keypress', function(e){
 function decimal2bin (dec, limit) {
     var i = 0;
     var binary = ".";
-    while(i < limit && dec != 0) {
+    if (dec < 0.000001) return ".0";
+    while(i < limit && dec !== 0) {
         dec *= 2;
         binary += parseInt(dec);
         dec = dec % 1;
@@ -36,12 +37,12 @@ function decimal2bin (dec, limit) {
 
 function int2bin (dec) {
     var binary = "";
-    while(dec != 0) {
+    while(dec !== 0) {
         binary = dec % 2 + binary;
         dec /= 2;
         dec = parseInt(dec);
     }
-    return binary == "" ? "0" : binary;
+    return binary === "" ? "0" : binary;
 }
 
 // Animations
@@ -50,8 +51,9 @@ var panelToggle = document.getElementById('panel-toggle');
 panel.style.top = "-"+panel.clientHeight + "px";
 
 panelToggle.addEventListener('click', function(){
+    var to;
     if (panel.style.top == '0px') {
-        var to = panel.clientHeight;
+        to = panel.clientHeight;
         animate({
             delta: log,
             step: function(delta) {
@@ -59,7 +61,7 @@ panelToggle.addEventListener('click', function(){
             }
         });
     }else {
-        var to = panel.clientHeight;
+        to = panel.clientHeight;
         animate({
             delta: log,
             step: function(delta) {
@@ -70,11 +72,11 @@ panelToggle.addEventListener('click', function(){
 }, false);
 
 function animate (opts) {
-    var start = new Date;
+    var start = new Date();
     var duration = opts.duration || 400;
 
     var s = setInterval(function(){
-        var timePassed = new Date - start;
+        var timePassed = new Date() - start;
         var progress = timePassed/duration;
 
         if (progress > 1) progress = 1;

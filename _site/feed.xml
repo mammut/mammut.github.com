@@ -6,9 +6,181 @@
 </description>
     <link>http://mammut.github.io/</link>
     <atom:link href="http://mammut.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 03 Feb 2015 19:27:49 -0300</pubDate>
-    <lastBuildDate>Tue, 03 Feb 2015 19:27:49 -0300</lastBuildDate>
-    <generator>Jekyll v2.5.2</generator>
+    <pubDate>Wed, 01 Apr 2015 21:25:45 -0300</pubDate>
+    <lastBuildDate>Wed, 01 Apr 2015 21:25:45 -0300</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Matriz en espiral v2</title>
+        <description>&lt;p&gt;Este es un repost de uno de los posts mas visitados en el sitio, sobre el algoritmo de matriz en espiral. &lt;/p&gt;
+
+&lt;p&gt;He reimplementado el algoritmo de una forma mas simple de atacar, pensando en una funcion &lt;code&gt;fill()&lt;/code&gt; que llena elementos en una matriz de a lineas o columnas.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo si se tiene una matriz de 5x5 inciada con 0s:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+
+// Llena la matriz en el eje x, en la fila 0,
+// desde la columna 1 a la 3
+fill(matriz, &#39;x&#39;, 0, 1, 3); 
+
+// se obtiene:
+
+0 1 2 3 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Otro ejemplo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+// Llena la matriz en el eje y, en la columna 2,
+// desde la fila 2 a la 4
+fill(matriz, &#39;y&#39;, 2, 2, 4); 
+
+// se obtiene:
+
+0 1 2 3 0
+0 0 0 0 0
+0 0 4 0 0
+0 0 5 0 0
+0 0 6 0 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;por último&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;
+// Llena la matriz en el eje y, en la columna 0,
+// desde la fila 4 a la 1
+fill(matriz, &#39;y&#39;, 0, 4, 1); 
+
+// se obtiene:
+
+ 0 1 2 3 0
+10 0 0 0 0
+ 9 0 4 0 0
+ 8 0 5 0 0
+ 7 0 6 0 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;De esta forma se puede analizar el patrón de llenar una matriz en espiral, dibujarlo en papel ayuda, el patrón surge al utilizar la función &lt;code&gt;fill()&lt;/code&gt; y observar como cambian los indices. Luego el algoritmo de llenar la matriz en espiral funciona para matrices de NxM (cuadradas y rectangulares). Les dejo la implementación final a continuación:&lt;/p&gt;
+
+&lt;pre class=&quot;linenos&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&gt;
+#include &lt;stdio.h&gt;
+#define N 4   /* Define la dimensión máxima de la matriz */
+#define M 7   /* Define la dimensión máxima de la matriz */
+
+void show(int matrix[][M]);
+void llenar_esperilicamente(int matrix[][M]);
+int fill(int matrix[][M], const char axis, const int row, const int start, const int end, int *start_value);
+
+int main(int argc, char *argv[]) {
+    int matrix[N][M];
+
+    llenar_esperilicamente(matrix);
+    show(matrix);
+
+    return 0;
+}
+
+/**
+ * Muestra la matriz entregada por parámetro
+ * @param matrix matriz a ser mostrada
+ */
+void show(int matrix[][M]) {
+    /* imprime la matriz recibida por parámetro en la pantalla */
+    int i,j;
+    for (i = 0; i &lt; N; i++) {
+        for (j = 0; j &lt; M; j++)
+            printf (&quot;%4d&quot;, matrix[i][j]);
+        printf (&quot;\n&quot;);
+    }
+}
+
+/**
+ * Llena la matriz del parámetro en forma de espiral con números ascendientes
+ * @param matrix Matriz a ser llenada
+ */
+void llenar_esperilicamente(int matrix[][M]) {
+    int current = 1;
+    int n = N-1;
+    int m = M-1;
+    int aux = 0;
+
+    do {
+        fill(matrix, &#39;x&#39;, aux, aux, m - aux, &amp;current);
+        if (current &gt; N*M) break;
+
+        fill(matrix, &#39;y&#39;, m - aux, (aux + 1), n - aux, &amp;current);
+        if (current &gt; N*M) break;
+
+        fill(matrix, &#39;x&#39;, n - aux, m-(aux + 1), aux, &amp;current);
+        if (current &gt; N*M) break;
+
+        fill(matrix, &#39;y&#39;, aux, n-(aux + 1), (aux + 1), &amp;current);
+        aux++;
+    } while (current &lt; N*M);
+}
+
+/**
+ * Llena en una *matrix* dada desde el punto *start* al *end*
+ * en algun eje *axis* definido, comenzando con el valor *start_value*
+ * @param  matrix      Matriz sobre la que se trabaja
+ * @param  axis        eje en que se llena: x o y
+ * @param  j           que fila o que columna llenar
+ * @param  start       donde comenzar
+ * @param  end         donde terminar
+ * @param  start_value puntero al contador
+ */
+int fill(int matrix[][M], const char axis, const int j, const int start, const int end, int *start_value) {
+    int i;
+    int step;
+
+    if (start == end) {
+        if (axis == &#39;x&#39;)
+            matrix[j][end] = (*start_value)++;
+        else if (axis == &#39;y&#39;)
+            matrix[end][j] = (*start_value)++;
+        return 0;
+    }
+
+    step = start &gt; end ? -1 : 1;
+
+    for (i = start; start &gt; end ? i &gt;= end : i &lt;= end; i += step) {
+        if (axis == &#39;x&#39;)
+            matrix[j][i] = (*start_value)++;
+        else if (axis == &#39;y&#39;)
+            matrix[i][j] = (*start_value)++;
+    }
+
+    return 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Compilación y ejecución del ejemplo anterior:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ gcc matrizenespiral.c -o executeme -Wall
+$ ./executeme
+   1   2   3   4   5   6   7
+  18  19  20  21  22  23   8
+  17  28  27  26  25  24   9
+  16  15  14  13  12  11  10
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 01 Apr 2015 00:00:00 -0300</pubDate>
+        <link>http://mammut.github.io/c-codes/2015/04/01/matriz-en-espiral-v2.html</link>
+        <guid isPermaLink="true">http://mammut.github.io/c-codes/2015/04/01/matriz-en-espiral-v2.html</guid>
+        
+        
+        <category>c-codes</category>
+        
+      </item>
     
       <item>
         <title>Creando un chat realtime con Sails.js y React</title>
@@ -1732,141 +1904,6 @@ void eliminarSaltosDeLinea(char array[]) {
         <pubDate>Sun, 14 Nov 2010 00:00:00 -0300</pubDate>
         <link>http://mammut.github.io/c-codes/2010/11/14/strings.html</link>
         <guid isPermaLink="true">http://mammut.github.io/c-codes/2010/11/14/strings.html</guid>
-        
-        
-        <category>c-codes</category>
-        
-      </item>
-    
-      <item>
-        <title>Ejercicio de sorting sobre estructuras en archivos</title>
-        <description>&lt;p&gt;Cree un programa que ordene los 100 registros dentro de un archivo mediante BubbleSort.&lt;br&gt;
-Asuma que el archivo ya existe y tiene estructuras del tipo.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;struct tAlumno{ char nombre[20]; int promedio; }&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Ordene el archivo respecto al promedio, de menor a mayor. &lt;br/&gt;
-NO use arreglos y ordene todo dentro del MISMO archivo.&lt;/p&gt;
-
-&lt;p&gt;Código:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&gt;
-
-int main(int argc, char *argv[])
-{
-    typedef struct{
-        char nombre[20+1]; /* +1 por el &#39;\0&#39; */
-        int promedio;
-    }tAlumno;
-
-    int i, j, k;
-    tAlumno s, tmp;
-    FILE *alumnos = fopen(&quot;db.dat&quot;, &quot;rb+&quot;);
-
-    if(alumnos == NULL){
-        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
-        return 1;
-    }
-    
-    /* Obtener el numero de estructuras hay en el archivo */
-    fseek(alumnos, 0, SEEK_END);
-    k = ftell(alumnos ) / sizeof(tAlumno);
-        
-    /* Ordenar las estructuras !! */
-    for(i=0; i&amp;lt;k; i++){
-        rewind(alumnos);
-        fread(&amp;tmp, sizeof(tAlumno), 1, alumnos);
-        for(j=0; j&amp;lt;k-i; j++){
-            fread(&amp;s, sizeof(tAlumno), 1, alumnos);
-            if(tmp.promedio&gt;s.promedio){
-                /* Retroceder el largo de 2 estructuras*/
-                fseek(alumnos, (-2)*sizeof(tAlumno), SEEK_CUR);
-                
-                /* escribir la estructura s */
-                fwrite(&amp;s, sizeof(tAlumno), 1, alumnos);
-                
-                /* escribir la estructura tmp */
-                fwrite(&amp;tmp, sizeof(tAlumno), 1, alumnos);
-                
-                /* Quedamos a donde mismo */
-            }
-            if(tmp.promedio&amp;lt;=s.promedio)
-                /* si tmp es menor o igual que s, pasarle la pelota a s para que siga avanzando */
-                tmp = s;
-        }
-    }
-    
-    /* Mostrar las estructuras ordenadas */
-    rewind(alumnos);    
-    while(fread(&amp;s, sizeof(tAlumno), 1, alumnos)){
-        printf(&quot;Nombre: %-20s\t\tPromedio: %3d\n&quot;, s.nombre, s.promedio);
-    }
-    fclose(alumnos);
-    return 0;
-}
-
-/* by JPEG @ http://mammut.github.io */
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Generador al azar de nombres y promedios, guardados en el archivo &lt;strong&gt;db.dat&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;#include &lt;time.h&gt;
-#include &amp;lt;stdio.h&gt;
-#include &amp;lt;stdlib.h&gt;
-
-#define MAX_STRUCTS 100 /* Candidad de alumnos para generar */
-#define MAX_NOM 20      /* Largo maximo de los nombres para generar */  
-#define MIN_NOM 5       /* Largo minimo de los nombres para generar */
-
-
-int main(int argc, char *argv[])
-{
-    srand(time(NULL));
-    typedef struct{
-        char nombre[20+1];  /* +1 por el &#39;\0&#39; */
-        int promedio;
-    }tAlumno;
-
-    int i,jp,j,tmp; 
-    tAlumno musik;
-    FILE *alumnos = fopen(&quot;db.dat&quot;, &quot;wb+&quot;); /* + para mostrar abajo el archivo generado :P */
-
-    if(alumnos == NULL){
-        printf(&quot;Ha ocurrido un error al abrir el archivo\n&quot;);
-        fclose(alumnos);
-        return 1;
-    }
-    
-    for(i=1; i&amp;lt;=MAX_STRUCTS; i++){      
-        jp = rand()%(MAX_NOM-MIN_NOM+1)+MIN_NOM;        /* Largo del nombre al azar */
-            for(j=0;j&amp;lt;jp;j++){  /* cada caracter al azar */
-                tmp = rand()%27+97;
-                if(tmp == 123)
-                    musik.nombre[j] = &#39; &#39;;
-                else
-                    musik.nombre[j] = tmp;
-            }
-            musik.nombre[j] = &#39;\0&#39;;
-            musik.promedio = rand()%100+1;  /* promedio al azar */
-            fwrite(&amp;musik, sizeof(tAlumno), 1, alumnos);
-    }
-    
-    rewind(alumnos);
-    while(fread(&amp;musik, sizeof(tAlumno), 1, alumnos)){
-        printf(&quot;Nombre: %-20s\t\t\tPromedio: %3d\n&quot;, musik.nombre, musik.promedio);
-    }
-    fclose(alumnos);
-    return 0;
-}
-
-/* by JPEG @ http://mammut.github.io */
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Eso seria... cualquier duda dejen un comentario.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 14 Nov 2010 00:00:00 -0300</pubDate>
-        <link>http://mammut.github.io/c-codes/2010/11/14/ejercicio-de-estructuras.html</link>
-        <guid isPermaLink="true">http://mammut.github.io/c-codes/2010/11/14/ejercicio-de-estructuras.html</guid>
         
         
         <category>c-codes</category>
