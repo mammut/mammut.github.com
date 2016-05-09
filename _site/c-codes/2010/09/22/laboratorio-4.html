@@ -64,11 +64,11 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p>Un arreglo es un lugar donde se guardan &quot;cajitas&quot; con datos dentro de estas.</p>
+          <p>Un arreglo es un lugar donde se guardan “cajitas” con datos dentro de estas.</p>
 
 <p><code>int arr[tamaño];</code></p>
 
-<p>eso declara el arreglo &quot;arr&quot; con un tamaño de &quot;tamaño&quot; cajitas.</p>
+<p>eso declara el arreglo “arr” con un tamaño de “tamaño” cajitas.</p>
 
 <p>ejemplo:</p>
 
@@ -82,11 +82,11 @@
 
 <p>para obtener cada valor lo ago asi:</p>
 
-<p>arr[0] ---&gt;&gt; 1<br>
-arr[1] ---&gt;&gt; 2<br>
-arr[2] ---&gt;&gt; 3<br>
-arr[3] ---&gt;&gt; 4<br>
-arr[4] ---&gt;&gt; 5</p>
+<p>arr[0] —» 1<br />
+arr[1] —» 2<br />
+arr[2] —» 3<br />
+arr[3] —» 4<br />
+arr[4] —» 5</p>
 
 <p>puedo cambiar su valor asi:</p>
 
@@ -97,8 +97,8 @@ arr[4] ---&gt;&gt; 5</p>
 <p>Ejemplo 1:
 Sacar el promedio de un numero de notas dado por el usuario.</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
-#include &lt;stdlib.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 
 int main(void)
 {
@@ -111,14 +111,14 @@ int main(void)
     do{
         system("cls");
         printf("Ingese la cantidad e notas: ");
-        scanf("%d", &cuantas);
-    }while(cuantas<1);
+        scanf("%d", &amp;cuantas);
+    }while(cuantas&lt;1);
     float notas[cuantas];
     
     /* Pedir las Notas*/
     for(i=0;i&lt;cuantas;i++){
         printf("Ingrese la nota %d: ", i+1);
-        scanf("%f", &jeje);
+        scanf("%f", &amp;jeje);
         notas[i]=jeje;
     }
     
@@ -136,8 +136,8 @@ int main(void)
 
 <p>Ejercicio 2. Llenar un arreglo (por el usurio) y reordenarlo de atras para adelante y mostrarlo.</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
-#include &lt;stdlib.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 #define MAX 5
 
 int main()
@@ -148,7 +148,7 @@ int main()
     /* Pedir numeros y llenar el arreglo */
     for(i=0;i&lt;MAX;i++){
         printf("Ingrese el numero %d: ", i+1);
-        scanf("%d", &num);
+        scanf("%d", &amp;num);
         matrix[i]=num;
     }
     
@@ -171,8 +171,8 @@ int main()
 
 <p>Ejercicio 3. Sacar el determinante de una matriz de 2 por 2</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
-#include &lt;stdlib.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 
 int main()
 {
@@ -183,7 +183,7 @@ int main()
     for(i=0;i&lt;2;i++){
         for(j=0;j&lt;2;j++){
             printf("Ingrese el numero %d %d: ", i+1, j+1);
-            scanf("%d", &num);
+            scanf("%d", &amp;num);
             matrix[i][j]=num;
         }
     }
@@ -196,7 +196,7 @@ int main()
         }
     }*/
     printf("\n");
-    system("pause>nul");
+    system("pause&gt;nul");
     return 0;
 }
 </code></pre>

@@ -64,291 +64,303 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p>A continuación les dejo un pequeño resumen del primer laboratorio del curso Programación IWI101 2010.2 @ UTFSM CSJ. Se hace referencia a los tipos de datos, operadores matematicos y logicos, y unos cuantos ejecricios introductorios.  </p>
+          <p>A continuación les dejo un pequeño resumen del primer laboratorio del curso Programación IWI101 2010.2 @ UTFSM CSJ. Se hace referencia a los tipos de datos, operadores matematicos y logicos, y unos cuantos ejecricios introductorios.</p>
 
-<h3>Tipos de datos:</h3>
-
+<h3 id="tipos-de-datos">Tipos de datos:</h3>
 <ul>
-<li>Int -&gt;Numeros enteros</li>
-<li>long -&gt;Enteros grandes</li>
-<li>Unsigned int -&gt;solo enteros positivos, aprovechando los negativos</li>
-<li>Char -&gt; Caracteres</li>
-<li>Float -&gt; mumeros reales</li>
-<li>Double -&gt; Floats grandes</li>
+  <li>Int -&gt;Numeros enteros</li>
+  <li>long -&gt;Enteros grandes</li>
+  <li>Unsigned int -&gt;solo enteros positivos, aprovechando los negativos</li>
+  <li>Char -&gt; Caracteres</li>
+  <li>Float -&gt; mumeros reales</li>
+  <li>Double -&gt; Floats grandes</li>
 </ul>
 
-<h3>Operadores Matematicos:</h3>
-
+<h3 id="operadores-matematicos">Operadores Matematicos:</h3>
 <ul>
-<li>&#43; -&gt; Suma</li>
-<li>&#45; -&gt; Resta</li>
-<li>&#42; -&gt; Multiplicación</li>
-<li>&#47; -&gt; División</li>
-<li>% -&gt; Módulo</li>
+  <li>+ -&gt; Suma</li>
+  <li>- -&gt; Resta</li>
+  <li>* -&gt; Multiplicación</li>
+  <li>/ -&gt; División</li>
+  <li>% -&gt; Módulo</li>
 </ul>
 
-<h3>Operadores lógicos:</h3>
-
+<h3 id="operadores-lgicos">Operadores lógicos:</h3>
 <ul>
-<li>&amp;&amp; -&gt; y</li>
-<li>|| -&gt; ó</li>
-<li>¡ -&gt; no</li>
-<li>&lt; -&gt; Menor</li>
-<li>&lt;= -&gt; Menor o igual</li>
-<li>&gt; -&gt; Mayor</li>
-<li>&gt;= -&gt; Mayor o igual</li>
+  <li>&amp;&amp; -&gt; y</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td>-&gt; ó</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>¡ -&gt; no</li>
+  <li>&lt; -&gt; Menor</li>
+  <li>&lt;= -&gt; Menor o igual</li>
+  <li>
+    <blockquote>
+      <p>-&gt; Mayor</p>
+    </blockquote>
+  </li>
+  <li>
+    <blockquote>
+      <p>= -&gt; Mayor o igual</p>
+    </blockquote>
+  </li>
 </ul>
 
-<h3>Printf</h3>
-
+<h3 id="printf">Printf</h3>
 <ul>
-<li>\a -&gt; Alerta</li>
-<li>\b -&gt; Espacio atrás</li>
-<li>\f -&gt; Salto de página</li>
-<li>\n -&gt;Salto de línea</li>
-<li>\r -&gt; Retorno de carro</li>
-<li>\t -&gt; Tabulación horizontal</li>
-<li>\v -&gt; Tabulación vertical</li>
-<li>\\ -&gt; Barra invertida</li>
-<li>\&#39; -&gt; Comilla simple</li>
-<li>\&quot; -&gt; Comillas dobles</li>
-<li>\OOO -&gt; Visualiza un carácter cuyo código ASCII es OOO en octal</li>
-<li>\xHHH -&gt; Visualiza un carácter cuyo código ASCII es HHH en hexadecimal</li>
+  <li>\a -&gt; Alerta</li>
+  <li>\b -&gt; Espacio atrás</li>
+  <li>\f -&gt; Salto de página</li>
+  <li>\n -&gt;Salto de línea</li>
+  <li>\r -&gt; Retorno de carro</li>
+  <li>\t -&gt; Tabulación horizontal</li>
+  <li>\v -&gt; Tabulación vertical</li>
+  <li>\\ -&gt; Barra invertida</li>
+  <li>' -&gt; Comilla simple</li>
+  <li>" -&gt; Comillas dobles</li>
+  <li>\OOO -&gt; Visualiza un carácter cuyo código ASCII es OOO en octal</li>
+  <li>\xHHH -&gt; Visualiza un carácter cuyo código ASCII es HHH en hexadecimal</li>
 </ul>
 
-<h3>Printf tipos de datos</h3>
-
+<h3 id="printf-tipos-de-datos">Printf tipos de datos</h3>
 <ul>
-<li>d, i -&gt; entero decimal con signo</li>
-<li>o -&gt; entero octal sin signo</li>
-<li>u -&gt; entero decimal sin signo</li>
-<li>x -&gt; entero hexadecimal sin signo (en minúsculas)</li>
-<li>X -&gt; entero hexadecimal sin signo (en mayúsculas)</li>
-<li>f -&gt; float</li>
-<li>e -&gt; double</li>
-<li>g -&gt; coma flotante según el valor</li>
-<li>E -&gt; como e pero en mayúsculas</li>
-<li>G -&gt; como g pero en mayúsculas</li>
-<li>c -&gt; un carácter</li>
-<li>s -&gt; cadena de caracteres terminada en &#39;\0&#39;</li>
-<li>% -&gt; imprime el carácter %</li>
-<li>p -&gt; puntero</li>
-<li>l -&gt; imprime un entero long</li>
-<li>h -&gt; imprime un entero short</li>
+  <li>d, i -&gt; entero decimal con signo</li>
+  <li>o -&gt; entero octal sin signo</li>
+  <li>u -&gt; entero decimal sin signo</li>
+  <li>x -&gt; entero hexadecimal sin signo (en minúsculas)</li>
+  <li>X -&gt; entero hexadecimal sin signo (en mayúsculas)</li>
+  <li>f -&gt; float</li>
+  <li>e -&gt; double</li>
+  <li>g -&gt; coma flotante según el valor</li>
+  <li>E -&gt; como e pero en mayúsculas</li>
+  <li>G -&gt; como g pero en mayúsculas</li>
+  <li>c -&gt; un carácter</li>
+  <li>s -&gt; cadena de caracteres terminada en ‘\0’</li>
+  <li>% -&gt; imprime el carácter %</li>
+  <li>p -&gt; puntero</li>
+  <li>l -&gt; imprime un entero long</li>
+  <li>h -&gt; imprime un entero short</li>
 </ul>
 
-<p>Hola mundo.c
-<pre><code class="language-c">#include &lt;stdio.h&gt;</p>
+<p>Hola mundo.c</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
-<p>int main(void)
+int main(void)
 {
-  printf(&quot;Hello World!\n&quot;);
-  system(&quot;pause&quot;);
+  printf("Hello World!\n");
+  system("pause");
 }
-</code></pre></p>
+</code></pre>
 
-<p>Leer_numero.c
-<pre><code class="language-c">#include &lt;stdio.h&gt;</p>
+<p>Leer_numero.c</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
-<p>main()
+main()
 {
   int n;
   scanf(“%d”, &amp;n);
-  printf(&quot;Numero: %d\n\a&quot;, n);
-  system(&quot;pause&quot;);
+  printf("Numero: %d\n\a", n);
+  system("pause");
 }
-</code></pre></p>
+</code></pre>
 
-<p>ejemplo_if.c
-<pre><code class="language-c">#include &lt;stdio.h&gt;</p>
+<p>ejemplo_if.c</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
-<p>main()
+main()
 {
   long int x=10,y=11;
   if (x&gt;y)
-      printf(&quot;X es mayor\n&quot;);
+      printf("X es mayor\n");
   else
-      printf(&quot;Y es mayor\n&quot;);</p>
-
-<p>system(&quot;pause&quot;);
+      printf("Y es mayor\n");
+    
+  system("pause");
 }
-</code></pre></p>
+</code></pre>
 
-<p>Par o impar.c
-<pre><code class="language-c">#include &lt;stdio.h&gt;</p>
+<p>Par o impar.c</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
-<p>main()
+main()
 {
   int x;
-  printf(&quot;Ingresar numero: &quot;);
-  scanf(&quot;%d&quot;, &amp;x);
+  printf("Ingresar numero: ");
+  scanf("%d", &amp;x);
   if (x%2==0){
-      printf(&quot;%d es par\n&quot;, x);
+      printf("%d es par\n", x);
   }
   else{
-      printf(&quot;%d es impar\n&quot;, x);
+      printf("%d es impar\n", x);
   }
-  system(&quot;pause&quot;);
-}system(&quot;pause&quot;);
+  system("pause");
+}system("pause");
 }
-</code></pre></p>
+</code></pre>
 
 <p>Área de un triangulo equilatero dado sus 3 lados.
 Comprobando que los lados ingresados formen un trio pitagórico, se realiza el cálculo del área.</p>
 
-<p>area.c
+<p>area.c</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 int main()
 {
   float x,y,z,area;
-  printf(&quot;Lado 1: &quot;);
-  scanf(&quot;%f&quot;, &amp;x);
-  printf(&quot;Lado 2: &quot;);
-  scanf(&quot;%f&quot;, &amp;y);
-  printf(&quot;Lado 3: &quot;);
-  scanf(&quot;%f&quot;, &amp;z);</p>
-
-<p>if ((x!=y) &amp;&amp; (y!=z) &amp;&amp; (x!=z)){    // &lt;--Comprobar que los numeros ingresados sean todos diferenties</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">/* Ver si se cumple alguna combinacion de trio pitagorico */      
-if ((x*x+y*y)==(z*z)){
-        area=x*y/2;
-        printf(&quot;Area = %.2f\n&quot;, area);
-        system(&quot;pause&quot;);
-        return 0;
-    }
-    if ((x*x+z*z)==(y*y)){
-        area=x*z/2;
-        printf(&quot;Area = %.2f\n&quot;, area);
-        system(&quot;pause&quot;);
-        return 0;
-
-    }
-    if ((y*y+z*z)==(x*x)){
-        area=y*z/2;
-        printf(&quot;Area = %.2f\n&quot;, area);
-        system(&quot;pause&quot;);
-        return 0;
-    }
-/* Fin trios pitagoricos */
-</code></pre></div>
-<p>}
-  printf(&quot;El triangulo no es rectangulo\n&quot;);
-  system(&quot;pause&quot;);
+  printf("Lado 1: ");
+  scanf("%f", &amp;x);
+  printf("Lado 2: ");
+  scanf("%f", &amp;y);
+  printf("Lado 3: ");
+  scanf("%f", &amp;z);
+  
+  if ((x!=y) &amp;&amp; (y!=z) &amp;&amp; (x!=z)){    // &lt;--Comprobar que los numeros ingresados sean todos diferenties
+    
+    /* Ver si se cumple alguna combinacion de trio pitagorico */      
+    if ((x*x+y*y)==(z*z)){
+            area=x*y/2;
+            printf("Area = %.2f\n", area);
+            system("pause");
+            return 0;
+        }
+        if ((x*x+z*z)==(y*y)){
+            area=x*z/2;
+            printf("Area = %.2f\n", area);
+            system("pause");
+            return 0;
+         
+        }
+        if ((y*y+z*z)==(x*x)){
+            area=y*z/2;
+            printf("Area = %.2f\n", area);
+            system("pause");
+            return 0;
+        }
+    /* Fin trios pitagoricos */
+  }
+  printf("El triangulo no es rectangulo\n");
+  system("pause");
   return 0;
 }
-</code></pre></p>
+</code></pre>
 
-<p>calculadora.c
-<pre><code class="language-c">#include &lt;stdio.h&gt;</p>
+<p>calculadora.c</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
-<p>int main()
+int main()
 {
   int menu,i;
   float a,b,c=1,r;
-  /* La ariable &quot;a&quot; serÃ¡ el primer numero intresado por el usuario
-     La variable &quot;b&quot; serÃ¡ el segundo nÃºmero ingresado por el usuario
-     La variable &quot;c&quot; serÃ¡ el resultado de la operaciÃ³n a realizar entre &quot;a&quot; y &quot;b&quot;
-     La variable &quot;r&quot; serÃ¡ utilizada en el argoritmo para el MCD
-     La variable &quot;menu&quot; serÃ¡ para la opcion a ejecutar del menu
-     La variable &quot;i&quot; serÃ¡ utilizada por &quot;for&quot; en la potencia
-  <em>/
-  /</em> Menu <em>/
-  printf(&quot;1 - Sumar\n&quot;);
-  printf(&quot;2 - Restar\n&quot;);
-  printf(&quot;3 - Multiplicar\n&quot;);
-  printf(&quot;4 - Dividir\n&quot;);
-  printf(&quot;5 - Potencia\n&quot;);
-  printf(&quot;6 - Maximo Comun Divisor\n&quot;);
-  printf(&quot;Opcion: &quot;);
-  scanf(&quot;%d&quot;, &amp;menu);
-  /</em> Fin Menu */
+  /* La ariable "a" serÃ¡ el primer numero intresado por el usuario
+     La variable "b" serÃ¡ el segundo nÃºmero ingresado por el usuario
+     La variable "c" serÃ¡ el resultado de la operaciÃ³n a realizar entre "a" y "b"
+     La variable "r" serÃ¡ utilizada en el argoritmo para el MCD
+     La variable "menu" serÃ¡ para la opcion a ejecutar del menu
+     La variable "i" serÃ¡ utilizada por "for" en la potencia
+  */
+  /* Menu */
+  printf("1 - Sumar\n");
+  printf("2 - Restar\n");
+  printf("3 - Multiplicar\n");
+  printf("4 - Dividir\n");
+  printf("5 - Potencia\n");
+  printf("6 - Maximo Comun Divisor\n");
+  printf("Opcion: ");
+  scanf("%d", &amp;menu);
+  /* Fin Menu */
   switch(menu)
   {
         //Sumar
     case(1):{
-            printf(&quot;Ingresar el primer numero: &quot;);
-            scanf(&quot;%f&quot;, &amp;b);
-            printf(&quot;Ingresar el segundo numero: &quot;);
-            scanf(&quot;%f&quot;, &amp;a);
+            printf("Ingresar el primer numero: ");
+            scanf("%f", &amp;b);
+            printf("Ingresar el segundo numero: ");
+            scanf("%f", &amp;a);
             c=a+b;
-            printf(&quot;%.2f + %.2f = %.2f\n&quot;, a,b,c);</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    }
-//Fin Sumar
+            printf("%.2f + %.2f = %.2f\n", a,b,c);
+           
+        }
+    //Fin Sumar
+        break;
+    //Restar
+        case(2):{
+            printf("Ingresar el primer numero: ");
+            scanf("%f", &amp;a);
+            printf("Ingresar el segundo numero: ");
+            scanf("%f", &amp;b);
+            c=a-b;
+            printf("%.2f - %.2f = %.2f\n", a,b,c);   
+        }
+    //Fin Restar
+        break;
+    //Multiplicar
+        case(3):{
+            printf("Ingresar el primer numero: ");
+            scanf("%f", &amp;a);
+            printf("Ingresar el segundo numero: ");
+            scanf("%f", &amp;b);
+            c=a*b;
+            printf("%.2f * %.2f = %.2f\n", a,b,c);
+        }
+    //Fin Multiplicar
+        break;
+    //Dividir
+        case(4):{
+            printf("Ingresar el primer numero: ");
+            scanf("%f", &amp;a);
+            printf("Ingresar el segundo numero: ");
+            scanf("%f", &amp;b);
+            c=a/b;
+            printf("%.2f/%.2f = %.2f\n",a,b,c);
+        }
+    //Fin Dividir
     break;
-//Restar
-    case(2):{
-        printf(&quot;Ingresar el primer numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;a);
-        printf(&quot;Ingresar el segundo numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;b);
-        c=a-b;
-        printf(&quot;%.2f - %.2f = %.2f\n&quot;, a,b,c);   
+    //Potencias
+    case(5):{
+      printf("Ingresar el primer numero: ");
+            scanf("%f", &amp;a);
+            printf("Ingresar el segundo numero: ");
+            scanf("%f", &amp;b);
+      if (b&gt;=0){
+        for (i=0; i&lt;b ;i++){
+          c=c*a;
+        }
+        printf("%.2f Elevado a %.2f = %.2f\n", a,b,c);
+      }else{
+        printf("el exponente debe ser positivo\n");
+      }
     }
-//Fin Restar
+    //Fin potencias
     break;
-//Multiplicar
-    case(3):{
-        printf(&quot;Ingresar el primer numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;a);
-        printf(&quot;Ingresar el segundo numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;b);
-        c=a*b;
-        printf(&quot;%.2f * %.2f = %.2f\n&quot;, a,b,c);
+    //MCD
+    case(6):{
+      printf("Ingresar el primer numero: ");
+            scanf("%f", &amp;a);
+            printf("Ingresar el segundo numero: ");
+            scanf("%f", &amp;b);
+      r=(int)a%(int)b;
+      while (r!=0){
+        a=b;
+        b=r;
+        r=(int)a%(int)b;
+      }
+      printf("MCD=%.2f\n",b);
     }
-//Fin Multiplicar
-    break;
-//Dividir
-    case(4):{
-        printf(&quot;Ingresar el primer numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;a);
-        printf(&quot;Ingresar el segundo numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;b);
-        c=a/b;
-        printf(&quot;%.2f/%.2f = %.2f\n&quot;,a,b,c);
-    }
-//Fin Dividir
-break;
-//Potencias
-case(5):{
-  printf(&quot;Ingresar el primer numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;a);
-        printf(&quot;Ingresar el segundo numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;b);
-  if (b&gt;=0){
-    for (i=0; i&lt;b ;i++){
-      c=c*a;
-    }
-    printf(&quot;%.2f Elevado a %.2f = %.2f\n&quot;, a,b,c);
-  }else{
-    printf(&quot;el exponente debe ser positivo\n&quot;);
+    //Fin MCD
+        break;
+        default:{
+            printf("Opcion no valida\n");
+        }
   }
-}
-//Fin potencias
-break;
-//MCD
-case(6):{
-  printf(&quot;Ingresar el primer numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;a);
-        printf(&quot;Ingresar el segundo numero: &quot;);
-        scanf(&quot;%f&quot;, &amp;b);
-  r=(int)a%(int)b;
-  while (r!=0){
-    a=b;
-    b=r;
-    r=(int)a%(int)b;
-  }
-  printf(&quot;MCD=%.2f\n&quot;,b);
-}
-//Fin MCD
-    break;
-    default:{
-        printf(&quot;Opcion no valida\n&quot;);
-    }
-</code></pre></div>
-<p>}
-  system(&quot;pause&quot;);
+  system("pause");
   return 0;
-</code></pre></p>
+</code></pre>
 
         </section>
         <footer class="post-footer">

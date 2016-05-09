@@ -64,17 +64,17 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p>Cree un programa que ordene los 100 registros dentro de un archivo mediante BubbleSort.<br>
+          <p>Cree un programa que ordene los 100 registros dentro de un archivo mediante BubbleSort.<br />
 Asuma que el archivo ya existe y tiene estructuras del tipo.</p>
 
 <p><code>struct tAlumno{ char nombre[20]; int promedio; }</code></p>
 
-<p>Ordene el archivo respecto al promedio, de menor a mayor. <br/>
+<p>Ordene el archivo respecto al promedio, de menor a mayor. <br />
 NO use arreglos y ordene todo dentro del MISMO archivo.</p>
 
 <p>Código:</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(int argc, char *argv[])
 {
@@ -99,18 +99,18 @@ int main(int argc, char *argv[])
     /* Ordenar las estructuras !! */
     for(i=0; i&lt;k; i++){
         rewind(alumnos);
-        fread(&tmp, sizeof(tAlumno), 1, alumnos);
+        fread(&amp;tmp, sizeof(tAlumno), 1, alumnos);
         for(j=0; j&lt;k-i; j++){
-            fread(&s, sizeof(tAlumno), 1, alumnos);
-            if(tmp.promedio>s.promedio){
+            fread(&amp;s, sizeof(tAlumno), 1, alumnos);
+            if(tmp.promedio&gt;s.promedio){
                 /* Retroceder el largo de 2 estructuras*/
                 fseek(alumnos, (-2)*sizeof(tAlumno), SEEK_CUR);
                 
                 /* escribir la estructura s */
-                fwrite(&s, sizeof(tAlumno), 1, alumnos);
+                fwrite(&amp;s, sizeof(tAlumno), 1, alumnos);
                 
                 /* escribir la estructura tmp */
-                fwrite(&tmp, sizeof(tAlumno), 1, alumnos);
+                fwrite(&amp;tmp, sizeof(tAlumno), 1, alumnos);
                 
                 /* Quedamos a donde mismo */
             }
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
     
     /* Mostrar las estructuras ordenadas */
     rewind(alumnos);    
-    while(fread(&s, sizeof(tAlumno), 1, alumnos)){
+    while(fread(&amp;s, sizeof(tAlumno), 1, alumnos)){
         printf("Nombre: %-20s\t\tPromedio: %3d\n", s.nombre, s.promedio);
     }
     fclose(alumnos);
@@ -135,8 +135,8 @@ int main(int argc, char *argv[])
 <p>Generador al azar de nombres y promedios, guardados en el archivo <strong>db.dat</strong>:</p>
 
 <pre><code class="language-c">#include <time.h>
-#include &lt;stdio.h>
-#include &lt;stdlib.h>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 
 #define MAX_STRUCTS 100 /* Candidad de alumnos para generar */
 #define MAX_NOM 20      /* Largo maximo de los nombres para generar */  
@@ -172,11 +172,11 @@ int main(int argc, char *argv[])
             }
             musik.nombre[j] = '\0';
             musik.promedio = rand()%100+1;  /* promedio al azar */
-            fwrite(&musik, sizeof(tAlumno), 1, alumnos);
+            fwrite(&amp;musik, sizeof(tAlumno), 1, alumnos);
     }
     
     rewind(alumnos);
-    while(fread(&musik, sizeof(tAlumno), 1, alumnos)){
+    while(fread(&amp;musik, sizeof(tAlumno), 1, alumnos)){
         printf("Nombre: %-20s\t\t\tPromedio: %3d\n", musik.nombre, musik.promedio);
     }
     fclose(alumnos);
@@ -184,9 +184,10 @@ int main(int argc, char *argv[])
 }
 
 /* by JPEG @ http://mammut.github.io */
-</code></pre>
 
-<p>Eso seria... cualquier duda dejen un comentario.</p>
+
+Eso seria... cualquier duda dejen un comentario.
+</time.h></code></pre>
 
         </section>
         <footer class="post-footer">

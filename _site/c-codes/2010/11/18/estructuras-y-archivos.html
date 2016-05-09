@@ -68,7 +68,7 @@
 
 <p>Publico 2 codigos, cada uno explica el uso de fwrite y fread.</p>
 
-<h4>fwrite</h4>
+<h4 id="fwrite">fwrite</h4>
 
 <pre><code class="language-c">
 #include <stdio.h>
@@ -102,15 +102,15 @@ int main(int argc, char *argv[])
     /* Guardamos la estructura en la base de datos 
        Los parametros de fwrite son;
        fwrite(A, B, C, D);
-       A = Direccion de memoria(&) de la estructura. Si fuese un arreglo, seria simplemente el nombre del arreglo.
+       A = Direccion de memoria(&amp;) de la estructura. Si fuese un arreglo, seria simplemente el nombre del arreglo.
        B = Tamaño de la estructura
        C = Cantidad de elementos. Si fuese un arreglo de tamaño 5, seria 5
        D = Donde guardarlo, archivo
     */
-    fwrite(&prueba, sizeof(myStruct), 1, arch);
+    fwrite(&amp;prueba, sizeof(myStruct), 1, arch);
     
     /* En este caso:
-       A = &prueba, es decir, la direccion de memoria de la estructura prueba
+       A = &amp;prueba, es decir, la direccion de memoria de la estructura prueba
        B = sizeof(myStruct), el tamaño de el tipo de estructura de prueba, es decir, myStruct
        C = 1, ya que no es un arreglo, solo es un elemento que deseo guardar
        D = arch, el puntero al archivo abierto
@@ -123,9 +123,9 @@ int main(int argc, char *argv[])
     
     return 0;
 }
-</code></pre>
 
-<h4>fread</h4>
+
+#### fread
 
 <pre><code class="language-c">
 #include <stdio.h>
@@ -160,13 +160,13 @@ int main(int argc, char *argv[])
     /* Leemos la estructura de la base de datos 
        Los parametros de fread son;
        fread(A, B, C, D);
-       A = Direccion de memoria(&) de la estructura temporal donde se guardaran las lecturas
+       A = Direccion de memoria(&amp;) de la estructura temporal donde se guardaran las lecturas
            Si fuese un arreglo, seria simplemente el nombre del arreglo
        B = Tamaño de la estructura (el tipo de estructura)
        C = Cantidad de elementos para leer. Si fuese un arreglo de tamaño 5, seria 5
        D = Donde leerlo, archivo
     */
-    while(fread(&tmp, sizeof(myStruct), 1, arch)==1){
+    while(fread(&amp;tmp, sizeof(myStruct), 1, arch)==1){
         printf("ID: %d\n", tmp.id);
         printf("Name: %s\n", tmp.name);
         /* aqui dentro puedo manipular cada estructura individualmente
@@ -178,7 +178,7 @@ int main(int argc, char *argv[])
     }
     
     /* En este caso, hacemos un while que lee a cada estructura en un ciclo:
-       A = &prueba, es decir, la direccion de memoria de la estructura tmp
+       A = &amp;prueba, es decir, la direccion de memoria de la estructura tmp
        B = sizeof(myStruct), el tamaño de el tipo de estructura de tmp, es decir, myStruct
        C = 1, ya que leeo de a 1 estructura a la vez, y en cada ciclo del while las manipulo
            individualmente
@@ -195,11 +195,11 @@ int main(int argc, char *argv[])
     
     return 0;
 }
-</code></pre>
 
-<p>Ahora ejemplos parecidos, pero utilizando arreglos de estructuras. Es decir, montamos las estructuras que estan dentro del archivo, en un arreglo de estructuras y luego manipulamos el arreglo.</p>
 
-<p><strong>Escritura de un arreglo de estructuras:</strong></p>
+Ahora ejemplos parecidos, pero utilizando arreglos de estructuras. Es decir, montamos las estructuras que estan dentro del archivo, en un arreglo de estructuras y luego manipulamos el arreglo.
+
+**Escritura de un arreglo de estructuras:**
 
 <pre><code class="language-c">
 #include <stdio.h>
@@ -225,12 +225,12 @@ int main(int argc, char *argv[])
     
     int i;
     
-    for(i=0; i<10; i++){
+    for(i=0; i&lt;10; i++){
         sprintf(arreglo[i].name, "Nombre%d", i);
         arreglo[i].id = i+1;
     }
     
-    /* Escribimos desde la direccion de memoria del arreglo (dado por el nombre del arreglo sin &)
+    /* Escribimos desde la direccion de memoria del arreglo (dado por el nombre del arreglo sin &amp;)
        en el archivo arch
     */
     fwrite(arreglo, sizeof(myStruct), 10, arch);
@@ -239,9 +239,9 @@ int main(int argc, char *argv[])
     fclose(arch);
     return 0;
 }
-</code></pre>
 
-<p><strong>Lectura de un arreglo de estructuras:</strong></p>
+
+**Lectura de un arreglo de estructuras:**
 
 <pre><code class="language-c">
 #include <stdio.h>
@@ -266,7 +266,7 @@ int main(int argc, char *argv[])
     int i,size=0;
     
     /* Contamos cuantas estructuras hay en el archivo */
-    while(fread(&tmp, sizeof(myStruct), 1, arch))
+    while(fread(&amp;tmp, sizeof(myStruct), 1, arch))
         size++;
     
     /* Creamos un arreglo de estructuras del tamaño leido en el paso anterior */
@@ -279,7 +279,7 @@ int main(int argc, char *argv[])
     fread(lectura, sizeof(myStruct), size, arch);
     
     /* mostramos el arreglo */
-    for(i=0; i<10; i++){
+    for(i=0; i&lt;10; i++){
         printf("Nombre: %s\t\t", lectura[i].name);
         printf("id: %d\n", lectura[i].id);
     }
@@ -288,23 +288,24 @@ int main(int argc, char *argv[])
     fclose(arch);
     return 0;
 }
-</code></pre>
 
-<p>Es muy importante que entiendan por que cuando leo y escribo un arreglo, no uso el &amp; (dirección de memoria).</p>
 
-<p>Cuando creo un arreglo <code>int arreglo[20];</code> e imprimo el puntero del arreglo (*arreglo):</p>
+Es muy importante que entiendan por que cuando leo y escribo un arreglo, no uso el &amp; (dirección de memoria).
 
-<p><code>printf(&quot;%d&quot;, *arreglo);</code></p>
+Cuando creo un arreglo `int arreglo[20];` e imprimo el puntero del arreglo (*arreglo):
 
-<p>obtendría la dirección de memoria del primer elemento del arreglo</p>
+`printf("%d", *arreglo);`
 
-<p>es exactamente a decir:</p>
+obtendría la dirección de memoria del primer elemento del arreglo
 
-<p><code>printf(&quot;%d&quot;, &amp;arreglo[0]);</code></p>
+es exactamente a decir:
 
-<p>Por eso no se escribe &amp;arreglo y simplemente arreglo, (también se podría escribir <code>&amp;arreglo[0]</code>).</p>
+`printf("%d", &amp;arreglo[0]);`
 
-<p>Ahora simplemente a probar diferentes códigos, practiquen, sufran... etc.</p>
+Por eso no se escribe &amp;arreglo y simplemente arreglo, (también se podría escribir `&amp;arreglo[0]`).
+
+Ahora simplemente a probar diferentes códigos, practiquen, sufran... etc.
+</stdio.h></code></pre></stdio.h></code></pre></stdio.h></code></pre></stdio.h></code></pre>
 
         </section>
         <footer class="post-footer">

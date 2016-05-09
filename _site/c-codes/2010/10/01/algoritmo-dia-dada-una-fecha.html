@@ -64,11 +64,11 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <p>Con este programa uno ingresa el año, mes y día, y te entrega el día que fue (lunes, martes, etc...)</p>
+          <p>Con este programa uno ingresa el año, mes y día, y te entrega el día que fue (lunes, martes, etc…)</p>
 
-<p>Link: <a href="http://es.wikipedia.org/wiki/Algoritmo_para_calcular_el_d%C3%ADa_de_la_semana">http://es.wikipedia.org/wiki/Algoritmo<em>para</em>calcular<em>el</em>d%C3%ADa<em>de</em>la_semana</a></p>
+<p>Link: <a href="http://es.wikipedia.org/wiki/Algoritmo_para_calcular_el_d%C3%ADa_de_la_semana">http://es.wikipedia.org/wiki/Algoritmo_para_calcular_el_d%C3%ADa_de_la_semana</a></p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 /* Definimos el tipo de datos booleano */
 #define TRUE 1
@@ -83,9 +83,9 @@ int main(int argc, char *argv[]) {
     char *semana[7] = {"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"};
 
     do {
-        printf("Year: ");  scanf("%d", &year);
-        printf("Month: "); scanf("%d", &month);
-        printf("Day: ");   scanf("%d", &day);
+        printf("Year: ");  scanf("%d", &amp;year);
+        printf("Month: "); scanf("%d", &amp;month);
+        printf("Day: ");   scanf("%d", &amp;day);
     } while(year &lt; 1);
 
     /* ecuacion principal del algoritmo */
@@ -107,7 +107,7 @@ bool bisiesto(int year) {
     /* recibe un año, y retorna true si dicho año es bisiesto.
     * false en caso contrario
     */
-    return year%4==0 && (year%400==0 || year%100!=0);
+    return year%4==0 &amp;&amp; (year%400==0 || year%100!=0);
 }
 </code></pre>
 

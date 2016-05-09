@@ -68,13 +68,13 @@
 
 <p><code>tipo nombre(parámetros)</code></p>
 
-<p>El <strong>tipo</strong>, es el tipo de dato que devuelve la funcion <code>nombre</code> cuando termina de ejecutarse.<br>
-El <code>nombre</code> es el nombre de la funcion, y como yo la voy a llamar.<br>
+<p>El <strong>tipo</strong>, es el tipo de dato que devuelve la funcion <code>nombre</code> cuando termina de ejecutarse.<br />
+El <code>nombre</code> es el nombre de la funcion, y como yo la voy a llamar.<br />
 Los <strong>parámatros</strong> son valores que la función necesita para funcionar.</p>
 
 <p>por ejemplo:</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int suma(int x, int y);
 
@@ -100,7 +100,7 @@ int suma(int x,int y)
 
 <p>Ejercicio1: hacer una calculadora que sume,reste y multiplique usando funciones.</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 float suma(int x, int y);
 float resta(int x, int y);
@@ -112,10 +112,10 @@ int main(int argc, char *argv[])
     float r;
     do{
         printf("1-Suma\n2-Resta\n3-Multiplicar\n\nIngrese una opcion: ");
-        scanf("%d", &menu);
-    }while(menu<1||menu>3);
+        scanf("%d", &amp;menu);
+    }while(menu&lt;1||menu&gt;3);
     printf("Ingrese los numeros: ");
-    scanf("%d %d", &a, &b);
+    scanf("%d %d", &amp;a, &amp;b);
     switch(menu){
         case(1):{r=suma(a,b);}break;
         case(2):{r=resta(a,b);}break;
@@ -149,7 +149,7 @@ float mult(int x,int y)
 
 <p>ejercicio 2: Crear una matriz de 2x2, pedir al usuario cada valor. y mostrar el determinante. con funciones.</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #define MAX 2
 void llenar_arreglo(int matrix[][MAX]);
 int det(int matrix[MAX][MAX]);
@@ -168,7 +168,7 @@ void llenar_arreglo(int matrix[][MAX])
     for(i = 0; i &lt; MAX; i++){
         for(j = 0; j &lt; MAX; j++){
             printf("Ingrese el valor (%d,%d): ", i+1,j+1);
-            scanf("%d", &value);
+            scanf("%d", &amp;value);
             matrix[i][j]=value;
         }
     }
@@ -182,7 +182,7 @@ int det(int matrix[MAX][MAX])
 
 <p>Ejercicio 3: Hacer una calculadora de sumatorias y factoriales como funciones recursivas.</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 double fact(int n);
 double sum(int x);
@@ -191,9 +191,9 @@ int main(int argc, char *argv[])
 {
     int menu,x;
     printf("1-Sumatoria\n2-Factorial\n\nIngrese una opcion: ");
-    scanf("%d", &menu);
+    scanf("%d", &amp;menu);
     printf("Ingrese numero: ");
-    scanf("%d", &x);
+    scanf("%d", &amp;x);
     switch(menu){
         case(1):{printf("%.2lf", sum(x));}break;
         case(2):{printf("%.2lf", fact(x));}break;
@@ -203,7 +203,7 @@ int main(int argc, char *argv[])
 
 double sum(int x)
 {
-    if(x > 1){
+    if(x &gt; 1){
         return (sum(x-1)+x);
     }
     return 1.0;
@@ -213,7 +213,7 @@ double fact(int n){
     if(n &lt; 0){
         return (n*fact(n+1));
     }
-    if(n > 1){
+    if(n &gt; 1){
         return (n*fact(n-1));
     }
     return 1.0;
@@ -222,7 +222,7 @@ double fact(int n){
 
 <p>Cosas importantes de funciones:</p>
 
-<p>1.- Cuando uso funciones en un programa, estas deben ser <strong>declaradas</strong> al principio del programa. En los ejemplos anteriores se entiende<br>
+<p>1.- Cuando uso funciones en un programa, estas deben ser <strong>declaradas</strong> al principio del programa. En los ejemplos anteriores se entiende<br />
 2.- Cundo uso arreglos en funciones, al llamar la funcion lo ago con el nombre del arreglo y no con su longitud, osea, <strong>arreglo[2]</strong> es el arreglo y su longitud, en funciones solo lo llamo como <strong>arreglo</strong></p>
 
 <p>y en la funcion, cuando declaro los <strong>parametros</strong> indico el arreglo asi: <strong>arreglo[]</strong></p>
@@ -236,6 +236,7 @@ double fact(int n){
 <p>y la llamo asi:</p>
 
 <p><code>funcion(arreglo);</code></p>
+
 
         </section>
         <footer class="post-footer">

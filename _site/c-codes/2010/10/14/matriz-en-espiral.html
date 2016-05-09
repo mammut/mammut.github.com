@@ -66,17 +66,17 @@
           <a name="topofpage"></a>
           <p><strong>Actualización: acabo de publicar <a href="/c-codes/2015/04/01/matriz-en-espiral-v2.html">aquí</a> un nuevo algoritmo mas sencillo para llenar la matriz en forma de espiral</strong></p>
 
-<h3>Tarea de programación</h3>
+<h3 id="tarea-de-programacin">Tarea de programación</h3>
 
 <ol>
-<li>Hacer una función que rote 90° una matriz cuadrada</li>
-<li>Hacer 2 funciones, una que recorra y llene una matriz en forma de espiral, una de afuera hacia adentro, y la otra al revés. (las funciones las separe en dos programas diferentes)</li>
+  <li>Hacer una función que rote 90° una matriz cuadrada</li>
+  <li>Hacer 2 funciones, una que recorra y llene una matriz en forma de espiral, una de afuera hacia adentro, y la otra al revés. (las funciones las separe en dos programas diferentes)</li>
 </ol>
 
-<h4>1. Rotar una matriz (rotar.c)</h4>
+<h4 id="rotar-una-matriz-rotarc">1. Rotar una matriz (rotar.c)</h4>
 
 <pre><code class="language-c">
-#include &lt;stdio.h>
+#include &lt;stdio.h&gt;
 #define MAX 3  /* Define la dimensión de la matriz */
 
 void rotar(int matrix[][MAX]);
@@ -90,7 +90,7 @@ int main(int argc,char *argv[])
     for(i=0;i&lt;MAX;i++){
         for(j=0;j&lt;MAX;j++){
             printf("Valor %dx%d: ", i,j);
-            scanf("%d", &x);
+            scanf("%d", &amp;x);
             matrix[i][j]=x;
         }
     }
@@ -135,7 +135,7 @@ void show(int matrix[][MAX]){
 }
 </code></pre>
 
-<p>Compilación y ejecución de ejemplo:
+<p>Compilación y ejecución de ejemplo:</p>
 <pre><code class="language-bash">$ gcc rotar.c -o executeme -Wall
 $ ./executeme
 Valor 0x0: 1
@@ -155,12 +155,12 @@ Matriz rotada:
    7   4   1
    8   5   2
    9   6   3
-</code></pre></p>
+</code></pre>
 
-<h4>2. Llenar una matriz de afuera hacia adentro en forma de espiral (aftodentro.c):</h4>
+<h4 id="llenar-una-matriz-de-afuera-hacia-adentro-en-forma-de-espiral-aftodentroc">2. Llenar una matriz de afuera hacia adentro en forma de espiral (aftodentro.c):</h4>
 
 <pre><code class="language-c">
-#include &lt;stdio.h>
+#include &lt;stdio.h&gt;
 #define MAX 6   /* Define la dimension maxima de la matriz */
 
 void show(int matrix[][MAX]);
@@ -202,12 +202,12 @@ void llenar_esperilicamente(int matrix[][MAX]) {
             matrix[j][aux] = count;
             count++;
         }
-        for(j = aux; j >= (i-1); j--) {
+        for(j = aux; j &gt;= (i-1); j--) {
             matrix[aux][j] = count;
             count++;
         }
         aux--;
-        for(j = aux; j >= i; j--) {
+        for(j = aux; j &gt;= i; j--) {
             matrix[j][MAX-(aux+2)] = count;
             count++;
         }
@@ -228,9 +228,9 @@ $ ./executeme
   16  15  14  13  12  11
 </code></pre>
 
-<h4>3. Llenar una matriz de adentro hacia afuera en forma de espiral (detofuera.c).</h4>
+<h4 id="llenar-una-matriz-de-adentro-hacia-afuera-en-forma-de-espiral-detofuerac">3. Llenar una matriz de adentro hacia afuera en forma de espiral (detofuera.c).</h4>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #define MAX 5   /* Define la dimension de la matriz */
 
 void show(int matrix[][MAX]);
@@ -266,7 +266,7 @@ void llenar_esperilicamente(int matrix[][MAX]) {
     if(MAX % 2 != 0) {
         aux = MAX/2; /* se comienza en el punto central de la matriz */
         for(i = 0; i &lt; MAX/2+1; i++) {
-            for(j = aux+i ; j > aux-(2+i); j--){
+            for(j = aux+i ; j &gt; aux-(2+i); j--){
                 if(count==MAX*MAX+1){break;}
                 matrix[aux-i][j] = count;
                 count++;
@@ -280,7 +280,7 @@ void llenar_esperilicamente(int matrix[][MAX]) {
                 matrix[aux+(1+i)][j+1] = count;
                 count++;
             }
-            for(j = aux+i; j > aux-(1+i); j--){
+            for(j = aux+i; j &gt; aux-(1+i); j--){
                 matrix[j][aux+(1+i)] = count;
                 count++;
             }
@@ -292,11 +292,11 @@ void llenar_esperilicamente(int matrix[][MAX]) {
                 matrix[aux+(1+i)][j] = count;
                 count++;
             }
-            for(j = aux+i; j >aux-(1+i); j--) {
+            for(j = aux+i; j &gt;aux-(1+i); j--) {
                 matrix[j][aux+(1+i)] = count;
                 count++;
             }
-            for(j = aux+i; j > aux-(2+i); j--) {
+            for(j = aux+i; j &gt; aux-(2+i); j--) {
                 if(count == MAX*MAX+1) { break; }
                 matrix[aux-i][j] = count;
                 count++;    

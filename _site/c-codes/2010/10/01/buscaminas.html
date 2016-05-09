@@ -66,9 +66,9 @@
           <a name="topofpage"></a>
           <p>Este es mas choro. Si encuentra un espacio donde la suma de las minas de alrededor sea 0, entonces recursivamente, revisa los alrededores hasta que encuentre un lugar donde la suma no sea cero.</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
-#include &lt;stdlib.h>
-#include &lt;time.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
 #define MAX 8 //el tamaño del tablero
 #define top 7 //Top vienen a ser las minas
 
@@ -94,8 +94,8 @@ int main(int argc, char *argv[])
             if(i==0||j==0||i==MAX+1||j==MAX+1)tablero[i][j]=-1;// Llenamos los bordes con el valor -1
     do{
         printf("Ingrese cuantas minas desea en el campo: ");
-        scanf("%d", &i);
-    }while(i&lt;1||i>MAX*MAX-1);    
+        scanf("%d", &amp;i);
+    }while(i&lt;1||i&gt;MAX*MAX-1);    
     for(j=1;j&lt;=i;j++){
         do{
             a=rand()%MAX+1;
@@ -148,7 +148,7 @@ int main(int argc, char *argv[])
                 if(tablero[i][j]==0){
                     printf("-  ");
                 }
-                if(tablero[i][j]!=0&&tablero[i][j]!=top){
+                if(tablero[i][j]!=0&amp;&amp;tablero[i][j]!=top){
                     printf("%d  ", tablero[i][j]-10);
                 }
             }
@@ -159,8 +159,8 @@ int main(int argc, char *argv[])
         /* Pedir coordenadas */
         do{
             printf("\nIngrese una coordenada: ");
-            scanf("%d %d", &x,&y);
-        }while(x&lt;1||x>MAX||y&lt;1||y>MAX);
+            scanf("%d %d", &amp;x,&amp;y);
+        }while(x&lt;1||x&gt;MAX||y&lt;1||y&gt;MAX);
         /* Fin Pedir Coordenadas */
           
         /* Perdiste =)*/

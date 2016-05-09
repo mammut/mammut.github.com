@@ -76,8 +76,8 @@
 <p>ejemplo</p>
 
 <pre><code class="language-c">
-#include &lt;stdio.h>
-#include &lt;stdlib.h>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 
 struct persona{
     char nombre[50];
@@ -99,15 +99,15 @@ int main(void){
 }
 </code></pre>
 
-<p>Ejercicio 1: Hacer una estructura llamada &#39;persona&#39; que contenga, char nombre[], char sexo, y un arreglo de notas[].
-<br>Luego llenar un arreglo de tipo &#39;persona&#39; con 3 personas, y pedir para cada uno, el nombre, el sexo y 4 notas.
-<br>Luego Para cada persona el ese arreglo, obtener su promedio, si su promedio es &gt;= que 55, mostrar por pantalla
+<p>Ejercicio 1: Hacer una estructura llamada ‘persona’ que contenga, char nombre[], char sexo, y un arreglo de notas[].
+<br />Luego llenar un arreglo de tipo ‘persona’ con 3 personas, y pedir para cada uno, el nombre, el sexo y 4 notas.
+<br />Luego Para cada persona el ese arreglo, obtener su promedio, si su promedio es &gt;= que 55, mostrar por pantalla
 Persona tanto ha aprobado</p>
 
 <pre><code class="language-c">
-#include &lt;stdio.h>
-#include &lt;string.h>
-#include &lt;stdlib.h> //para sacar el warning de sistem
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt; //para sacar el warning de sistem
 #define ALM 3//cantidad de alumnos
 #define NOT 4//cantidad ee notas
 
@@ -136,14 +136,14 @@ int main(void){
         
         //el sexo
         printf("Sexo: ");
-        scanf("%c", &alumnos[i].sexo); //leemos el sexo como un string, aunque solo guardará el primer caracter
+        scanf("%c", &amp;alumnos[i].sexo); //leemos el sexo como un string, aunque solo guardará el primer caracter
         
         //las notas
         for(j=0; j&lt;NOT; j++){
             printf("Nota%d: ", j+1);
-            scanf("%d", &alumnos[i].notas[j]);
+            scanf("%d", &amp;alumnos[i].notas[j]);
         }
-        while ((ch = getchar()) != '\n' && ch != EOF); //Borrar el buffer de stdin (eleminiar \n)
+        while ((ch = getchar()) != '\n' &amp;&amp; ch != EOF); //Borrar el buffer de stdin (eleminiar \n)
         printf("\n");
     }
     
@@ -152,7 +152,7 @@ int main(void){
         prom = 0;//resetamos el contador de promedios para cada alumno
         for(j=0; j&lt;NOT; j++)
             prom+=alumnos[i].notas[j];
-        if((prom/NOT)>=55){
+        if((prom/NOT)&gt;=55){
             if(alumnos[i].sexo == 'm'){
                 printf("El alumno %s ha aprobado\n", alumnos[i].nombre);//hombre
             }else if(alumnos[i].sexo == 'f'){
@@ -162,34 +162,34 @@ int main(void){
             }
         }
     }
-    system("pause>nul");
+    system("pause&gt;nul");
     return 0;
 }
 </code></pre>
 
-<p>una pequeña nota: Desde la línea 24 a la 28, se puede remplazar por una línea así: <code>gets(alumnos[i].nombre);</code><br>
-el problema de <code>gets</code> es que es peligroso, ya que algún usuario malintencionado puede ingresar mas datos de los permitidos, lo que se conoce como buffer overflow.<br>
+<p>una pequeña nota: Desde la línea 24 a la 28, se puede remplazar por una línea así: <code>gets(alumnos[i].nombre);</code><br />
+el problema de <code>gets</code> es que es peligroso, ya que algún usuario malintencionado puede ingresar mas datos de los permitidos, lo que se conoce como buffer overflow.<br />
 para evitar esto, usamos <code>fgets</code>, donde podemos especificar de donde quieremos leer el string, cuan grande puede ser (limite que no tiene <code>gets</code>) y de donde proviene.</p>
 
 <p>ejemplo:
 <code>fgets(alumnos[i].nombre, sizeof(alumnos[i].nombre), stdin);</code>
-<br>Guarda el string en <code>alumnos[i].nombre</code>
-<br>El tamaño del buffer es de <code>sizeof(alumnos[i].nombre)</code>, que es lo mismo que 50 cuando definimos <code>char nombre[50]</code>.
-<br>El lugar de donde entra el string es <code>stdin</code>, standar input, es decir, el teclado. (pueden ser otros, como un archivo)</p>
+<br />Guarda el string en <code>alumnos[i].nombre</code>
+<br />El tamaño del buffer es de <code>sizeof(alumnos[i].nombre)</code>, que es lo mismo que 50 cuando definimos <code>char nombre[50]</code>.
+<br />El lugar de donde entra el string es <code>stdin</code>, standar input, es decir, el teclado. (pueden ser otros, como un archivo)</p>
 
-<p>Pero la gran pregunta es, ¿Por qué <code>gets</code> solo usa una línea, y <code>fgets</code> necesita ese arreglin?<br>
-Lo que pasa es que <code>gets</code>, cuando termina de leer una línea (<strong>\n</strong>), este caracter no es incluido dentro del string.<br>
+<p>Pero la gran pregunta es, ¿Por qué <code>gets</code> solo usa una línea, y <code>fgets</code> necesita ese arreglin?<br />
+Lo que pasa es que <code>gets</code>, cuando termina de leer una línea (<strong>\n</strong>), este caracter no es incluido dentro del string.<br />
 A diferencia de gets, <code>fgets</code> cuando termina de leer la línea (<strong>\n</strong>) agrega este caracter al string como ultimo elemento del mismo.</p>
 
-<p>Es por eso que para borrarlo hacemos el arreglir, que cambia el ultimo elemento del string &#39;<strong>\n</strong>&#39; por un &#39;<strong>\0</strong>&#39;<br>
+<p>Es por eso que para borrarlo hacemos el arreglir, que cambia el ultimo elemento del string ‘<strong>\n</strong>’ por un ‘<strong>\0</strong>’  
 Hagan la prueba de borrar el arreglin, y ver que pasa cuando el alumno aprueba.</p>
 
-<p><em>Ejercicio2:</em> Hacer una estructura <code>clase</code> que contenga la estructura anterior de <code>alumnos</code>.<br>
+<p><em>Ejercicio2:</em> Hacer una estructura <code>clase</code> que contenga la estructura anterior de <code>alumnos</code>.<br />
 hacer un arreglo de 3 clases, con 3 alumnos cada una, y 4 notas. (es mas fácil usar constantes)</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
-#include &lt;string.h>
-#include &lt;stdlib.h> //para sacar el warning de sistem
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt; //para sacar el warning de sistem
 #define CUR 2
 #define AL 2
 #define NOT 1
@@ -226,12 +226,12 @@ int main(void){
             
             // el sexo
             printf("Sexo: ");
-            scanf("%c", &curso[k].alumnos[i].sexo);
+            scanf("%c", &amp;curso[k].alumnos[i].sexo);
             
             // para cada nota en el arreglo de notas del alumno i, del curso k
             for(j=0; j&lt;NOT; j++){
                 printf("Nota%d: ", j+1);
-                scanf("%d", &curso[k].alumnos[i].notas[j]);
+                scanf("%d", &amp;curso[k].alumnos[i].notas[j]);
             }
             printf("\n");
         }
@@ -242,7 +242,7 @@ int main(void){
             prom = 0; //reseteamos para cada nuevo alumno
             for(j=0; j&lt;NOT; j++) //sumamos las notas del arreglo de notas.
                 prom+=curso[k].alumnos[i].notas[j];
-            if((prom/NOT)>=55){
+            if((prom/NOT)&gt;=55){
                 if(curso[k].alumnos[i].sexo=='m'){
                     printf("El alumno %s ha aprobado\n", curso[k].alumnos[i].nombre);
                 }
@@ -257,6 +257,7 @@ int main(void){
     return 0;
 }
 </code></pre>
+
 
         </section>
         <footer class="post-footer">

@@ -64,153 +64,150 @@
             lectura de <span class="post-reading-time"></span>
           </div>
           <a name="topofpage"></a>
-          <h3>Estructuras de Control</h3>
+          <h3 id="estructuras-de-control">Estructuras de Control</h3>
 
-<h3>for</h3>
-
+<h3 id="for">for</h3>
 <p>Permite ejecutar un proceso varias veces mientras se cumpla una condición.</p>
 
-<p>Estructura básica:  </p>
+<p>Estructura básica:</p>
 
 <pre><code class="language-c">for(valor_inicial; Condicion; Cambio_de_valor) {
   proceso...
 }
 </code></pre>
 
-<p><strong>Valor inicial:</strong> es una variable &#39;i&#39; que tendra un valor inicial. (ej 0, 1, etc...)<br>
-<strong>Condicion:</strong> es la condicion que dice si el proceso se ejecuta o no.<br>
-<strong>Cambio de valor:</strong> es como cambia el &#39;valor inicial&#39;, puedo sumar de 1 en 1, o de 2 en 2, puedo multiplicarlo, etc.<br>
+<p><strong>Valor inicial:</strong> es una variable ‘i’ que tendra un valor inicial. (ej 0, 1, etc…)<br />
+<strong>Condicion:</strong> es la condicion que dice si el proceso se ejecuta o no.<br />
+<strong>Cambio de valor:</strong> es como cambia el ‘valor inicial’, puedo sumar de 1 en 1, o de 2 en 2, puedo multiplicarlo, etc.<br />
 <strong>Proceso:</strong> lo que se ejecuta mientras la condicion sea verdadera.</p>
 
-<p><img src="http://jpeg.comoj.com/jpeg/public/images/suma1.gif" alt="Ejemplo 1"></p>
+<p><img src="http://jpeg.comoj.com/jpeg/public/images/suma1.gif" alt="Ejemplo 1" /></p>
 
-<p>el valor inicial &#39;i&#39; es 1<br>
-la condicion es i&lt;=n<br>
+<p>el valor inicial ‘i’ es 1<br />
+la condicion es i&lt;=n<br />
 el cambio de valor es i+1 ó i++
-la condicion es i&lt;=n<br>
-el cambio de valor es i+1 o sumarle 1 a i (i++)
+la condicion es i&lt;=n<br />
+el cambio de valor es i+1 o sumarle 1 a i (i++)</p>
 <pre><code class="language-c">for(i = 1; i &lt;= n; i++) {
   suma = suma+i;
 }
-</code></pre></p>
+</code></pre>
 
-<p><img src="http://latex.codecogs.com/gif.latex?n!=1%5Ccdot%202%5Ccdots%20n" alt="Ejemplo 2"></p>
+<p><img src="http://latex.codecogs.com/gif.latex?n!=1\\cdot%202\\cdots%20n" alt="Ejemplo 2" /></p>
 
-<p>En este ejemplo avanzaremos hacia atras...<br>
-<strong>Valor inicial:</strong> n<br>
-<strong>Condicion:</strong> n&gt;0<br>
-<strong>Cambio de valor:</strong> n-1 ó n--</p>
+<p>En este ejemplo avanzaremos hacia atras…<br />
+<strong>Valor inicial:</strong> n<br />
+<strong>Condicion:</strong> n&gt;0<br />
+<strong>Cambio de valor:</strong> n-1 ó n–</p>
 
-<pre><code class="language-c">for(i = n; i > 0; i--) {
+<pre><code class="language-c">for(i = n; i &gt; 0; i--) {
   factorial=factorial*i;
 }
 </code></pre>
 
-<h3>while</h3>
+<h3 id="while">while</h3>
+<p>muy parecido al for, realiza un proceso mientras una condicion se cumpla. Pero a diferencia de este, el ‘<strong>Cambio de valor</strong>’ esta dentro del ‘<strong>Proceso</strong>’ y el valor inicial viene dado de antes.</p>
 
-<p>muy parecido al for, realiza un proceso mientras una condicion se cumpla. Pero a diferencia de este, el &#39;<strong>Cambio de valor</strong>&#39; esta dentro del &#39;<strong>Proceso</strong>&#39; y el valor inicial viene dado de antes.</p>
-
-<p>Estructura Básica:
+<p>Estructura Básica:</p>
 <pre><code class="language-c">i=1
 while(condición) {
   proceso...
   i++;
 }
 </code></pre>
-La idea es que ovbiamente la &#39;<strong>condición</strong>&#39; dependa de i. asi cuando i cambie, la condicion cambie, y se termine el while.</p>
+<p>La idea es que ovbiamente la ‘<strong>condición</strong>’ dependa de i. asi cuando i cambie, la condicion cambie, y se termine el while.</p>
 
 <p>Ejercicios, hagan el ejemplo 1 y 2 utilizando while en vez de for.</p>
 
-<h3>do ... while</h3>
+<h3 id="do--while">do … while</h3>
 
-<p>La gran diferencia entre while y do...while, es que do...while realiza al menos una vez el proceso, luego revisa la condicion de ejecucion.</p>
+<p>La gran diferencia entre while y do…while, es que do…while realiza al menos una vez el proceso, luego revisa la condicion de ejecucion.</p>
 
-<p>Estructura Básica:
+<p>Estructura Básica:</p>
 <pre><code class="language-c">int i = 0;
 do {
   proceso;
   i++
 }while(condición);
-</code></pre></p>
+</code></pre>
 
-<p>puede ser que si la condicion sea falsa, el while no se ejecute, el do...while realiza al menos 1 vez el proceso.</p>
+<p>puede ser que si la condicion sea falsa, el while no se ejecute, el do…while realiza al menos 1 vez el proceso.</p>
 
 <p>Ejemplo útil.
-Pedir al usuario ingresar un numero que este entre 1 y 9.
+Pedir al usuario ingresar un numero que este entre 1 y 9.</p>
 <pre><code class="language-c">do {
-  printf(&quot;Ingrese un numero: &quot;);
-  scanf(&quot;%d&quot;, &amp;n);
-}while(n<1 || n>9);
-</code></pre></p>
+  printf("Ingrese un numero: ");
+  scanf("%d", &amp;n);
+}while(n&lt;1 || n&gt;9);
+</code></pre>
 
 <p>Este ejemplo lo primero que hace es pedir al usuario un valor para n. Luego revisa si es menor que 1, o mayor que 9. En el caso que si lo sea, vuelve a realizar el proceso. si no lo es. Continua con el resto del programa.</p>
 
-<p>Hagamos el programa completo en la version <strong>while</strong> y <strong>do...while</strong></p>
+<p>Hagamos el programa completo en la version <strong>while</strong> y <strong>do…while</strong></p>
 
-<p>do...while</p>
+<p>do…while</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void){
   int n = 5;
   do {
     printf("ingrese un numero: ");
-    scanf("%d", &n);
-  }while( n>9 || n<1);
+    scanf("%d", &amp;n);
+  }while( n&gt;9 || n&lt;1);
   printf("%d", n);
   return 0;
 }
 </code></pre>
 
-<p>Como pueden ver el <strong>valor inicial de n es 5</strong>, aun asi se ejecuta el proceso y nos pregunta por n.<br>
-veamos ahora con while el mismo código.
-<pre><code class="language-c">#include &lt;stdio.h&gt;</p>
+<p>Como pueden ver el <strong>valor inicial de n es 5</strong>, aun asi se ejecuta el proceso y nos pregunta por n.<br />
+veamos ahora con while el mismo código.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
-<p>int main(void){
+int main(void){
   int n = 5;
-  while (n&gt;9 || n<1) {
+  while (n&gt;9 || n&lt;1) {
     printf("ingrese un numero: ");
-    scanf("%d", &n);
+    scanf("%d", &amp;n);
   }
   printf("%d", n);
   return 0;
 }
-</code></pre></p>
+</code></pre>
 
 <p>El programa simplemente nos muestra 5. ya que el <strong>valor inicial de n es 5</strong> lo que hace que la <strong>condicion sea Falsa</strong>, saltandose el while.</p>
 
-<h3>Switch</h3>
+<h3 id="switch">Switch</h3>
+<p>El switch nos permite realizar diferentes procesos a partir de casos u opciones. Es muy utilizado en menus, o para acortar “ifs” demaciado largos.</p>
 
-<p>El switch nos permite realizar diferentes procesos a partir de casos u opciones. Es muy utilizado en menus, o para acortar &quot;ifs&quot; demaciado largos.</p>
-
-<p>Estructura Básica
+<p>Estructura Básica</p>
 <pre><code class="language-c">switch(n) {
   case(a):{
-    proceso<em>a
+    proceso_a
   }
   break;
   case(b):{
-    proceso</em>b
+    proceso_b
   }
   break;
   case(...):{
-    proceso<em>...
+    proceso_...
   }
   break;
   default:{
-    por</em>defecto
+    por_defecto
   }
 }
-</code></pre></p>
+</code></pre>
 
-<p>Entonces, dependiendo de &#39;<strong>n</strong>&#39; switch ejecutara el proceso que sea igual a &#39;<strong>nn</strong>&#39;<br>
+<p>Entonces, dependiendo de ‘<strong>n</strong>’ switch ejecutara el proceso que sea igual a ‘<strong>nn</strong>‘<br />
 pero switch tiene algo chistoso, es un poquito bruto, y es que cuando encuentra el caso que debe ejecutar, luego que termina quiere seguir ejecutando los procesos de los casos que le siguen.
-Para detenerlo en necesario escribir &#39;<strong>break</strong>&#39;, asi termina la ejecucion de switch. (No es necesario detener la ejecución de default, ya que es la ultima.)<br>
+Para detenerlo en necesario escribir ‘<strong>break</strong>’, asi termina la ejecucion de switch. (No es necesario detener la ejecución de default, ya que es la ultima.)<br />
 para entender mas esto de lo bruto de Switch, vamos a hacer 2 programas muy parecidos, solo que a uno le vamos a borrar el break.</p>
 
 <p>coon_break.c</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void) {
   int n = 1;
@@ -233,12 +230,12 @@ int main(void) {
 </code></pre>
 
 <p>Modificaremos a mano los valores de n, debemos probar con 1,2 y cualquier otro.
-si <strong>n=1</strong>, vemos <strong>Uno</strong><br>
-si <strong>n=2</strong>, vemos <strong>Dos</strong><br>
-si <strong>n!=1 &amp; n!=2</strong>, vemos <strong>Todos los enteros - [1,2]</strong><br>
+si <strong>n=1</strong>, vemos <strong>Uno</strong><br />
+si <strong>n=2</strong>, vemos <strong>Dos</strong><br />
+si <strong>n!=1 &amp; n!=2</strong>, vemos <strong>Todos los enteros - [1,2]</strong><br />
 (La idea es que lo compilen y prueben, cambiando el valor de n.)</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main(void) {
   int n = 1;
@@ -258,42 +255,42 @@ int main(void) {
 }
 </code></pre>
 
-<p>Si <strong>n=1</strong> vemos:<br>
-<strong>Uno</strong><br>
-<strong>Dos</strong><br>
-<strong>Todos los enteros - [1,2]</strong><br></p>
+<p>Si <strong>n=1</strong> vemos:<br />
+<strong>Uno</strong><br />
+<strong>Dos</strong><br />
+<strong>Todos los enteros - [1,2]</strong><br /></p>
 
-<p>Si <strong>n=2</strong> vemos:<br>
-<strong>Dos</strong><br>
-<strong>Todos los enteros - [1,2]</strong><br></p>
+<p>Si <strong>n=2</strong> vemos:<br />
+<strong>Dos</strong><br />
+<strong>Todos los enteros - [1,2]</strong><br /></p>
 
-<p>Si <strong>n!=1 &amp;&amp; n!=2</strong> vemos:<br>
-<strong>Todos los enteros - [1,2]</strong><br></p>
+<p>Si <strong>n!=1 &amp;&amp; n!=2</strong> vemos:<br />
+<strong>Todos los enteros - [1,2]</strong><br /></p>
 
 <p>Prueben jugando con los break y los numeros, para entender bien la logica de switch.</p>
 
-<h3>Ejercicio:</h3>
-
-<p>Hagan una calculadora que tenga las siguientes opciones (usando switch-case)<br></p>
+<h3 id="ejercicio">Ejercicio:</h3>
+<p>Hagan una calculadora que tenga las siguientes opciones (usando switch-case)<br /></p>
 
 <ol>
-<li>Sumatoria de los n primeros numeros<br></li>
-<li>Factorial de n (n&gt;=0)<br></li>
-<li>Fibonacci hasta el n-ésimo término (n&gt;0)<br></li>
-<li>Valor absoluto de n (entero)</li>
+  <li>Sumatoria de los n primeros numeros<br /></li>
+  <li>Factorial de n (n&gt;=0)<br /></li>
+  <li>Fibonacci hasta el n-ésimo término (n&gt;0)<br /></li>
+  <li>Valor absoluto de n (entero)</li>
 </ol>
 
 <p>(la sumatoria no la hagan con n(n+1)/2 es trampa.)</p>
 
 <ol>
-<li>El menu con Switch</li>
-<li>En la sumatoria, el lim debe ser positivo</li>
-<li>En el factorial el n debe ser mayor o igual que 0</li>
-<li>En fibonacci n debe ser positivo</li>
-<li>En el valor absoluto usen if.</li>
+  <li>El menu con Switch</li>
+  <li>En la sumatoria, el lim debe ser positivo</li>
+  <li>En el factorial el n debe ser mayor o igual que 0</li>
+  <li>En fibonacci n debe ser positivo</li>
+  <li>En el valor absoluto usen if.</li>
 </ol>
 
-<p>2,3,4 usen do...while para comprobar.</p>
+<p>2,3,4 usen do…while para comprobar.</p>
+
 
         </section>
         <footer class="post-footer">

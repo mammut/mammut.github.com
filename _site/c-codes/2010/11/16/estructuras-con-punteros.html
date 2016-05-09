@@ -68,7 +68,7 @@
 
 <p>¿de qué estoy hablando? de esto:</p>
 
-<p>Tengo una estructura <strong>Mascota</strong> que tiene un nombre y una edad.<br>
+<p>Tengo una estructura <strong>Mascota</strong> que tiene un nombre y una edad.<br />
 Tengo una estructura <strong>Persona</strong> que tiene un nombre una edad y una Mascota.</p>
 
 <p>es decir tengo una estructura dentro de otra.</p>
@@ -82,7 +82,7 @@ Supongamos que tengo la estructura <strong>persona</strong> (de arriba), y yo cr
 
 <p>y para el nombre, como es un string, usamos strcpy o sprintf.</p>
 
-<p><code>sprintf(juampi.nombre, &quot;Juampi&quot;);</code></p>
+<p><code>sprintf(juampi.nombre, "Juampi");</code></p>
 
 <p>hasta aqui todo bien, facil y bonito.</p>
 
@@ -93,7 +93,7 @@ Utilizando la misma logica anterior seria:</p>
 sprintf(juampi.pet.nombre, "Boo");
 </code></pre>
 
-<p>Vemos que mientras mas subestructuras, mas tenemos que escribir para llegar a cierta propiedad, lo que puede volverse muy feo...</p>
+<p>Vemos que mientras mas subestructuras, mas tenemos que escribir para llegar a cierta propiedad, lo que puede volverse muy feo…</p>
 
 <p>menos mal que en C existen los punteros!!</p>
 
@@ -105,8 +105,8 @@ puntero = &juampi.pet;
 
 <p>Listo, ahora para utilizar las propiedades de la mascota de juampi, simplemente hacemos esto:</p>
 
-<pre><code class="language-c">puntero->edad = 20;
-sprintf(puntero->nombre, "Boo");
+<pre><code class="language-c">puntero-&gt;edad = 20;
+sprintf(puntero-&gt;nombre, "Boo");
 </code></pre>
 
 <p>se ve bonito ahora con una flechita.</p>
@@ -114,7 +114,7 @@ sprintf(puntero->nombre, "Boo");
 <p>ahora todo escrito en C</p>
 
 <pre><code class="language-c">
-#include &lt;stdio.h>
+#include &lt;stdio.h&gt;
 
 int main(int argc, char *argv[])
 {
@@ -144,15 +144,15 @@ int main(int argc, char *argv[])
   sprintf(juampi.nombre, "Juampi");
   
   /* Ahora la mascota */
-  pet->edad = 2;
-  sprintf(pet->nombre, "Boo");
+  pet-&gt;edad = 2;
+  sprintf(pet-&gt;nombre, "Boo");
   
   /* mostremos los valores */
   printf("Nombre persona: %s\n", juampi.nombre);
   printf("Edad persona: %d\n", juampi.edad);
   
-  printf("Nombre mascota: %s\n", pet->nombre);
-  printf("Edad mascota: %d\n", pet->edad);
+  printf("Nombre mascota: %s\n", pet-&gt;nombre);
+  printf("Edad mascota: %d\n", pet-&gt;edad);
   
   return 0;
 }
@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
 <p>Ejemplo2. Arreglo de personas, con arreglo de punteros a las mascotas de cada persona.</p>
 
 <pre><code class="language-c">
-#include &lt;stdio.h>
+#include &lt;stdio.h&gt;
 
 int main(int argc, char *argv[])
 {
@@ -186,7 +186,7 @@ int main(int argc, char *argv[])
   
   /* hacemos un for que relacione a cada mascota con su dueño */
   for(i=0; i&lt;5; i++)
-    mascotas[i] = &gente[i].pet;
+    mascotas[i] = &amp;gente[i].pet;
     
   /* Ahora le damos una edad a las personas */
   for(i=0; i&lt;5; i++)
@@ -200,19 +200,19 @@ int main(int argc, char *argv[])
   /* ahora las mascotas... */
   /* edades */
   for(i=0; i&lt;5; i++)
-    mascotas[i]->edad = 2+i;
+    mascotas[i]-&gt;edad = 2+i;
     
   /* Nombres */
   for(i=0; i&lt;5; i++)
-    sprintf(mascotas[i]->nombre, "Boo");
+    sprintf(mascotas[i]-&gt;nombre, "Boo");
     
   
   /* Ahora mostramos toda la informacion */
   for(i=0; i&lt;5; i++){
     printf("Nombre persona%d: %s\n", i+1, gente[i].nombre);
     printf("Edad persona%d: %d\n", i+1, gente[i].edad);
-    printf("Nombre Mascota de la persona%d: %s\n", i+1, mascotas[i]->nombre);
-    printf("Edad Mascota de la persona%d: %d\n", i+1, mascotas[i]->edad);
+    printf("Nombre Mascota de la persona%d: %s\n", i+1, mascotas[i]-&gt;nombre);
+    printf("Edad Mascota de la persona%d: %d\n", i+1, mascotas[i]-&gt;edad);
     printf("-------------------------------------\n");
   }
   
@@ -220,7 +220,7 @@ int main(int argc, char *argv[])
 }
 </code></pre>
 
-<p>Ejercicio...<br>
+<p>Ejercicio…<br />
 ¿puedo utilizar la flechita para una estructura simple asi:</p>
 
 <p><code>juampi-&gt;edad = 20;</code></p>

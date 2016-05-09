@@ -66,8 +66,8 @@
           <a name="topofpage"></a>
           <p>Control 1-C</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
-#include &lt;stdlib.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 
 int main(void)
 {
@@ -86,32 +86,32 @@ int main(void)
         */
         do{ /* Comprobar que los datos ingresados sean positivos */
             printf("Ingrese el destino: ");
-            scanf("%ld", &destino);
+            scanf("%ld", &amp;destino);
             printf("Ingrese el combustible disponible: ");
-            scanf("%ld", &cdisponible);
-        }while(destino<=0||cdisponible<=0);
+            scanf("%ld", &amp;cdisponible);
+        }while(destino&lt;=0||cdisponible&lt;=0);
         
         /* funcion para calcular el gasto total desde el km 1 hasta el destino */
-        for(km=1;km<=destino;km++){
+        for(km=1;km&lt;=destino;km++){
             cactual=canterior*0.8+(km+1);
             cgasto+=cactual; //El gasto acumulado
             canterior=cactual; //El gasto actual pasa a ser el anterior
-            if(cgasto>cdisponible){ /* Ver si ya me pase en el gasto, si es asi salgo del proceso*/
+            if(cgasto&gt;cdisponible){ /* Ver si ya me pase en el gasto, si es asi salgo del proceso*/
                 end=km-1;
                 break;
             }
         }
         /* Compruebo si el gasto es menor que el disponible */
-        if(cgasto<=cdisponible){
+        if(cgasto&lt;=cdisponible){
             printf("\nCombustible suficiente, el auto llega a su destino\n");
         }
         /* Compruebo si el gasto es mayor que el desponible */
-        if(cgasto>cdisponible){
+        if(cgasto&gt;cdisponible){
             printf("\nCombustible insuficiente, el auto cae en Pana en el kilometro %ld\n", end);
         }
         /* Le doy al usuario la opcion de evaluar nuevamente */
         printf("\nEvaluar otro auto:\n1-Si\n2-No\nOpcion: ");
-        scanf("%d", &seguir);
+        scanf("%d", &amp;seguir);
         
         switch(seguir){
             case(1):{/* Repetir el proceso */                

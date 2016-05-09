@@ -66,8 +66,8 @@
           <a name="topofpage"></a>
           <p>Muestra el calendario basado en el año ingresado por el usuario. Usando un algoritmo para saber que dia de la semana fue, dado su fecha.</p>
 
-<pre><code class="language-c">#include &lt;stdio.h>
-#include &lt;stdlib.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 
 /* Se define el tipo de datos bool */
 #define TRUE 1;
@@ -83,12 +83,12 @@ int main(int argc, char *argv[]) {
     int year = 0;
     int i;
     
-    if (argc > 1) { /* Ver si es posible cargar por parametro */
+    if (argc &gt; 1) { /* Ver si es posible cargar por parametro */
         year = (int)strtoul(argv[1], 0, 10);
     }
     while (year &lt; 1900) {
         printf("Ingrese un a%co posterior a 1900: ", 164);
-        scanf("%d", &year);
+        scanf("%d", &amp;year);
     }
     
     for (i = 1; i &lt;= 12; i++){
@@ -121,7 +121,7 @@ void show_months(int month, int year) {
     }
 
     for(i = 0; i &lt; dias; i++){
-        if( (i + day)%7 == 0 && i != 0) { 
+        if( (i + day)%7 == 0 &amp;&amp; i != 0) { 
             printf("\n");
         }
         printf("%3d", i+1);
@@ -147,7 +147,7 @@ int get_days(int month, int year) {
  */
 bool bisiesto(int year) {
     
-    return year%4==0 && (year%400==0 || year%100!=0);
+    return year%4==0 &amp;&amp; (year%400==0 || year%100!=0);
 }
 </code></pre>
 

@@ -65,8 +65,8 @@
           </div>
           <a name="topofpage"></a>
           <pre><code class="language-c">
-#include &lt;stdio.h>
-#include &lt;string.h>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
 
 // esta función elimina los saltos de línea que guarda fgets() cuando no se alcanza el límite de carácteres
 void eliminarSaltosDeLinea(char array[]);
@@ -95,7 +95,7 @@ int main () {
     // 6. se usa "temporal" (que es un string) para guardar lo ingresado por teclado como un numero entero usando sscanf()
     printf("Edad: ");
     fgets(temporal, 4, stdin);
-    sscanf(temporal, "%d", &edad);
+    sscanf(temporal, "%d", &amp;edad);
     
     // comprobando que no se produzcan errores al usar fgets() - sscanf() - fgets() seguidos
     printf("Direccion: ");

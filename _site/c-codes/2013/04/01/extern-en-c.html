@@ -74,8 +74,7 @@
 
 <p>Ahora supongamos que tenemos una librería con cabecera llamada: <em>mi_libreria.h</em> y dentro tiene una variable declarada como extern:</p>
 
-<h5>mi_libreria.h</h5>
-
+<p>#####mi_libreria.h</p>
 <pre><code>...
 extern int is_cool;
 ...
@@ -83,46 +82,45 @@ extern int is_cool;
 
 <p>y tenemos un archivo principal main.c</p>
 
-<h5>main.c</h5>
-
+<p>#####main.c#####</p>
 <pre><code>#include "mi_libreria.h"
 
 int is_cool;
 
 int main() {
-    is_cool = 1;
+	is_cool = 1;
 }
 ...
 </code></pre>
 
 <p>Y por último tenemos un tercer archivo con funciones que tambien utiliza la librería</p>
 
-<h5>funciones.c</h5>
-
+<p>#####funciones.c#####</p>
 <pre><code>#include "mi_libreria.h"
 
 void una_funcion() {
-    ...
-    if (is_cool) puts("He is cool");
-    ...
+	...
+	if (is_cool) puts("He is cool");
+	...
 }
 </code></pre>
 
-<p>Tenemos 3 archivos. <em>main.c, funciones.c</em> y <em>mi_libreria.h</em>. tanto main.c como funciones.c usan dicha librería.<br>
-En la librería  <strong>declaramos</strong> la variable <code>is<em>cool</code>.<br>
-En main.c <strong>definimos</strong> la variable <code>is</em>cool</code>.<br>
+<p>Tenemos 3 archivos. <em>main.c, funciones.c</em> y <em>mi_libreria.h</em>. tanto main.c como funciones.c usan dicha librería.<br />
+En la librería  <strong>declaramos</strong> la variable <code>is_cool</code>.<br />
+En main.c <strong>definimos</strong> la variable <code>is_cool</code>.<br />
 Al definirla, el compilador comprueba que el tipo de dato que estamos definiendo sea el mismo que el declarado en la librería.</p>
 
 <p>Ahora la variable <code>is_cool</code> es una variable global (pero muy global, por que es <strong>la misma</strong> en diferentes archivos)</p>
 
-<h4>Reglas Generales</h4>
+<p>####Reglas Generales####</p>
 
 <ul>
-<li>Un extern solo se utiliza en archivos header (o de cabecera). Nunca en un archivo fuente (.c)</li>
-<li>Definir una variable extern solo en un archivo fuente. Solo hace falta definirla una vez.</li>
+  <li>Un extern solo se utiliza en archivos header (o de cabecera). Nunca en un archivo fuente (.c)</li>
+  <li>Definir una variable extern solo en un archivo fuente. Solo hace falta definirla una vez.</li>
 </ul>
 
 <p>Eso es todo lo que tengo que decir sobre extern en C.</p>
+
 
         </section>
         <footer class="post-footer">
