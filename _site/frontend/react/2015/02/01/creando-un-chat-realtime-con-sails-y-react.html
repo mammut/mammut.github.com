@@ -91,7 +91,7 @@
 <h2 id="parte-1-arquitectura">Parte 1: Arquitectura</h2>
 <p>El protocolo de comunicación es la parte más importante, la forma en que se comunican los clientes con el servidor. Es necesario entonces definir los mensajes de socket.io y el modelo de datos que debemos usar.</p>
 
-<p>El modelo de nuestro Chat consiste solo en la tabla <code>message</code> que tendrá solo 2 atributos: <code>author</code> y <code>text</code>. Ambos campos string y obligatorios. Esto se implementará en la parte 2.3</p>
+<p>El modelo de nuestro Chat consiste solo en la tabla <code class="highlighter-rouge">message</code> que tendrá solo 2 atributos: <code class="highlighter-rouge">author</code> y <code class="highlighter-rouge">text</code>. Ambos campos string y obligatorios. Esto se implementará en la parte 2.3</p>
 
 <p>El protocolo de comunicación posee solo 2 mensajes.
 <img src="/assets/article_images/2015-02-01-creando-un-chat-realtime-con-sails-y-react/diagram-1.png" alt="Sails + react chat app" /></p>
@@ -99,11 +99,11 @@
 <ul>
   <li>
     <h4 id="cliente-publica-nuevo-mensaje">Cliente publica nuevo mensaje</h4>
-    <p><code>cliente</code> » <code>servidor</code>: <code>{"author": "Jon Snow", "text": "I know nothing"}</code></p>
+    <p><code class="highlighter-rouge">cliente</code> » <code class="highlighter-rouge">servidor</code>: <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon Snow"</span><span class="p">,</span><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know nothing"</span><span class="p">}</span></code></p>
   </li>
   <li>
     <h4 id="servidor-enva-nuevo-mensaje-a-los-clientes">Servidor envía nuevo mensaje a los clientes</h4>
-    <p><code>servidor</code> » <code>clientes</code>: <code>{"author": "Jon Snow", "text": "I know nothing"}</code></p>
+    <p><code class="highlighter-rouge">servidor</code> » <code class="highlighter-rouge">clientes</code>: <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon Snow"</span><span class="p">,</span><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know nothing"</span><span class="p">}</span></code></p>
   </li>
 </ul>
 
@@ -114,7 +114,7 @@
 <h3 id="instalacin">1. Instalación</h3>
 <pre><code class="language-bash">npm install -g Sails
 </code></pre>
-<p>Esto instalará en la línea de comandos la herramienta para gestión de proyectos Sails de manera global <code>-g</code></p>
+<p>Esto instalará en la línea de comandos la herramienta para gestión de proyectos Sails de manera global <code class="highlighter-rouge">-g</code></p>
 
 <h3 id="crear-el-proyecto">2. Crear el proyecto</h3>
 <p>Ahora podemos crear nuestro nuevo proyecto Sails.</p>
@@ -127,7 +127,7 @@
 <p>Esto lanza el servidor en la dirección: <a href="http://localhost:1337/">http://localhost:1337/</a><br />
 Ahora estamos listos para comenzar con la API de mensajes.</p>
 
-<h3 id="crear-el-api-message">3. Crear el API <code>message</code></h3>
+<h3 id="crear-el-api-message">3. Crear el API <code class="highlighter-rouge">message</code></h3>
 
 <p>Sails permite generar APIs con una simple línea de comandos, esto generara un Modelo y Controlador automáticamente y todas las acciones CRUD y funciones de búsqueda, filtros, paginación y orden. Este endpoint  puede ser accedido desde el navegador, haciendo llamadas ajax o desde socket.io con métodos especialmente formulados por Sails.</p>
 
@@ -135,7 +135,7 @@ Ahora estamos listos para comenzar con la API de mensajes.</p>
 
 <pre><code class="language-bash">sails generate api message
 </code></pre>
-<p>Ahora se puede jugar con el endpoint de <code>message</code> para ver como funciona.</p>
+<p>Ahora se puede jugar con el endpoint de <code class="highlighter-rouge">message</code> para ver como funciona.</p>
 <pre><code class="language-bash">sails lift
 </code></pre>
 
@@ -145,12 +145,12 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 <p>Esta configuración le dice a Sails como trabajar las migraciones de la base de datos. Existen 3 tipos de migraciones:</p>
 
 <ol>
-  <li><code>safe</code>: Nunca auto-migra la base de datos. Debe hacerse a mano</li>
-  <li><code>alter</code>: Auto-migra, intentando mantener los datos actuales</li>
-  <li><code>drop</code>: Vacía/elimina todos los datos y reconstruye los modelos cada vez que se realiza un Sails lift</li>
+  <li><code class="highlighter-rouge">safe</code>: Nunca auto-migra la base de datos. Debe hacerse a mano</li>
+  <li><code class="highlighter-rouge">alter</code>: Auto-migra, intentando mantener los datos actuales</li>
+  <li><code class="highlighter-rouge">drop</code>: Vacía/elimina todos los datos y reconstruye los modelos cada vez que se realiza un Sails lift</li>
 </ol>
 
-<p>En esta ocasión se usará <code>alter</code></p>
+<p>En esta ocasión se usará <code class="highlighter-rouge">alter</code></p>
 
 <p>Para modificar la migración se abre el archivo: <strong>config/models.js</strong> y se descomenta la línea 30</p>
 
@@ -159,7 +159,7 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 31
 32};
 </code></pre>
-<p>Ahora si se puede hacer <code>Sails lift</code> tranquilamente.</p>
+<p>Ahora si se puede hacer <code class="highlighter-rouge">Sails lift</code> tranquilamente.</p>
 
 <p>Sails genero un Blueprint del api recién creado, por lo que existen las siguientes rutas RESTFul:</p>
 
@@ -206,7 +206,7 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 </tbody>
 </table>
 
-<p>Se recomienda el uso de la extensión <a href="http://www.getpostman.com/">Postman</a> para probar estas rutas. Además pueden usar la consola de desarrollador en sus navegadores para probar socket.io. Por ejemplo para un CRUD simple de <code>menssage</code> pueden intentar:</p>
+<p>Se recomienda el uso de la extensión <a href="http://www.getpostman.com/">Postman</a> para probar estas rutas. Además pueden usar la consola de desarrollador en sus navegadores para probar socket.io. Por ejemplo para un CRUD simple de <code class="highlighter-rouge">menssage</code> pueden intentar:</p>
 
 <pre><code class="language-javascript">io.socket.get('/message', function(messages) { console.log(messages); });
 io.socket.post('/message', {author: "Alan Turing", text: "HUllo World!"});
@@ -215,7 +215,7 @@ io.socket.put('/message/1', {text: "Hullo World!"});
 io.socket.delete('/message/1');
 </code></pre>
 
-<p>Un aspecto que se puede cambiar es que estos modelos permiten guardar cualquier tipo de información. No existe un esquema de los modelos, pero se puede forzar. Se abre el archivo <strong>/api/models/Message.js</strong> y se agrega <code>schema: true</code> para forzar los atributos especificados.</p>
+<p>Un aspecto que se puede cambiar es que estos modelos permiten guardar cualquier tipo de información. No existe un esquema de los modelos, pero se puede forzar. Se abre el archivo <strong>/api/models/Message.js</strong> y se agrega <code class="highlighter-rouge">schema: true</code> para forzar los atributos especificados.</p>
 
 <pre><code class="language-javascript">module.exports = {
 
@@ -329,16 +329,16 @@ body {
 <p>Ya teniendo más o menos listo el backend podemos comenzar a escribir react.</p>
 
 <h3 id="incorporando-a-sails">0. Incorporando a Sails</h3>
-<p>Para poder utilizar <code>bower</code> en nuestro proyecto Sails es preciso cambiar el directorio por defecto de <code>bower</code>, para eso se crea el archivo <strong>.bowerrc</strong> donde agregamos lo siguiente:</p>
+<p>Para poder utilizar <code class="highlighter-rouge">bower</code> en nuestro proyecto Sails es preciso cambiar el directorio por defecto de <code class="highlighter-rouge">bower</code>, para eso se crea el archivo <strong>.bowerrc</strong> donde agregamos lo siguiente:</p>
 
 <pre><code class="language-javascript">{
   "directory": "assets/vendor"
 }
 </code></pre>
 
-<p>Ahora cualquier librería que se instale usando <code>bower</code> quedará en el directorio <strong>assets/vendor</strong>.</p>
+<p>Ahora cualquier librería que se instale usando <code class="highlighter-rouge">bower</code> quedará en el directorio <strong>assets/vendor</strong>.</p>
 
-<p>Iniciamos el proyecto bower con <code>bower init</code> rellenando los datos que pregunten. Luego se instala React de la siguiente manera:</p>
+<p>Iniciamos el proyecto bower con <code class="highlighter-rouge">bower init</code> rellenando los datos que pregunten. Luego se instala React de la siguiente manera:</p>
 
 <pre><code class="language-bash">bower install react --save
 </code></pre>
@@ -425,7 +425,7 @@ var jsFilesToInject = [
   <li><strong>ChatForm</strong> (azul) es el formulario del chat.</li>
 </ul>
 
-<p>Lo primero que haremos es escribir un componente <code>Hola mundo</code> para introducir a React.</p>
+<p>Lo primero que haremos es escribir un componente <code class="highlighter-rouge">Hola mundo</code> para introducir a React.</p>
 
 <p>en <strong>assets/js/main.js</strong> se escribe:</p>
 
@@ -438,7 +438,7 @@ var jsFilesToInject = [
 React.render(&lt;HolaMundo /&gt;, document.getElementById('main'));
 </code></pre>
 
-<p>Un componente se crea utilizando el método <strong>React.createClass</strong> el cual recibe un objeto sobre el cual se definen funciones específicas que utilizan los componentes. La función más importante de todas es la función <strong>render</strong> (2-4), esta se encarga del layout del componente. Define los elementos y componentes que necesita, estos pueden ser etiquetas HTML, por ejemplo <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;div&gt;</code>, etc. así como también otros componentes React.</p>
+<p>Un componente se crea utilizando el método <strong>React.createClass</strong> el cual recibe un objeto sobre el cual se definen funciones específicas que utilizan los componentes. La función más importante de todas es la función <strong>render</strong> (2-4), esta se encarga del layout del componente. Define los elementos y componentes que necesita, estos pueden ser etiquetas HTML, por ejemplo <code class="highlighter-rouge">&lt;p&gt;</code>, <code class="highlighter-rouge">&lt;h1&gt;</code>, <code class="highlighter-rouge">&lt;div&gt;</code>, etc. así como también otros componentes React.</p>
 
 <p>La línea 7 <strong>React.render</strong> le dice a React que componente raíz inyectar y en que elemento del DOM. En este caso el componente raíz es <strong>HolaMundo</strong> y se inyecta en el elemento del DOM que tiene <strong>id=main</strong> (el cual pusimos al modificar homepage.ejs)</p>
 
@@ -463,7 +463,7 @@ var ChatBox = React.createClass({
 
 <p>El retorno de la función render es la sintáxis de JSX. Hay gente que no le gusta y prefiere utilizar JavaScript puro, con React es posible, <a href="https://www.packtpub.com/books/content/using-reactjs-without-jsx">Aquí</a> pueden encontrar mayor información sobre el tema.</p>
 
-<p>Como se observa en el código anterior, definimos un <code>div</code> contenedor con class=”ChatBox”. Dentro se renderizan dos componentes: <em>ChatMessage</em>s y ChatForm los cuales creamos a continuación:</p>
+<p>Como se observa en el código anterior, definimos un <code class="highlighter-rouge">div</code> contenedor con class=”ChatBox”. Dentro se renderizan dos componentes: <em>ChatMessage</em>s y ChatForm los cuales creamos a continuación:</p>
 
 <pre><code class="language-jsx">...
 var ChatForm = React.createClass({
@@ -551,7 +551,7 @@ var ChatBox = React.createClass({
 React.render(&lt;ChatBox messages={_msgList} /&gt;, document.getElementById('main'));
 </code></pre>
 
-<p>Lo que hacemos en la línea 27 es pasarle al componente <strong>ChatBox</strong> la propiedad <strong>messages</strong> para que sea igual al arreglo <em>_msgList</em>. El uso de {} se hace cuando se pasa una variable JavaScript como propiedad. También se puede enviar texto plano con <code>nombre="Alan Turing"</code>.</p>
+<p>Lo que hacemos en la línea 27 es pasarle al componente <strong>ChatBox</strong> la propiedad <strong>messages</strong> para que sea igual al arreglo <em>_msgList</em>. El uso de {} se hace cuando se pasa una variable JavaScript como propiedad. También se puede enviar texto plano con <code class="highlighter-rouge">nombre="Alan Turing"</code>.</p>
 
 <p>Para poder utilizar esta propiedad dentro del componente basta con hacer:</p>
 
@@ -580,7 +580,7 @@ React.render(&lt;ChatBox messages={_msgList} /&gt;, document.getElementById('mai
 });
 </code></pre>
 
-<p>Se crea la variable <code>messages</code> que será una lista de componentes <em>ChatMessage</em>. iteramos usando la función map sobre el arreglo que se recibe como propiedad <code>this.props.messages</code> y por cada mensaje se retorna un nuevo <em>ChatMessage</em> al que le asignamos la propiedads propiedades <code>author={message.author}</code> y <code>text={message.text}</code>. Un ejemplo aislado para iterar usando map sobre un arreglo puede ser:</p>
+<p>Se crea la variable <code class="highlighter-rouge">messages</code> que será una lista de componentes <em>ChatMessage</em>. iteramos usando la función map sobre el arreglo que se recibe como propiedad <code class="highlighter-rouge">this.props.messages</code> y por cada mensaje se retorna un nuevo <em>ChatMessage</em> al que le asignamos la propiedads propiedades <code class="highlighter-rouge">author={message.author}</code> y <code class="highlighter-rouge">text={message.text}</code>. Un ejemplo aislado para iterar usando map sobre un arreglo puede ser:</p>
 
 <pre><code class="language-jsx">var messages = [
   {name: "mensaje 1"}
@@ -594,7 +594,7 @@ messages.map(function(message,index) {
 });
 </code></pre>
 
-<p>Luego dentro de la lista ordenada <code>&lt;ul className="ChatList"&gt;</code> se muestra la lista de <em>ChatMessage</em> generada dinamicamente usando <code>{message}</code></p>
+<p>Luego dentro de la lista ordenada <code class="highlighter-rouge">&lt;ul className="ChatList"&gt;</code> se muestra la lista de <em>ChatMessage</em> generada dinamicamente usando <code class="highlighter-rouge"><span class="p">{</span><span class="err">message</span><span class="p">}</span></code></p>
 
 <p>Ahora solo falta hacer que el componente <em>ChatMessage</em> muestre el autor y texto del mensaje, los cuales recibe como parámetro desde su padre.</p>
 
@@ -610,7 +610,7 @@ messages.map(function(message,index) {
 });
 </code></pre>
 
-<p>Simplemente mostramos las variables usando <code>{this.props.message.author}</code> y <code>{this.props.message.text}</code> para imprimirlos donde deben ir.</p>
+<p>Simplemente mostramos las variables usando <code class="highlighter-rouge"><span class="p">{</span><span class="err">this.props.message.author</span><span class="p">}</span></code> y <code class="highlighter-rouge"><span class="p">{</span><span class="err">this.props.message.text</span><span class="p">}</span></code> para imprimirlos donde deben ir.</p>
 
 <p>Si vamos a la <a href="http://localhost:1337">página</a> y actualizamos veremos algo así:</p>
 
@@ -630,7 +630,7 @@ messages.map(function(message,index) {
 <p>Vemos que ChatBox es el mejor candidato para mantener los datos. Sus dos componentes hijos utilizan de alguna forma u otra los datos de ChatBox.
 Por un lado ChatList necesita la lista de mensajes para mostrarla. ChatForm necesita poder agregar nuevos mensajes a la lista en ChatBox.</p>
 
-<p>Ahora vamos a introducir un nuevo método para <code>createClass()</code> llamado <code>getInitialState</code>. Este método permite definir un estado inicial de nuestros componentes. Para usarlo vamos a definir el estado de nuestro ChatBox como la lista de mensajes recibida como parámetros desde <code>React.render(...)</code></p>
+<p>Ahora vamos a introducir un nuevo método para <code class="highlighter-rouge">createClass()</code> llamado <code class="highlighter-rouge">getInitialState</code>. Este método permite definir un estado inicial de nuestros componentes. Para usarlo vamos a definir el estado de nuestro ChatBox como la lista de mensajes recibida como parámetros desde <code class="highlighter-rouge">React.render(...)</code></p>
 
 <pre data-line="2-4,9"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
@@ -648,15 +648,15 @@ Por un lado ChatList necesita la lista de mensajes para mostrarla. ChatForm nece
 });
 </code></pre>
 
-<p>Agregamos el método <code>getInitialState</code> que retorna un objeto que define la propiedad <code>messages=this.props.messages</code>. Se ejecuta una sola vez cuando se inicia el componente.</p>
+<p>Agregamos el método <code class="highlighter-rouge">getInitialState</code> que retorna un objeto que define la propiedad <code class="highlighter-rouge">messages=this.props.messages</code>. Se ejecuta una sola vez cuando se inicia el componente.</p>
 
-<p>El otro cambio que realizamos fue en la línea 9 donde cambiamos <code>messages={this.state.messages}</code>. En otras palabras lo que le estamos pasando como propiedad a ChatList es el estado actual de los mensajes. Si estos cambian, le pasaremos una nueva lista de mensajes a ChatList.</p>
+<p>El otro cambio que realizamos fue en la línea 9 donde cambiamos <code class="highlighter-rouge">messages={this.state.messages}</code>. En otras palabras lo que le estamos pasando como propiedad a ChatList es el estado actual de los mensajes. Si estos cambian, le pasaremos una nueva lista de mensajes a ChatList.</p>
 
 <blockquote>
-  <p>La gran diferencia entre <code>this.props</code> y <code>this.state</code> es que <code>this.state</code> puede cambiar en el tiempo</p>
+  <p>La gran diferencia entre <code class="highlighter-rouge">this.props</code> y <code class="highlighter-rouge">this.state</code> es que <code class="highlighter-rouge">this.state</code> puede cambiar en el tiempo</p>
 </blockquote>
 
-<p>Para agregar mensajes nuevos a la lista de mensajes guardados en el estado de <strong>ChatBox</strong> vamos a necesitar cambiar la lista de mensajes, debemos usar entonces <code>this.state</code></p>
+<p>Para agregar mensajes nuevos a la lista de mensajes guardados en el estado de <strong>ChatBox</strong> vamos a necesitar cambiar la lista de mensajes, debemos usar entonces <code class="highlighter-rouge">this.state</code></p>
 
 <h3 id="handlers-agregando-mensajes-nuevos">5. Handlers. Agregando mensajes nuevos</h3>
 
@@ -686,9 +686,9 @@ Una vez teniendo esta función se la podemos pasar al componente hijo <strong>Ch
 });
 </code></pre>
 
-<p>La nueva función <code>handleNewMessage</code> recibe un objeto mensaje y lo agrega al arreglo de mensajes, luego se actualiza el estado de ChatBox entregándole el arreglo de mensajes actualizados con el nuevo mensaje. El método <code>this.setState(newState)</code> permite actualizar el estado del componente. En este caso estamos actualizando la lista de mensajes.</p>
+<p>La nueva función <code class="highlighter-rouge">handleNewMessage</code> recibe un objeto mensaje y lo agrega al arreglo de mensajes, luego se actualiza el estado de ChatBox entregándole el arreglo de mensajes actualizados con el nuevo mensaje. El método <code class="highlighter-rouge">this.setState(newState)</code> permite actualizar el estado del componente. En este caso estamos actualizando la lista de mensajes.</p>
 
-<p>Además agregamos la propiedad <code>onNewMessage={this.handleNewMessage}</code> al componente ChatForm en la línea 15. Así este componente podrá llamar al handler cuando el formulario sea enviado.</p>
+<p>Además agregamos la propiedad <code class="highlighter-rouge">onNewMessage={this.handleNewMessage}</code> al componente ChatForm en la línea 15. Así este componente podrá llamar al handler cuando el formulario sea enviado.</p>
 
 <pre data-line="2-10,13"><code class="language-jsx">var ChatForm = React.createClass({
   handleNewMessage: function(e) {
@@ -712,15 +712,15 @@ Una vez teniendo esta función se la podemos pasar al componente hijo <strong>Ch
 });
 </code></pre>
 
-<p>En el componente <strong>ChatForm</strong> se agrego la función handleNewMessage que se encarga de preparar el mensaje y llamar a la función onNewMessage que viene por parámetro desde su padre al momento de enviar el formulario, línea 13 <code>onSubmit</code>.</p>
+<p>En el componente <strong>ChatForm</strong> se agrego la función handleNewMessage que se encarga de preparar el mensaje y llamar a la función onNewMessage que viene por parámetro desde su padre al momento de enviar el formulario, línea 13 <code class="highlighter-rouge">onSubmit</code>.</p>
 
 <p>Luego el método handleNewMessage realiza lo siguiente:</p>
 
-<p><code>e.preventDefault()</code> detiene el envio del formulario<br />
-<code>this.refs</code> permite referenciar directamente a elementos que tengan el atributo <code>ref</code>. En este caso el formulario tiene <code>ref="author"</code> y <code>ref="text"</code>.<br />
+<p><code class="highlighter-rouge">e.preventDefault()</code> detiene el envio del formulario<br />
+<code class="highlighter-rouge">this.refs</code> permite referenciar directamente a elementos que tengan el atributo <code class="highlighter-rouge">ref</code>. En este caso el formulario tiene <code class="highlighter-rouge">ref="author"</code> y <code class="highlighter-rouge">ref="text"</code>.<br />
 Se llama a la función que viene desde el padre por props usando:<br />
-<code>this.props.onNewMessage({author: author, text:text});</code><br />
-y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this.refs.text.getDOMENode().value = '';</code></p>
+<code class="highlighter-rouge">this.props.onNewMessage({author: author, text:text});</code><br />
+y por último se limpia el texto del mensaje para escribir uno nuevo. <code class="highlighter-rouge">this.refs.text.getDOMENode().value = '';</code></p>
 
 <p>Ahora se puede probar el formulario, al enviar nuevos mensajes se agregan al arreglo de mensajes en el estado de ChatBox.</p>
 
@@ -739,7 +739,7 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
 
 <p>Si escucho que hay un nuevo mensaje, espero a que alguien (el servidor) me envié un nuevo mensaje con el evento que dispare cuando cree nuevos mensajes.</p>
 
-<p>El primer paso es transmitir nuevos mensajes a medida que se vayan creando en Sails. Sails ofrece un hook bastante conveniente. En nuestro modelo <code>message</code> vamos a agregar el hook <code>afterCreate</code> que se ejecuta cada vez que se cree un nuevo mensaje. Aqui dentro vamos a emitir un evento por socket.io para que todos los clientes sepan que hay un nuevo mensaje que agregar.</p>
+<p>El primer paso es transmitir nuevos mensajes a medida que se vayan creando en Sails. Sails ofrece un hook bastante conveniente. En nuestro modelo <code class="highlighter-rouge">message</code> vamos a agregar el hook <code class="highlighter-rouge">afterCreate</code> que se ejecuta cada vez que se cree un nuevo mensaje. Aqui dentro vamos a emitir un evento por socket.io para que todos los clientes sepan que hay un nuevo mensaje que agregar.</p>
 
 <p>Abrimos el archivo <strong>api/models/Message.js</strong> y agregamos:</p>
 
@@ -765,11 +765,11 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
 };
 </code></pre>
 
-<p>Agregamos el hook <code>afterCreate</code> que dentro emite el evento <em>“new message”</em> a todos los clientes conectados y les envía el nuevo mensaje recién creado.</p>
+<p>Agregamos el hook <code class="highlighter-rouge">afterCreate</code> que dentro emite el evento <em>“new message”</em> a todos los clientes conectados y les envía el nuevo mensaje recién creado.</p>
 
 <p>Ahora simplemente debemos hacer que React se conecte a socket.io y reciba nuevos mensajes así como también emitir nuevos mensajes.</p>
 
-<p><code>componentDidMount</code> es un método de <code>React.createClass</code> que se ejecuta una vez que el componente fue montado en el DOM correctamente. Vamos a usarlo para iniciar la conexión de socket.io e inicialmente para obtener la lista de mensajes así como también definir el evento a escuchar <em>“new message”</em></p>
+<p><code class="highlighter-rouge">componentDidMount</code> es un método de <code class="highlighter-rouge">React.createClass</code> que se ejecuta una vez que el componente fue montado en el DOM correctamente. Vamos a usarlo para iniciar la conexión de socket.io e inicialmente para obtener la lista de mensajes así como también definir el evento a escuchar <em>“new message”</em></p>
 
 <pre data-line="3,5-17,18-20"><code class="language-jsx">var ChatBox = React.createClass({
   getInitialState: function() {
@@ -803,23 +803,23 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. <code>this
 });
 </code></pre>
 
-<p>Lo primero es cambiar el método <code>getInitialState</code> para que retorne inicialmente el estado de mensajes como una lista vacía.</p>
+<p>Lo primero es cambiar el método <code class="highlighter-rouge">getInitialState</code> para que retorne inicialmente el estado de mensajes como una lista vacía.</p>
 
-<p><code>io.socket.on('connect', afn)</code> es el evento que se dispara cuando socket.io establece conexión con el servidor. Dentro de este hacemos 2 cosas, primero es obtener la lista de mensajes desde el servidor usando <code>io.socket.get</code> (este método es de Sails exclusivamente). Devuelve la lista de mensajes y cambiamos el estado de <strong>ChatBox</strong> para que tenga la lista de mensajes obtenida del servidor.</p>
+<p><code class="highlighter-rouge">io.socket.on('connect', afn)</code> es el evento que se dispara cuando socket.io establece conexión con el servidor. Dentro de este hacemos 2 cosas, primero es obtener la lista de mensajes desde el servidor usando <code class="highlighter-rouge">io.socket.get</code> (este método es de Sails exclusivamente). Devuelve la lista de mensajes y cambiamos el estado de <strong>ChatBox</strong> para que tenga la lista de mensajes obtenida del servidor.</p>
 
-<p>Así, si no se puede establecer conexión con el servidor, el componente se renderizara con una lista de mensajes vacíos ya que <code>getInitialState</code> establece una lista vacía para los mensajes.</p>
+<p>Así, si no se puede establecer conexión con el servidor, el componente se renderizara con una lista de mensajes vacíos ya que <code class="highlighter-rouge">getInitialState</code> establece una lista vacía para los mensajes.</p>
 
-<p><code>io.socket.on('new message', afn)</code> hace que React escuche el evento <em>“new message”</em>. Cuando un nuevo mensaje llegue simplemente se agrega a la lista y se actualiza el estado:</p>
+<p><code class="highlighter-rouge">io.socket.on('new message', afn)</code> hace que React escuche el evento <em>“new message”</em>. Cuando un nuevo mensaje llegue simplemente se agrega a la lista y se actualiza el estado:</p>
 
-<p><code>this.setState({messages: this.state.messages.concat([newMessage])});</code></p>
+<p><code class="highlighter-rouge">this.setState({messages: this.state.messages.concat([newMessage])});</code></p>
 
-<p>*Nota <code>.bind(this)</code> cambia el contexto de las funciones anónimas para que <code>this</code> sea el <code>this</code> de <strong>ChatBox</strong> y no el <code>this</code> de las funciones anónimas pues necesitamos <code>this.setState()</code> dentro de estas las cuales no tienen definido setState. Mayor mayor profundización <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">Aquí</a></p>
+<p>*Nota <code class="highlighter-rouge">.bind(this)</code> cambia el contexto de las funciones anónimas para que <code class="highlighter-rouge">this</code> sea el <code class="highlighter-rouge">this</code> de <strong>ChatBox</strong> y no el <code class="highlighter-rouge">this</code> de las funciones anónimas pues necesitamos <code class="highlighter-rouge">this.setState()</code> dentro de estas las cuales no tienen definido setState. Mayor mayor profundización <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">Aquí</a></p>
 
 <p>También debemos cambiar la forma en que se agregan mensajes, ya no estamos trabajando con arreglos, sino con Sails. Modificamos las líneas 18-20</p>
 
-<p><code>io.socket.post(this.props.apiUrl, newMessage);</code> crea un nuevo mensaje usando los helpers de socket.io de Sails. <code>post</code> es para crear un nuevo mensaje.</p>
+<p><code class="highlighter-rouge">io.socket.post(this.props.apiUrl, newMessage);</code> crea un nuevo mensaje usando los helpers de socket.io de Sails. <code class="highlighter-rouge">post</code> es para crear un nuevo mensaje.</p>
 
-<p>Tanto para <code>io.socket.post</code> como para <code>io.socket.get</code> usamos una nueva propiedad llamada apiURL, es el URL donde se deben hacer los queries para crear y obtener mensajes. Se la pasamos al crear el componente en la última línea de <strong>assets/js/main.js</strong></p>
+<p>Tanto para <code class="highlighter-rouge">io.socket.post</code> como para <code class="highlighter-rouge">io.socket.get</code> usamos una nueva propiedad llamada apiURL, es el URL donde se deben hacer los queries para crear y obtener mensajes. Se la pasamos al crear el componente en la última línea de <strong>assets/js/main.js</strong></p>
 
 <pre><code class="language-jsx">...
 React.render(&lt;ChatBox apiUrl="/message" /&gt;, document.getElementById('main'));

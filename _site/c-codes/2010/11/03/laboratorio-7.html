@@ -167,24 +167,24 @@ int main(void){
 }
 </code></pre>
 
-<p>una pequeña nota: Desde la línea 24 a la 28, se puede remplazar por una línea así: <code>gets(alumnos[i].nombre);</code><br />
-el problema de <code>gets</code> es que es peligroso, ya que algún usuario malintencionado puede ingresar mas datos de los permitidos, lo que se conoce como buffer overflow.<br />
-para evitar esto, usamos <code>fgets</code>, donde podemos especificar de donde quieremos leer el string, cuan grande puede ser (limite que no tiene <code>gets</code>) y de donde proviene.</p>
+<p>una pequeña nota: Desde la línea 24 a la 28, se puede remplazar por una línea así: <code class="highlighter-rouge">gets(alumnos[i].nombre);</code><br />
+el problema de <code class="highlighter-rouge">gets</code> es que es peligroso, ya que algún usuario malintencionado puede ingresar mas datos de los permitidos, lo que se conoce como buffer overflow.<br />
+para evitar esto, usamos <code class="highlighter-rouge">fgets</code>, donde podemos especificar de donde quieremos leer el string, cuan grande puede ser (limite que no tiene <code class="highlighter-rouge">gets</code>) y de donde proviene.</p>
 
 <p>ejemplo:
-<code>fgets(alumnos[i].nombre, sizeof(alumnos[i].nombre), stdin);</code>
-<br />Guarda el string en <code>alumnos[i].nombre</code>
-<br />El tamaño del buffer es de <code>sizeof(alumnos[i].nombre)</code>, que es lo mismo que 50 cuando definimos <code>char nombre[50]</code>.
-<br />El lugar de donde entra el string es <code>stdin</code>, standar input, es decir, el teclado. (pueden ser otros, como un archivo)</p>
+<code class="highlighter-rouge">fgets(alumnos[i].nombre, sizeof(alumnos[i].nombre), stdin);</code>
+<br />Guarda el string en <code class="highlighter-rouge">alumnos[i].nombre</code>
+<br />El tamaño del buffer es de <code class="highlighter-rouge">sizeof(alumnos[i].nombre)</code>, que es lo mismo que 50 cuando definimos <code class="highlighter-rouge">char nombre[50]</code>.
+<br />El lugar de donde entra el string es <code class="highlighter-rouge">stdin</code>, standar input, es decir, el teclado. (pueden ser otros, como un archivo)</p>
 
-<p>Pero la gran pregunta es, ¿Por qué <code>gets</code> solo usa una línea, y <code>fgets</code> necesita ese arreglin?<br />
-Lo que pasa es que <code>gets</code>, cuando termina de leer una línea (<strong>\n</strong>), este caracter no es incluido dentro del string.<br />
-A diferencia de gets, <code>fgets</code> cuando termina de leer la línea (<strong>\n</strong>) agrega este caracter al string como ultimo elemento del mismo.</p>
+<p>Pero la gran pregunta es, ¿Por qué <code class="highlighter-rouge">gets</code> solo usa una línea, y <code class="highlighter-rouge">fgets</code> necesita ese arreglin?<br />
+Lo que pasa es que <code class="highlighter-rouge">gets</code>, cuando termina de leer una línea (<strong>\n</strong>), este caracter no es incluido dentro del string.<br />
+A diferencia de gets, <code class="highlighter-rouge">fgets</code> cuando termina de leer la línea (<strong>\n</strong>) agrega este caracter al string como ultimo elemento del mismo.</p>
 
 <p>Es por eso que para borrarlo hacemos el arreglir, que cambia el ultimo elemento del string ‘<strong>\n</strong>’ por un ‘<strong>\0</strong>’  
 Hagan la prueba de borrar el arreglin, y ver que pasa cuando el alumno aprueba.</p>
 
-<p><em>Ejercicio2:</em> Hacer una estructura <code>clase</code> que contenga la estructura anterior de <code>alumnos</code>.<br />
+<p><em>Ejercicio2:</em> Hacer una estructura <code class="highlighter-rouge">clase</code> que contenga la estructura anterior de <code class="highlighter-rouge">alumnos</code>.<br />
 hacer un arreglo de 3 clases, con 3 alumnos cada una, y 4 notas. (es mas fácil usar constantes)</p>
 
 <pre><code class="language-c">#include &lt;stdio.h&gt;

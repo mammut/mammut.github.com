@@ -6,15 +6,15 @@
 </description>
     <link>http://mammut.github.io/</link>
     <atom:link href="http://mammut.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 08 May 2016 21:25:12 -0300</pubDate>
-    <lastBuildDate>Sun, 08 May 2016 21:25:12 -0300</lastBuildDate>
+    <pubDate>Sun, 08 May 2016 21:27:07 -0300</pubDate>
+    <lastBuildDate>Sun, 08 May 2016 21:27:07 -0300</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
         <title>Matriz en espiral v2</title>
         <description>&lt;p&gt;Este es un repost de uno de los posts mas visitados en el sitio, sobre el algoritmo de matriz en espiral.&lt;/p&gt;
 
-&lt;p&gt;He reimplementado el algoritmo de una forma mas simple de atacar, pensando en una funcion &lt;code&gt;fill()&lt;/code&gt; que llena elementos en una matriz de a lineas o columnas.&lt;/p&gt;
+&lt;p&gt;He reimplementado el algoritmo de una forma mas simple de atacar, pensando en una funcion &lt;code class=&quot;highlighter-rouge&quot;&gt;fill()&lt;/code&gt; que llena elementos en una matriz de a lineas o columnas.&lt;/p&gt;
 
 &lt;p&gt;Por ejemplo si se tiene una matriz de 5x5 inciada con 0s:&lt;/p&gt;
 
@@ -68,7 +68,7 @@ fill(matriz, &#39;y&#39;, 0, 4, 1);
  8 0 5 0 0
  7 0 6 0 0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;De esta forma se puede analizar el patrón de llenar una matriz en espiral, dibujarlo en papel ayuda, el patrón surge al utilizar la función &lt;code&gt;fill()&lt;/code&gt; y observar como cambian los indices. Luego el algoritmo de llenar la matriz en espiral funciona para matrices de NxM (cuadradas y rectangulares). Les dejo la implementación final a continuación:&lt;/p&gt;
+&lt;p&gt;De esta forma se puede analizar el patrón de llenar una matriz en espiral, dibujarlo en papel ayuda, el patrón surge al utilizar la función &lt;code class=&quot;highlighter-rouge&quot;&gt;fill()&lt;/code&gt; y observar como cambian los indices. Luego el algoritmo de llenar la matriz en espiral funciona para matrices de NxM (cuadradas y rectangulares). Les dejo la implementación final a continuación:&lt;/p&gt;
 
 &lt;pre class=&quot;linenos&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
 #include &lt;stdio.h&gt;
@@ -212,7 +212,7 @@ $ ./executeme
 &lt;h2 id=&quot;parte-1-arquitectura&quot;&gt;Parte 1: Arquitectura&lt;/h2&gt;
 &lt;p&gt;El protocolo de comunicación es la parte más importante, la forma en que se comunican los clientes con el servidor. Es necesario entonces definir los mensajes de socket.io y el modelo de datos que debemos usar.&lt;/p&gt;
 
-&lt;p&gt;El modelo de nuestro Chat consiste solo en la tabla &lt;code&gt;message&lt;/code&gt; que tendrá solo 2 atributos: &lt;code&gt;author&lt;/code&gt; y &lt;code&gt;text&lt;/code&gt;. Ambos campos string y obligatorios. Esto se implementará en la parte 2.3&lt;/p&gt;
+&lt;p&gt;El modelo de nuestro Chat consiste solo en la tabla &lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt; que tendrá solo 2 atributos: &lt;code class=&quot;highlighter-rouge&quot;&gt;author&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;text&lt;/code&gt;. Ambos campos string y obligatorios. Esto se implementará en la parte 2.3&lt;/p&gt;
 
 &lt;p&gt;El protocolo de comunicación posee solo 2 mensajes.
 &lt;img src=&quot;/assets/article_images/2015-02-01-creando-un-chat-realtime-con-sails-y-react/diagram-1.png&quot; alt=&quot;Sails + react chat app&quot; /&gt;&lt;/p&gt;
@@ -220,11 +220,11 @@ $ ./executeme
 &lt;ul&gt;
   &lt;li&gt;
     &lt;h4 id=&quot;cliente-publica-nuevo-mensaje&quot;&gt;Cliente publica nuevo mensaje&lt;/h4&gt;
-    &lt;p&gt;&lt;code&gt;cliente&lt;/code&gt; » &lt;code&gt;servidor&lt;/code&gt;: &lt;code&gt;{&quot;author&quot;: &quot;Jon Snow&quot;, &quot;text&quot;: &quot;I know nothing&quot;}&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cliente&lt;/code&gt; » &lt;code class=&quot;highlighter-rouge&quot;&gt;servidor&lt;/code&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Jon Snow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;I know nothing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;h4 id=&quot;servidor-enva-nuevo-mensaje-a-los-clientes&quot;&gt;Servidor envía nuevo mensaje a los clientes&lt;/h4&gt;
-    &lt;p&gt;&lt;code&gt;servidor&lt;/code&gt; » &lt;code&gt;clientes&lt;/code&gt;: &lt;code&gt;{&quot;author&quot;: &quot;Jon Snow&quot;, &quot;text&quot;: &quot;I know nothing&quot;}&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;servidor&lt;/code&gt; » &lt;code class=&quot;highlighter-rouge&quot;&gt;clientes&lt;/code&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Jon Snow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;I know nothing&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -235,7 +235,7 @@ $ ./executeme
 &lt;h3 id=&quot;instalacin&quot;&gt;1. Instalación&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm install -g Sails
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Esto instalará en la línea de comandos la herramienta para gestión de proyectos Sails de manera global &lt;code&gt;-g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Esto instalará en la línea de comandos la herramienta para gestión de proyectos Sails de manera global &lt;code class=&quot;highlighter-rouge&quot;&gt;-g&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;crear-el-proyecto&quot;&gt;2. Crear el proyecto&lt;/h3&gt;
 &lt;p&gt;Ahora podemos crear nuestro nuevo proyecto Sails.&lt;/p&gt;
@@ -248,7 +248,7 @@ $ ./executeme
 &lt;p&gt;Esto lanza el servidor en la dirección: &lt;a href=&quot;http://localhost:1337/&quot;&gt;http://localhost:1337/&lt;/a&gt;&lt;br /&gt;
 Ahora estamos listos para comenzar con la API de mensajes.&lt;/p&gt;
 
-&lt;h3 id=&quot;crear-el-api-message&quot;&gt;3. Crear el API &lt;code&gt;message&lt;/code&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;crear-el-api-message&quot;&gt;3. Crear el API &lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt;&lt;/h3&gt;
 
 &lt;p&gt;Sails permite generar APIs con una simple línea de comandos, esto generara un Modelo y Controlador automáticamente y todas las acciones CRUD y funciones de búsqueda, filtros, paginación y orden. Este endpoint  puede ser accedido desde el navegador, haciendo llamadas ajax o desde socket.io con métodos especialmente formulados por Sails.&lt;/p&gt;
 
@@ -256,7 +256,7 @@ Ahora estamos listos para comenzar con la API de mensajes.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sails generate api message
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Ahora se puede jugar con el endpoint de &lt;code&gt;message&lt;/code&gt; para ver como funciona.&lt;/p&gt;
+&lt;p&gt;Ahora se puede jugar con el endpoint de &lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt; para ver como funciona.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sails lift
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -266,12 +266,12 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 &lt;p&gt;Esta configuración le dice a Sails como trabajar las migraciones de la base de datos. Existen 3 tipos de migraciones:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;code&gt;safe&lt;/code&gt;: Nunca auto-migra la base de datos. Debe hacerse a mano&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;alter&lt;/code&gt;: Auto-migra, intentando mantener los datos actuales&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;drop&lt;/code&gt;: Vacía/elimina todos los datos y reconstruye los modelos cada vez que se realiza un Sails lift&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;safe&lt;/code&gt;: Nunca auto-migra la base de datos. Debe hacerse a mano&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;alter&lt;/code&gt;: Auto-migra, intentando mantener los datos actuales&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drop&lt;/code&gt;: Vacía/elimina todos los datos y reconstruye los modelos cada vez que se realiza un Sails lift&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;En esta ocasión se usará &lt;code&gt;alter&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;En esta ocasión se usará &lt;code class=&quot;highlighter-rouge&quot;&gt;alter&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Para modificar la migración se abre el archivo: &lt;strong&gt;config/models.js&lt;/strong&gt; y se descomenta la línea 30&lt;/p&gt;
 
@@ -280,7 +280,7 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 31
 32};
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Ahora si se puede hacer &lt;code&gt;Sails lift&lt;/code&gt; tranquilamente.&lt;/p&gt;
+&lt;p&gt;Ahora si se puede hacer &lt;code class=&quot;highlighter-rouge&quot;&gt;Sails lift&lt;/code&gt; tranquilamente.&lt;/p&gt;
 
 &lt;p&gt;Sails genero un Blueprint del api recién creado, por lo que existen las siguientes rutas RESTFul:&lt;/p&gt;
 
@@ -327,7 +327,7 @@ Antes de iniciar el servidor, Sails avisa que no existe una configuración para 
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Se recomienda el uso de la extensión &lt;a href=&quot;http://www.getpostman.com/&quot;&gt;Postman&lt;/a&gt; para probar estas rutas. Además pueden usar la consola de desarrollador en sus navegadores para probar socket.io. Por ejemplo para un CRUD simple de &lt;code&gt;menssage&lt;/code&gt; pueden intentar:&lt;/p&gt;
+&lt;p&gt;Se recomienda el uso de la extensión &lt;a href=&quot;http://www.getpostman.com/&quot;&gt;Postman&lt;/a&gt; para probar estas rutas. Además pueden usar la consola de desarrollador en sus navegadores para probar socket.io. Por ejemplo para un CRUD simple de &lt;code class=&quot;highlighter-rouge&quot;&gt;menssage&lt;/code&gt; pueden intentar:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;io.socket.get(&#39;/message&#39;, function(messages) { console.log(messages); });
 io.socket.post(&#39;/message&#39;, {author: &quot;Alan Turing&quot;, text: &quot;HUllo World!&quot;});
@@ -336,7 +336,7 @@ io.socket.put(&#39;/message/1&#39;, {text: &quot;Hullo World!&quot;});
 io.socket.delete(&#39;/message/1&#39;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Un aspecto que se puede cambiar es que estos modelos permiten guardar cualquier tipo de información. No existe un esquema de los modelos, pero se puede forzar. Se abre el archivo &lt;strong&gt;/api/models/Message.js&lt;/strong&gt; y se agrega &lt;code&gt;schema: true&lt;/code&gt; para forzar los atributos especificados.&lt;/p&gt;
+&lt;p&gt;Un aspecto que se puede cambiar es que estos modelos permiten guardar cualquier tipo de información. No existe un esquema de los modelos, pero se puede forzar. Se abre el archivo &lt;strong&gt;/api/models/Message.js&lt;/strong&gt; y se agrega &lt;code class=&quot;highlighter-rouge&quot;&gt;schema: true&lt;/code&gt; para forzar los atributos especificados.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;module.exports = {
 
@@ -450,16 +450,16 @@ body {
 &lt;p&gt;Ya teniendo más o menos listo el backend podemos comenzar a escribir react.&lt;/p&gt;
 
 &lt;h3 id=&quot;incorporando-a-sails&quot;&gt;0. Incorporando a Sails&lt;/h3&gt;
-&lt;p&gt;Para poder utilizar &lt;code&gt;bower&lt;/code&gt; en nuestro proyecto Sails es preciso cambiar el directorio por defecto de &lt;code&gt;bower&lt;/code&gt;, para eso se crea el archivo &lt;strong&gt;.bowerrc&lt;/strong&gt; donde agregamos lo siguiente:&lt;/p&gt;
+&lt;p&gt;Para poder utilizar &lt;code class=&quot;highlighter-rouge&quot;&gt;bower&lt;/code&gt; en nuestro proyecto Sails es preciso cambiar el directorio por defecto de &lt;code class=&quot;highlighter-rouge&quot;&gt;bower&lt;/code&gt;, para eso se crea el archivo &lt;strong&gt;.bowerrc&lt;/strong&gt; donde agregamos lo siguiente:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
   &quot;directory&quot;: &quot;assets/vendor&quot;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Ahora cualquier librería que se instale usando &lt;code&gt;bower&lt;/code&gt; quedará en el directorio &lt;strong&gt;assets/vendor&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Ahora cualquier librería que se instale usando &lt;code class=&quot;highlighter-rouge&quot;&gt;bower&lt;/code&gt; quedará en el directorio &lt;strong&gt;assets/vendor&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Iniciamos el proyecto bower con &lt;code&gt;bower init&lt;/code&gt; rellenando los datos que pregunten. Luego se instala React de la siguiente manera:&lt;/p&gt;
+&lt;p&gt;Iniciamos el proyecto bower con &lt;code class=&quot;highlighter-rouge&quot;&gt;bower init&lt;/code&gt; rellenando los datos que pregunten. Luego se instala React de la siguiente manera:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;bower install react --save
 &lt;/code&gt;&lt;/pre&gt;
@@ -546,7 +546,7 @@ var jsFilesToInject = [
   &lt;li&gt;&lt;strong&gt;ChatForm&lt;/strong&gt; (azul) es el formulario del chat.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Lo primero que haremos es escribir un componente &lt;code&gt;Hola mundo&lt;/code&gt; para introducir a React.&lt;/p&gt;
+&lt;p&gt;Lo primero que haremos es escribir un componente &lt;code class=&quot;highlighter-rouge&quot;&gt;Hola mundo&lt;/code&gt; para introducir a React.&lt;/p&gt;
 
 &lt;p&gt;en &lt;strong&gt;assets/js/main.js&lt;/strong&gt; se escribe:&lt;/p&gt;
 
@@ -559,7 +559,7 @@ var jsFilesToInject = [
 React.render(&amp;lt;HolaMundo /&amp;gt;, document.getElementById(&#39;main&#39;));
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Un componente se crea utilizando el método &lt;strong&gt;React.createClass&lt;/strong&gt; el cual recibe un objeto sobre el cual se definen funciones específicas que utilizan los componentes. La función más importante de todas es la función &lt;strong&gt;render&lt;/strong&gt; (2-4), esta se encarga del layout del componente. Define los elementos y componentes que necesita, estos pueden ser etiquetas HTML, por ejemplo &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;, etc. así como también otros componentes React.&lt;/p&gt;
+&lt;p&gt;Un componente se crea utilizando el método &lt;strong&gt;React.createClass&lt;/strong&gt; el cual recibe un objeto sobre el cual se definen funciones específicas que utilizan los componentes. La función más importante de todas es la función &lt;strong&gt;render&lt;/strong&gt; (2-4), esta se encarga del layout del componente. Define los elementos y componentes que necesita, estos pueden ser etiquetas HTML, por ejemplo &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt;, etc. así como también otros componentes React.&lt;/p&gt;
 
 &lt;p&gt;La línea 7 &lt;strong&gt;React.render&lt;/strong&gt; le dice a React que componente raíz inyectar y en que elemento del DOM. En este caso el componente raíz es &lt;strong&gt;HolaMundo&lt;/strong&gt; y se inyecta en el elemento del DOM que tiene &lt;strong&gt;id=main&lt;/strong&gt; (el cual pusimos al modificar homepage.ejs)&lt;/p&gt;
 
@@ -584,7 +584,7 @@ var ChatBox = React.createClass({
 
 &lt;p&gt;El retorno de la función render es la sintáxis de JSX. Hay gente que no le gusta y prefiere utilizar JavaScript puro, con React es posible, &lt;a href=&quot;https://www.packtpub.com/books/content/using-reactjs-without-jsx&quot;&gt;Aquí&lt;/a&gt; pueden encontrar mayor información sobre el tema.&lt;/p&gt;
 
-&lt;p&gt;Como se observa en el código anterior, definimos un &lt;code&gt;div&lt;/code&gt; contenedor con class=”ChatBox”. Dentro se renderizan dos componentes: &lt;em&gt;ChatMessage&lt;/em&gt;s y ChatForm los cuales creamos a continuación:&lt;/p&gt;
+&lt;p&gt;Como se observa en el código anterior, definimos un &lt;code class=&quot;highlighter-rouge&quot;&gt;div&lt;/code&gt; contenedor con class=”ChatBox”. Dentro se renderizan dos componentes: &lt;em&gt;ChatMessage&lt;/em&gt;s y ChatForm los cuales creamos a continuación:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;...
 var ChatForm = React.createClass({
@@ -672,7 +672,7 @@ var ChatBox = React.createClass({
 React.render(&amp;lt;ChatBox messages={_msgList} /&amp;gt;, document.getElementById(&#39;main&#39;));
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Lo que hacemos en la línea 27 es pasarle al componente &lt;strong&gt;ChatBox&lt;/strong&gt; la propiedad &lt;strong&gt;messages&lt;/strong&gt; para que sea igual al arreglo &lt;em&gt;_msgList&lt;/em&gt;. El uso de {} se hace cuando se pasa una variable JavaScript como propiedad. También se puede enviar texto plano con &lt;code&gt;nombre=&quot;Alan Turing&quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Lo que hacemos en la línea 27 es pasarle al componente &lt;strong&gt;ChatBox&lt;/strong&gt; la propiedad &lt;strong&gt;messages&lt;/strong&gt; para que sea igual al arreglo &lt;em&gt;_msgList&lt;/em&gt;. El uso de {} se hace cuando se pasa una variable JavaScript como propiedad. También se puede enviar texto plano con &lt;code class=&quot;highlighter-rouge&quot;&gt;nombre=&quot;Alan Turing&quot;&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Para poder utilizar esta propiedad dentro del componente basta con hacer:&lt;/p&gt;
 
@@ -701,7 +701,7 @@ React.render(&amp;lt;ChatBox messages={_msgList} /&amp;gt;, document.getElementB
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Se crea la variable &lt;code&gt;messages&lt;/code&gt; que será una lista de componentes &lt;em&gt;ChatMessage&lt;/em&gt;. iteramos usando la función map sobre el arreglo que se recibe como propiedad &lt;code&gt;this.props.messages&lt;/code&gt; y por cada mensaje se retorna un nuevo &lt;em&gt;ChatMessage&lt;/em&gt; al que le asignamos la propiedads propiedades &lt;code&gt;author={message.author}&lt;/code&gt; y &lt;code&gt;text={message.text}&lt;/code&gt;. Un ejemplo aislado para iterar usando map sobre un arreglo puede ser:&lt;/p&gt;
+&lt;p&gt;Se crea la variable &lt;code class=&quot;highlighter-rouge&quot;&gt;messages&lt;/code&gt; que será una lista de componentes &lt;em&gt;ChatMessage&lt;/em&gt;. iteramos usando la función map sobre el arreglo que se recibe como propiedad &lt;code class=&quot;highlighter-rouge&quot;&gt;this.props.messages&lt;/code&gt; y por cada mensaje se retorna un nuevo &lt;em&gt;ChatMessage&lt;/em&gt; al que le asignamos la propiedads propiedades &lt;code class=&quot;highlighter-rouge&quot;&gt;author={message.author}&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;text={message.text}&lt;/code&gt;. Un ejemplo aislado para iterar usando map sobre un arreglo puede ser:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;var messages = [
   {name: &quot;mensaje 1&quot;}
@@ -715,7 +715,7 @@ messages.map(function(message,index) {
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Luego dentro de la lista ordenada &lt;code&gt;&amp;lt;ul className=&quot;ChatList&quot;&amp;gt;&lt;/code&gt; se muestra la lista de &lt;em&gt;ChatMessage&lt;/em&gt; generada dinamicamente usando &lt;code&gt;{message}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Luego dentro de la lista ordenada &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;ul className=&quot;ChatList&quot;&amp;gt;&lt;/code&gt; se muestra la lista de &lt;em&gt;ChatMessage&lt;/em&gt; generada dinamicamente usando &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Ahora solo falta hacer que el componente &lt;em&gt;ChatMessage&lt;/em&gt; muestre el autor y texto del mensaje, los cuales recibe como parámetro desde su padre.&lt;/p&gt;
 
@@ -731,7 +731,7 @@ messages.map(function(message,index) {
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Simplemente mostramos las variables usando &lt;code&gt;{this.props.message.author}&lt;/code&gt; y &lt;code&gt;{this.props.message.text}&lt;/code&gt; para imprimirlos donde deben ir.&lt;/p&gt;
+&lt;p&gt;Simplemente mostramos las variables usando &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;this.props.message.author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;this.props.message.text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; para imprimirlos donde deben ir.&lt;/p&gt;
 
 &lt;p&gt;Si vamos a la &lt;a href=&quot;http://localhost:1337&quot;&gt;página&lt;/a&gt; y actualizamos veremos algo así:&lt;/p&gt;
 
@@ -751,7 +751,7 @@ messages.map(function(message,index) {
 &lt;p&gt;Vemos que ChatBox es el mejor candidato para mantener los datos. Sus dos componentes hijos utilizan de alguna forma u otra los datos de ChatBox.
 Por un lado ChatList necesita la lista de mensajes para mostrarla. ChatForm necesita poder agregar nuevos mensajes a la lista en ChatBox.&lt;/p&gt;
 
-&lt;p&gt;Ahora vamos a introducir un nuevo método para &lt;code&gt;createClass()&lt;/code&gt; llamado &lt;code&gt;getInitialState&lt;/code&gt;. Este método permite definir un estado inicial de nuestros componentes. Para usarlo vamos a definir el estado de nuestro ChatBox como la lista de mensajes recibida como parámetros desde &lt;code&gt;React.render(...)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ahora vamos a introducir un nuevo método para &lt;code class=&quot;highlighter-rouge&quot;&gt;createClass()&lt;/code&gt; llamado &lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt;. Este método permite definir un estado inicial de nuestros componentes. Para usarlo vamos a definir el estado de nuestro ChatBox como la lista de mensajes recibida como parámetros desde &lt;code class=&quot;highlighter-rouge&quot;&gt;React.render(...)&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre data-line=&quot;2-4,9&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;var ChatBox = React.createClass({
   getInitialState: function() {
@@ -769,15 +769,15 @@ Por un lado ChatList necesita la lista de mensajes para mostrarla. ChatForm nece
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Agregamos el método &lt;code&gt;getInitialState&lt;/code&gt; que retorna un objeto que define la propiedad &lt;code&gt;messages=this.props.messages&lt;/code&gt;. Se ejecuta una sola vez cuando se inicia el componente.&lt;/p&gt;
+&lt;p&gt;Agregamos el método &lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt; que retorna un objeto que define la propiedad &lt;code class=&quot;highlighter-rouge&quot;&gt;messages=this.props.messages&lt;/code&gt;. Se ejecuta una sola vez cuando se inicia el componente.&lt;/p&gt;
 
-&lt;p&gt;El otro cambio que realizamos fue en la línea 9 donde cambiamos &lt;code&gt;messages={this.state.messages}&lt;/code&gt;. En otras palabras lo que le estamos pasando como propiedad a ChatList es el estado actual de los mensajes. Si estos cambian, le pasaremos una nueva lista de mensajes a ChatList.&lt;/p&gt;
+&lt;p&gt;El otro cambio que realizamos fue en la línea 9 donde cambiamos &lt;code class=&quot;highlighter-rouge&quot;&gt;messages={this.state.messages}&lt;/code&gt;. En otras palabras lo que le estamos pasando como propiedad a ChatList es el estado actual de los mensajes. Si estos cambian, le pasaremos una nueva lista de mensajes a ChatList.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;La gran diferencia entre &lt;code&gt;this.props&lt;/code&gt; y &lt;code&gt;this.state&lt;/code&gt; es que &lt;code&gt;this.state&lt;/code&gt; puede cambiar en el tiempo&lt;/p&gt;
+  &lt;p&gt;La gran diferencia entre &lt;code class=&quot;highlighter-rouge&quot;&gt;this.props&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;this.state&lt;/code&gt; es que &lt;code class=&quot;highlighter-rouge&quot;&gt;this.state&lt;/code&gt; puede cambiar en el tiempo&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Para agregar mensajes nuevos a la lista de mensajes guardados en el estado de &lt;strong&gt;ChatBox&lt;/strong&gt; vamos a necesitar cambiar la lista de mensajes, debemos usar entonces &lt;code&gt;this.state&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Para agregar mensajes nuevos a la lista de mensajes guardados en el estado de &lt;strong&gt;ChatBox&lt;/strong&gt; vamos a necesitar cambiar la lista de mensajes, debemos usar entonces &lt;code class=&quot;highlighter-rouge&quot;&gt;this.state&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;handlers-agregando-mensajes-nuevos&quot;&gt;5. Handlers. Agregando mensajes nuevos&lt;/h3&gt;
 
@@ -807,9 +807,9 @@ Una vez teniendo esta función se la podemos pasar al componente hijo &lt;strong
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;La nueva función &lt;code&gt;handleNewMessage&lt;/code&gt; recibe un objeto mensaje y lo agrega al arreglo de mensajes, luego se actualiza el estado de ChatBox entregándole el arreglo de mensajes actualizados con el nuevo mensaje. El método &lt;code&gt;this.setState(newState)&lt;/code&gt; permite actualizar el estado del componente. En este caso estamos actualizando la lista de mensajes.&lt;/p&gt;
+&lt;p&gt;La nueva función &lt;code class=&quot;highlighter-rouge&quot;&gt;handleNewMessage&lt;/code&gt; recibe un objeto mensaje y lo agrega al arreglo de mensajes, luego se actualiza el estado de ChatBox entregándole el arreglo de mensajes actualizados con el nuevo mensaje. El método &lt;code class=&quot;highlighter-rouge&quot;&gt;this.setState(newState)&lt;/code&gt; permite actualizar el estado del componente. En este caso estamos actualizando la lista de mensajes.&lt;/p&gt;
 
-&lt;p&gt;Además agregamos la propiedad &lt;code&gt;onNewMessage={this.handleNewMessage}&lt;/code&gt; al componente ChatForm en la línea 15. Así este componente podrá llamar al handler cuando el formulario sea enviado.&lt;/p&gt;
+&lt;p&gt;Además agregamos la propiedad &lt;code class=&quot;highlighter-rouge&quot;&gt;onNewMessage={this.handleNewMessage}&lt;/code&gt; al componente ChatForm en la línea 15. Así este componente podrá llamar al handler cuando el formulario sea enviado.&lt;/p&gt;
 
 &lt;pre data-line=&quot;2-10,13&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;var ChatForm = React.createClass({
   handleNewMessage: function(e) {
@@ -833,15 +833,15 @@ Una vez teniendo esta función se la podemos pasar al componente hijo &lt;strong
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;En el componente &lt;strong&gt;ChatForm&lt;/strong&gt; se agrego la función handleNewMessage que se encarga de preparar el mensaje y llamar a la función onNewMessage que viene por parámetro desde su padre al momento de enviar el formulario, línea 13 &lt;code&gt;onSubmit&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;En el componente &lt;strong&gt;ChatForm&lt;/strong&gt; se agrego la función handleNewMessage que se encarga de preparar el mensaje y llamar a la función onNewMessage que viene por parámetro desde su padre al momento de enviar el formulario, línea 13 &lt;code class=&quot;highlighter-rouge&quot;&gt;onSubmit&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Luego el método handleNewMessage realiza lo siguiente:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;e.preventDefault()&lt;/code&gt; detiene el envio del formulario&lt;br /&gt;
-&lt;code&gt;this.refs&lt;/code&gt; permite referenciar directamente a elementos que tengan el atributo &lt;code&gt;ref&lt;/code&gt;. En este caso el formulario tiene &lt;code&gt;ref=&quot;author&quot;&lt;/code&gt; y &lt;code&gt;ref=&quot;text&quot;&lt;/code&gt;.&lt;br /&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;e.preventDefault()&lt;/code&gt; detiene el envio del formulario&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;this.refs&lt;/code&gt; permite referenciar directamente a elementos que tengan el atributo &lt;code class=&quot;highlighter-rouge&quot;&gt;ref&lt;/code&gt;. En este caso el formulario tiene &lt;code class=&quot;highlighter-rouge&quot;&gt;ref=&quot;author&quot;&lt;/code&gt; y &lt;code class=&quot;highlighter-rouge&quot;&gt;ref=&quot;text&quot;&lt;/code&gt;.&lt;br /&gt;
 Se llama a la función que viene desde el padre por props usando:&lt;br /&gt;
-&lt;code&gt;this.props.onNewMessage({author: author, text:text});&lt;/code&gt;&lt;br /&gt;
-y por último se limpia el texto del mensaje para escribir uno nuevo. &lt;code&gt;this.refs.text.getDOMENode().value = &#39;&#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;this.props.onNewMessage({author: author, text:text});&lt;/code&gt;&lt;br /&gt;
+y por último se limpia el texto del mensaje para escribir uno nuevo. &lt;code class=&quot;highlighter-rouge&quot;&gt;this.refs.text.getDOMENode().value = &#39;&#39;;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Ahora se puede probar el formulario, al enviar nuevos mensajes se agregan al arreglo de mensajes en el estado de ChatBox.&lt;/p&gt;
 
@@ -860,7 +860,7 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. &lt;code&g
 
 &lt;p&gt;Si escucho que hay un nuevo mensaje, espero a que alguien (el servidor) me envié un nuevo mensaje con el evento que dispare cuando cree nuevos mensajes.&lt;/p&gt;
 
-&lt;p&gt;El primer paso es transmitir nuevos mensajes a medida que se vayan creando en Sails. Sails ofrece un hook bastante conveniente. En nuestro modelo &lt;code&gt;message&lt;/code&gt; vamos a agregar el hook &lt;code&gt;afterCreate&lt;/code&gt; que se ejecuta cada vez que se cree un nuevo mensaje. Aqui dentro vamos a emitir un evento por socket.io para que todos los clientes sepan que hay un nuevo mensaje que agregar.&lt;/p&gt;
+&lt;p&gt;El primer paso es transmitir nuevos mensajes a medida que se vayan creando en Sails. Sails ofrece un hook bastante conveniente. En nuestro modelo &lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt; vamos a agregar el hook &lt;code class=&quot;highlighter-rouge&quot;&gt;afterCreate&lt;/code&gt; que se ejecuta cada vez que se cree un nuevo mensaje. Aqui dentro vamos a emitir un evento por socket.io para que todos los clientes sepan que hay un nuevo mensaje que agregar.&lt;/p&gt;
 
 &lt;p&gt;Abrimos el archivo &lt;strong&gt;api/models/Message.js&lt;/strong&gt; y agregamos:&lt;/p&gt;
 
@@ -886,11 +886,11 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. &lt;code&g
 };
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Agregamos el hook &lt;code&gt;afterCreate&lt;/code&gt; que dentro emite el evento &lt;em&gt;“new message”&lt;/em&gt; a todos los clientes conectados y les envía el nuevo mensaje recién creado.&lt;/p&gt;
+&lt;p&gt;Agregamos el hook &lt;code class=&quot;highlighter-rouge&quot;&gt;afterCreate&lt;/code&gt; que dentro emite el evento &lt;em&gt;“new message”&lt;/em&gt; a todos los clientes conectados y les envía el nuevo mensaje recién creado.&lt;/p&gt;
 
 &lt;p&gt;Ahora simplemente debemos hacer que React se conecte a socket.io y reciba nuevos mensajes así como también emitir nuevos mensajes.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;componentDidMount&lt;/code&gt; es un método de &lt;code&gt;React.createClass&lt;/code&gt; que se ejecuta una vez que el componente fue montado en el DOM correctamente. Vamos a usarlo para iniciar la conexión de socket.io e inicialmente para obtener la lista de mensajes así como también definir el evento a escuchar &lt;em&gt;“new message”&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt; es un método de &lt;code class=&quot;highlighter-rouge&quot;&gt;React.createClass&lt;/code&gt; que se ejecuta una vez que el componente fue montado en el DOM correctamente. Vamos a usarlo para iniciar la conexión de socket.io e inicialmente para obtener la lista de mensajes así como también definir el evento a escuchar &lt;em&gt;“new message”&lt;/em&gt;&lt;/p&gt;
 
 &lt;pre data-line=&quot;3,5-17,18-20&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;var ChatBox = React.createClass({
   getInitialState: function() {
@@ -924,23 +924,23 @@ y por último se limpia el texto del mensaje para escribir uno nuevo. &lt;code&g
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Lo primero es cambiar el método &lt;code&gt;getInitialState&lt;/code&gt; para que retorne inicialmente el estado de mensajes como una lista vacía.&lt;/p&gt;
+&lt;p&gt;Lo primero es cambiar el método &lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt; para que retorne inicialmente el estado de mensajes como una lista vacía.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;io.socket.on(&#39;connect&#39;, afn)&lt;/code&gt; es el evento que se dispara cuando socket.io establece conexión con el servidor. Dentro de este hacemos 2 cosas, primero es obtener la lista de mensajes desde el servidor usando &lt;code&gt;io.socket.get&lt;/code&gt; (este método es de Sails exclusivamente). Devuelve la lista de mensajes y cambiamos el estado de &lt;strong&gt;ChatBox&lt;/strong&gt; para que tenga la lista de mensajes obtenida del servidor.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;io.socket.on(&#39;connect&#39;, afn)&lt;/code&gt; es el evento que se dispara cuando socket.io establece conexión con el servidor. Dentro de este hacemos 2 cosas, primero es obtener la lista de mensajes desde el servidor usando &lt;code class=&quot;highlighter-rouge&quot;&gt;io.socket.get&lt;/code&gt; (este método es de Sails exclusivamente). Devuelve la lista de mensajes y cambiamos el estado de &lt;strong&gt;ChatBox&lt;/strong&gt; para que tenga la lista de mensajes obtenida del servidor.&lt;/p&gt;
 
-&lt;p&gt;Así, si no se puede establecer conexión con el servidor, el componente se renderizara con una lista de mensajes vacíos ya que &lt;code&gt;getInitialState&lt;/code&gt; establece una lista vacía para los mensajes.&lt;/p&gt;
+&lt;p&gt;Así, si no se puede establecer conexión con el servidor, el componente se renderizara con una lista de mensajes vacíos ya que &lt;code class=&quot;highlighter-rouge&quot;&gt;getInitialState&lt;/code&gt; establece una lista vacía para los mensajes.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;io.socket.on(&#39;new message&#39;, afn)&lt;/code&gt; hace que React escuche el evento &lt;em&gt;“new message”&lt;/em&gt;. Cuando un nuevo mensaje llegue simplemente se agrega a la lista y se actualiza el estado:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;io.socket.on(&#39;new message&#39;, afn)&lt;/code&gt; hace que React escuche el evento &lt;em&gt;“new message”&lt;/em&gt;. Cuando un nuevo mensaje llegue simplemente se agrega a la lista y se actualiza el estado:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;this.setState({messages: this.state.messages.concat([newMessage])});&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this.setState({messages: this.state.messages.concat([newMessage])});&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;*Nota &lt;code&gt;.bind(this)&lt;/code&gt; cambia el contexto de las funciones anónimas para que &lt;code&gt;this&lt;/code&gt; sea el &lt;code&gt;this&lt;/code&gt; de &lt;strong&gt;ChatBox&lt;/strong&gt; y no el &lt;code&gt;this&lt;/code&gt; de las funciones anónimas pues necesitamos &lt;code&gt;this.setState()&lt;/code&gt; dentro de estas las cuales no tienen definido setState. Mayor mayor profundización &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind&quot;&gt;Aquí&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;*Nota &lt;code class=&quot;highlighter-rouge&quot;&gt;.bind(this)&lt;/code&gt; cambia el contexto de las funciones anónimas para que &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; sea el &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; de &lt;strong&gt;ChatBox&lt;/strong&gt; y no el &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; de las funciones anónimas pues necesitamos &lt;code class=&quot;highlighter-rouge&quot;&gt;this.setState()&lt;/code&gt; dentro de estas las cuales no tienen definido setState. Mayor mayor profundización &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind&quot;&gt;Aquí&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;También debemos cambiar la forma en que se agregan mensajes, ya no estamos trabajando con arreglos, sino con Sails. Modificamos las líneas 18-20&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;io.socket.post(this.props.apiUrl, newMessage);&lt;/code&gt; crea un nuevo mensaje usando los helpers de socket.io de Sails. &lt;code&gt;post&lt;/code&gt; es para crear un nuevo mensaje.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;io.socket.post(this.props.apiUrl, newMessage);&lt;/code&gt; crea un nuevo mensaje usando los helpers de socket.io de Sails. &lt;code class=&quot;highlighter-rouge&quot;&gt;post&lt;/code&gt; es para crear un nuevo mensaje.&lt;/p&gt;
 
-&lt;p&gt;Tanto para &lt;code&gt;io.socket.post&lt;/code&gt; como para &lt;code&gt;io.socket.get&lt;/code&gt; usamos una nueva propiedad llamada apiURL, es el URL donde se deben hacer los queries para crear y obtener mensajes. Se la pasamos al crear el componente en la última línea de &lt;strong&gt;assets/js/main.js&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Tanto para &lt;code class=&quot;highlighter-rouge&quot;&gt;io.socket.post&lt;/code&gt; como para &lt;code class=&quot;highlighter-rouge&quot;&gt;io.socket.get&lt;/code&gt; usamos una nueva propiedad llamada apiURL, es el URL donde se deben hacer los queries para crear y obtener mensajes. Se la pasamos al crear el componente en la última línea de &lt;strong&gt;assets/js/main.js&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;...
 React.render(&amp;lt;ChatBox apiUrl=&quot;/message&quot; /&amp;gt;, document.getElementById(&#39;main&#39;));
@@ -1671,11 +1671,11 @@ Supongamos que tengo la estructura &lt;strong&gt;persona&lt;/strong&gt; (de arri
 
 &lt;p&gt;ahora decimos;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;juampi.edad = 20;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;juampi.edad = 20;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;y para el nombre, como es un string, usamos strcpy o sprintf.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;sprintf(juampi.nombre, &quot;Juampi&quot;);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sprintf(juampi.nombre, &quot;Juampi&quot;);&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;hasta aqui todo bien, facil y bonito.&lt;/p&gt;
 
@@ -1816,11 +1816,11 @@ int main(int argc, char *argv[])
 &lt;p&gt;Ejercicio…&lt;br /&gt;
 ¿puedo utilizar la flechita para una estructura simple asi:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;juampi-&amp;gt;edad = 20;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;juampi-&amp;gt;edad = 20;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;en vez de&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;juampi.edad = 20;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;juampi.edad = 20;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;? ¿Cómo?&lt;/p&gt;
 </description>
