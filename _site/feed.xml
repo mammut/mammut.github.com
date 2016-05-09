@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JPEG {codes}</title>
-    <description>Códigos azarosos es múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
+    <description>Códigos azarosos en múltiples lenguajes, JavaScript, Ruby, C, Python. Bienvenidos aquellos que quieran aprender.
 </description>
     <link>http://mammut.github.io/</link>
     <atom:link href="http://mammut.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 01 Apr 2015 21:25:45 -0300</pubDate>
-    <lastBuildDate>Wed, 01 Apr 2015 21:25:45 -0300</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Sun, 08 May 2016 21:19:48 -0300</pubDate>
+    <lastBuildDate>Sun, 08 May 2016 21:19:48 -0300</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
     
       <item>
         <title>Matriz en espiral v2</title>
